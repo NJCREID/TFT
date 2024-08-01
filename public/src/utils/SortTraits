@@ -1,0 +1,8 @@
+export default function SortTraits(traits) {
+  const filteredTraits = traits.filter((trait) => trait.tier_current > 0);
+  const sortedTraits = filteredTraits.sort((a, b) => {
+    if (a.tier !== b.tier) return b.tier - a.tier;
+    return b.num_units - a.num_units;
+  });
+  return sortedTraits;
+}

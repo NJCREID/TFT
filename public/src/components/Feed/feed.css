@@ -1,0 +1,15 @@
+.app__feed {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 1100px;
+}
+
+.app__feed-post {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+}

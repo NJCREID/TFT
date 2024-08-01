@@ -1,0 +1,75 @@
+.app__traitsdisplay {
+  width: 100%;
+  background-color: var(--color-secondary);
+  max-height: 354px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--color-lightred);
+}
+
+.app__traitsdisplay-traits {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  overflow: auto;
+  gap: 5px;
+  padding: 5px;
+}
+
+.app__traitsdisplay-traits-trait {
+  display: flex;
+  align-items: center;
+  height: 54px;
+  min-width: 160px;
+  gap: 10px;
+  padding: 10px;
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-primary);
+  border-radius: 5px;
+}
+
+.app__traitsdisplay-traits-trait.active {
+  background-color: var(--color-primary);
+}
+
+.app__traitsdisplay-traits-trait-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.app__traitsdisplay-traits-trait img {
+  width: 32px;
+  height: 32px;
+}
+
+.app__traitsdisplay-traits-trait-container {
+  display: flex;
+  font-size: 12px;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.app__traitsdisplay-empty {
+  display: flex;
+  height: 100%;
+  padding: 0 30px 0 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 1300px) {
+  .app__traitsdisplay {
+    max-width: 600px;
+    min-height: 64px;
+  }
+  .app__traitsdisplay-traits {
+    flex-direction: row;
+  }
+  .app__traitsdisplay-empty {
+    height: 62px;
+  }
+}

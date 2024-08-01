@@ -1,0 +1,145 @@
+.app__postform {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.app__postform-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.app__postform-form h1 {
+  margin-bottom: 2rem;
+}
+
+.app__postform-form-container {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.app__postform-form-article {
+  width: 100%;
+}
+
+.app__postform-form-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.app__postform-form-details textarea {
+  height: 4rem;
+}
+
+.app__postform-form-details #description {
+  height: 5.5rem;
+}
+
+.app__postform-form-details #buildName {
+  flex: 1;
+}
+
+.app__postform-form-difficulty {
+  flex: 1;
+  min-width: 6rem;
+}
+
+.app__postform-form-playstyle {
+  flex: 1;
+  min-width: 9rem;
+}
+
+.app__postform-form-details-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.app__post-form-input {
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
+
+.app__post-form-input::placeholder {
+  color: var(--color-input-placeholder);
+}
+
+.app__postform-form-augments {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 460px;
+  width: 100%;
+}
+
+.app__postform-form-augments-selector {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-lightred);
+  background-color: var(--color-primary);
+  border-radius: 5px;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.app__postform-form-augments-header {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app__postform-form-augments-selection-container {
+  border-radius: 5px;
+  padding: 0.625rem;
+  height: 150px;
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-lightred);
+}
+
+.app__postform-form-augments-selection {
+  display: grid;
+  height: 100%;
+  grid-template-columns: repeat(auto-fill, 72px);
+  gap: 10px;
+  overflow: hidden auto;
+}
+
+.app__postform-form-augments-filters {
+  display: flex;
+  gap: 1rem;
+}
+
+.app__postform-form-selectors {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 1250px) {
+  .app__postform-form-details-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .app__postform-form-augments {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .app__postform-form-container {
+    flex-direction: column;
+  }
+  .app__postform-form-augments {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 515px) {
+  .app__postform-form-selectors {
+    width: 100%;
+  }
+}

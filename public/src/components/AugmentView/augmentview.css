@@ -1,0 +1,17 @@
+.app__augmentview {
+  border: 3px solid;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.app__augmentview.tier1 {
+  border-color: var(--color-augment-tier1);
+}
+.app__augmentview.tier2 {
+  border-color: var(--color-augment-tier2);
+}
+
+.app__augmentview.tier3 {
+  border-image: var(--color-augment-tier3);
+}

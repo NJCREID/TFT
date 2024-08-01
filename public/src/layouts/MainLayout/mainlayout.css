@@ -1,0 +1,36 @@
+.app__mainlayout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-rows: var(--header-height) 1fr;
+  grid-template-areas:
+    "header header"
+    "sidebar main";
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.app__header {
+  grid-area: header;
+}
+
+.app__sidebar {
+  grid-area: sidebar;
+}
+
+.app__main {
+  grid-area: main;
+  min-height: calc(100vh - var(--header-height));
+  width: calc(100vw - var(--sidebar-width));
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+@media screen and (max-width: 750px) {
+  .app__mainlayout {
+    grid-template-areas:
+      "header header"
+      "main main";
+  }
+}

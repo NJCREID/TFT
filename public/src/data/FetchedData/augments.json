@@ -1,0 +1,3648 @@
+{
+    "augments": [
+        {
+            "key": "ACutAbove",
+            "name": "A Cut Above",
+            "desc": "Gain a Deathblade. Champions holding this item have a 20% chance to drop 1 gold on kill.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_ACutAbove",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_ACutAbove"
+        },
+        {
+            "key": "AFK",
+            "name": "AFK",
+            "desc": "You cannot perform actions for the next 3 rounds. Afterwards, gain 18 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_AFK",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT7_Augment_AFK"
+        },
+        {
+            "key": "AirspeedVelocity1",
+            "name": "Unburdened I",
+            "desc": "Your units without items equipped gain 30% Attack Speed.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_AirspeedVelocity1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_AirspeedVelocity1"
+        },
+        {
+            "key": "AirspeedVelocity2",
+            "name": "Unburdened II",
+            "desc": "Your units without items equipped gain 55% Attack Speed.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_AirspeedVelocity2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_AirspeedVelocity2"
+        },
+        {
+            "key": "AllNatural",
+            "name": "All Natural I",
+            "desc": "Your Champions with no items equipped gain 120 Health and heal for 1% of their max Health each second.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_AllNatural",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_AllNatural"
+        },
+        {
+            "key": "AllNatural2",
+            "name": "All Natural II",
+            "desc": "Your units with no items equipped gain 150 Health and heal for 2% of their max Health each second.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_AllNatural2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_AllNatural2"
+        },
+        {
+            "key": "ArmyBuilding",
+            "name": "Team Building",
+            "desc": "Gain a Lesser Champion Duplicator. Gain another after 7 player combats.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_ArmyBuilding",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_ArmyBuilding"
+        },
+        {
+            "key": "AxiomArcI",
+            "name": "Axiom Arc I",
+            "desc": "Your units gain 25 Mana on kill.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_AxiomArc1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT7_Augment_AxiomArc1"
+        },
+        {
+            "key": "AxiomArcII",
+            "name": "Axiom Arc II",
+            "desc": "Your units gain 30 Mana on kill.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_AxiomArc2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT7_Augment_AxiomArc2"
+        },
+        {
+            "key": "BalancedBudget",
+            "name": "Balanced Budget",
+            "desc": "At the start of the next 4 rounds, gain 7 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BalancedBudget",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_BalancedBudget"
+        },
+        {
+            "key": "BalancedBudget2",
+            "name": "Balanced Budget II",
+            "desc": "At the start of the next 4 rounds, Gain 7 Gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BalancedBudget2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_BalancedBudget2"
+        },
+        {
+            "key": "BalancedBudget2Plus",
+            "name": "Balanced Budget+",
+            "desc": "At the start of the next 4 rounds, gain 9 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BalancedBudgetPlus",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_BalancedBudgetPlus"
+        },
+        {
+            "key": "BalancedBudget3",
+            "name": "Balanced Budget III",
+            "desc": "At the start of the next 4 rounds, Gain 10 Gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BalancedBudget3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_BalancedBudget3"
+        },
+        {
+            "key": "BandOfThieves2",
+            "name": "Band of Thieves II",
+            "desc": "Gain 2 Thief's Gloves.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_BandOfThieves2",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_BandOfThieves2"
+        },
+        {
+            "key": "BandofThievesI",
+            "name": "Band of Thieves I",
+            "desc": "Gain 1 Thief's Gloves.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_BandOfThieves1",
+            "tier": 1,
+            "inGameKey": "TFT7_Augment_BandOfThieves1"
+        },
+        {
+            "key": "BardPlaybook1",
+            "name": "Caretaker's Ally",
+            "desc": "Gain a random 2-cost champion now. Gain the same one again every time you level up.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BardPlaybook1",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_BardPlaybook1"
+        },
+        {
+            "key": "BardPlaybook2",
+            "name": "Caretaker's Favor",
+            "desc": "Gain a component anvil when you reach level 5, 6, 7, and 8.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BardPlaybook2",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_BardPlaybook2"
+        },
+        {
+            "key": "BardPlaybook3",
+            "name": "Caretaker's Chosen",
+            "desc": "As you level, gain more powerful items.<br>Level 4: Component Anvil<br>Level 6: Completed Item Anvil<br>Level 8: choose 1 of 5 Radiant items.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BardPlaybook3",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_BardPlaybook3"
+        },
+        {
+            "key": "BattlemageI",
+            "name": "Battlemage I",
+            "desc": "Your units that start combat in the front 2 rows gain 15 Armor and 15 Ability Power.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Battlemage1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_Battlemage1"
+        },
+        {
+            "key": "BattlemageII",
+            "name": "Battlemage II",
+            "desc": "Your units that start combat in the front 2 rows gain 25 Armor and 25 Ability Power.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Battlemage2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_Battlemage2"
+        },
+        {
+            "key": "BattlemageIII",
+            "name": "BattlemageIII",
+            "desc": "Your units that start combat in the front 2 rows gain 35 Armor and 35 Ability Power.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Battlemage3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_Battlemage3"
+        },
+        {
+            "key": "BattleReady",
+            "name": "Battle Ready",
+            "desc": "Your team deals 3% more damage and takes 3% less damage. ",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BattleReady",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_BattleReady"
+        },
+        {
+            "key": "BattleReadyII",
+            "name": "Battle Ready II",
+            "desc": "Your team deals 6% more damage and takes 6% less damage. ",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BattleReadyII",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_BattleReadyII"
+        },
+        {
+            "key": "BattleReadyIII",
+            "name": "Battle Ready III",
+            "desc": "Your team deals 8% more damage and takes 8% less damage. ",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BattleReadyIII",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_BattleReadyIII"
+        },
+        {
+            "key": "BestFriends1",
+            "name": "Best Friends I",
+            "desc": "Units isolated in pairs gain 12% Attack Speed and 12 Armor at the start of combat.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_BestFriends1",
+            "tier": 1,
+            "inGameKey": "TFT7_Augment_BestFriends1"
+        },
+        {
+            "key": "BestFriends2",
+            "name": "Best Friends II",
+            "desc": "Units isolated in pairs gain 15% Attack Speed and 20 Armor at the start of combat.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_BestFriends2",
+            "tier": 2,
+            "inGameKey": "TFT7_Augment_BestFriends2"
+        },
+        {
+            "key": "BetterTogether",
+            "name": "Better Together",
+            "desc": "Aura items that buff your team have their effects increased by 33%. Gain a Locket of the Iron Solari",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_MikaelsGift",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT7_Augment_MikaelsGift"
+        },
+        {
+            "key": "BigFriend",
+            "name": "Big Friend I",
+            "desc": "Your units that start combat next to a unit with over 1600 Health take 9% less damage for the rest of combat.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_BigFriend",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT7_Augment_BigFriend"
+        },
+        {
+            "key": "BigFriend2",
+            "name": "Big Friend II",
+            "desc": "Your units that start combat next to a unit with over 1600 Health take 10% less damage for the rest of combat.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_BigFriend2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT7_Augment_BigFriend2"
+        },
+        {
+            "key": "BigGains",
+            "name": "Big Gains",
+            "desc": "Your team gains 100 bonus Health, and permanently gains 10 Health every 2 takedowns.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_BigGains",
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_BigGains"
+        },
+        {
+            "key": "BigGrabBag",
+            "name": "Big Grab Bag",
+            "desc": "Gain 3 random components, 2 gold, and 1 Reforger.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BigGrabBag",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_BigGrabBag"
+        },
+        {
+            "key": "BinaryAirdrop",
+            "name": "Binary Airdrop",
+            "desc": "Combat start: champions holding 2 items gain a recommended 3rd completed item. Gain a 2 Gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_BinaryAirdrop",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_BinaryAirdrop"
+        },
+        {
+            "key": "BirthdayPresents",
+            "name": "Birthday Present",
+            "desc": "Gain a 2-star champion every time you level up. The champion's cost is your level minus 4 (min: 1-cost).",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_BirthdayPresents",
+            "tier": 3,
+            "inGameKey": "TFT7_Augment_BirthdayPresents"
+        },
+        {
+            "key": "BlankSlate",
+            "name": "Blank Slate",
+            "desc": "Immediately sell your team (including bench) for double their value. Your next 8 Shop rerolls are free only for this round.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_BlankSlate",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_BlankSlate"
+        },
+        {
+            "key": "BlindingSpeed",
+            "name": "Blinding Speed",
+            "desc": "Gain a Red Buff, a Guinsoo's Rageblade, a Recurve bow and a Magnetic Remover.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BlindingSpeed",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_BlindingSpeed"
+        },
+        {
+            "key": "BloodMoney",
+            "name": "Blood Money",
+            "desc": "Gain 3 gold per 10 Health your Tactician loses.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BloodMoney",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_BloodMoney"
+        },
+        {
+            "key": "BlueBattery1",
+            "name": "Blue Battery I",
+            "desc": "After casting their Ability, your units restore 10 Mana.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_BlueBattery1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_BlueBattery1"
+        },
+        {
+            "key": "BlueBattery3",
+            "name": "Blue Battery II",
+            "desc": "After casting their Ability, your units restore 20 Mana.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_BlueBattery2",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_BlueBattery2"
+        },
+        {
+            "key": "BranchingOut",
+            "name": "Branching Out",
+            "desc": "Gain a random Emblem and a Reforger.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT_Augment_BranchingOut",
+            "tier": 1,
+            "inGameKey": "TFT_Augment_BranchingOut"
+        },
+        {
+            "key": "BronzeTicket",
+            "name": "Silver Ticket",
+            "desc": "Gain a free Shop reroll after every 4 rerolls.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BronzeTicket",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_BronzeTicket"
+        },
+        {
+            "key": "BruiserTitanicStrength",
+            "name": "Titanic Strength",
+            "desc": "Bruisers gain % increased Attack Damage equal to 1.5% of their maximum Health. Gain 2 Bruisers.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BruiserTitanicStrength",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_BruiserTitanicStrength"
+        },
+        {
+            "key": "BuildingACollection",
+            "name": "Buried Treasures I",
+            "desc": "Gain a random item component at the start of the next 2 rounds (including this round).",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BuildingACollection",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_BuildingACollection"
+        },
+        {
+            "key": "BuildingACollectionPlus",
+            "name": "Buried Treasures II",
+            "desc": "Gain a random item component at the start of the next 3 rounds (including this round).",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BuildingACollectionPlus",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_BuildingACollectionPlus"
+        },
+        {
+            "key": "BuildingACollectionPlusPlus",
+            "name": "Buried Treasures III",
+            "desc": "Gain a random item component at the start of the next 6 rounds (including this round).",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_BuildingACollectionPlusPlus",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_BuildingACollectionPlusPlus"
+        },
+        {
+            "key": "CalculatedLoss",
+            "name": "Calculated Loss",
+            "desc": "After losing your combat, gain 2 gold and a free Shop refresh.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_CalculatedLoss",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_CalculatedLoss"
+        },
+        {
+            "key": "CapriciousForge",
+            "name": "Capricious Forge",
+            "desc": "Gain a Blacksmith's Gloves, which equips two random Artifacts each round.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_CapriciousForge",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_CapriciousForge"
+        },
+        {
+            "key": "CelestialBlessing1",
+            "name": "Celestial Blessing I",
+            "desc": "Your units heal for 10% of the damage dealt by attacks and Abilities. Excess healing is converted to a shield up to 200 Health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_CelestialBlessing1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_CelestialBlessing1"
+        },
+        {
+            "key": "CelestialBlessing2",
+            "name": "Celestial Blessing II",
+            "desc": "Your units heal for 15% of the damage dealt by attacks and Abilities. Excess healing is converted to a shield up to 300 Health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_CelestialBlessing2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_CelestialBlessing2"
+        },
+        {
+            "key": "CelestialBlessing3",
+            "name": "Celestial Blessing III",
+            "desc": "Your units heal for 25% of the damage dealt by attacks and Abilities. Excess healing is converted to a shield up to 400 Health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_CelestialBlessing3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_CelestialBlessing3"
+        },
+        {
+            "key": "ClearMind",
+            "name": "Clear Mind",
+            "desc": "If there are no champions on your bench at the end of player combat round, gain 3 XP.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_ClearMind",
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_ClearMind"
+        },
+        {
+            "key": "ClutteredMind",
+            "name": "Cluttered Mind",
+            "desc": "Gain 4 random 1-cost champions now. If your bench is full at the end of player combat, gain 3 XP.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_ClutteredMind",
+            "tier": 2,
+            "inGameKey": "TFT7_Augment_ClutteredMind"
+        },
+        {
+            "key": "CombatCaster",
+            "name": "Combat Caster",
+            "desc": "Your team gains a 90-170 Shield for 4 seconds after casting their Ability. The Shield amount scales with round of the game.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_CombatCaster",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_CombatCaster"
+        },
+        {
+            "key": "CombatTrainingII",
+            "name": "Combat Training",
+            "desc": "Your Champions permanently gain 1 Attack Damage every time they kill an enemy unit. Champions start with 8% Attack Damage.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_Bloodlust1",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT7_Augment_Bloodlust1"
+        },
+        {
+            "key": "Commander_Ascension",
+            "name": "Ascension",
+            "desc": "After 15 seconds of combat, your units deal 50% more damage.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Commander_Ascension",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_Commander_Ascension"
+        },
+        {
+            "key": "Commander_FinalAscension",
+            "name": "Final Ascension",
+            "desc": "Your team deals 15% more damage. After 15 seconds, they deal 45% more damage.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Commander_FinalAscension",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_Commander_FinalAscension"
+        },
+        {
+            "key": "Commander_PartialAscension",
+            "name": "Partial Ascension",
+            "desc": "After 15 seconds of combat, your units deal 30% more damage.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Commander_PartialAscension",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_Commander_PartialAscension"
+        },
+        {
+            "key": "Commander_RollingForDays",
+            "name": "Rolling For Days I",
+            "desc": "Gain 9 free Shop rerolls that never expire.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Commander_RollingForDays",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_Commander_RollingForDays"
+        },
+        {
+            "key": "Commander_TeamingUp1",
+            "name": "Seeing Double I",
+            "desc": "Gain a random item made from 2 of the same component and 2 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/None",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": null
+        },
+        {
+            "key": "Commander_TeamingUp2",
+            "name": "Seeing Double II",
+            "desc": "Gain a random item made from 2 of the same component and 10 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/None",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": null
+        },
+        {
+            "key": "Commander_TeamingUp3",
+            "name": "Seeing Double III",
+            "desc": "Gain 2 random items made from 2 of the same component and 4 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/None",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": null
+        },
+        {
+            "key": "ComponentGrabBag",
+            "name": "Component Grab Bag",
+            "desc": "Gain 3 random item components.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_ComponentGrabBag",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_ComponentGrabBag"
+        },
+        {
+            "key": "Consistency",
+            "name": "Consistency",
+            "desc": "Gain double win and loss streak gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_Consistency",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT7_Augment_Consistency"
+        },
+        {
+            "key": "Contagion",
+            "name": "Contagion",
+            "desc": "Combat Start: Infect the highest health enemy, increasing their damage taken by 18%. Every 5 seconds and on death, the infection spreads to 2 nearby units.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Contagion",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_Contagion"
+        },
+        {
+            "key": "CrashTestDummies",
+            "name": "Crash Test Dummies",
+            "desc": "Gain 2 Target Dummies. Combat start: Your Target Dummies launch themselves towards the largest clump of enemies and Stun them for 1.25 seconds.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_CrashTestDummies",
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_CrashTestDummies"
+        },
+        {
+            "key": "CrownGuarded",
+            "name": "Crown Guarded",
+            "desc": "Gain a Crownguard. Your Crownguards' start of combat effect is 100% stronger.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_CrownGuarded",
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_CrownGuarded"
+        },
+        {
+            "key": "CursedCrown",
+            "name": "Cursed Crown",
+            "desc": "Gain +2 max team size, but take 100% more player damage when you lose a player combat.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_CursedCrown",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT7_Augment_CursedCrown"
+        },
+        {
+            "key": "CustomerIsAlwaysRight",
+            "name": "Component Buffet",
+            "desc": "Whenever you would get a component, gain a component anvil instead. Gain a random component.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_CustomerIsAlwaysRight",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_CustomerIsAlwaysRight"
+        },
+        {
+            "key": "CuttingCorners",
+            "name": "Cutting Corners",
+            "desc": "Leveling up costs 3 XP less.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_CuttingCorners",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_CuttingCorners"
+        },
+        {
+            "key": "CyberneticBulk1",
+            "name": "Cybernetic Bulk I",
+            "desc": "Your champions holding an item gain 200 health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_CyberneticBulk1",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_CyberneticBulk1"
+        },
+        {
+            "key": "CyberneticBulk2",
+            "name": "Cybernetic Bulk II",
+            "desc": "Your champions holding an item gain 300 health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_CyberneticBulk2",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_CyberneticBulk2"
+        },
+        {
+            "key": "CyberneticBulk3",
+            "name": "Cybernetic Bulk III",
+            "desc": "Your champions holding an item gain 500 health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_CyberneticBulk3",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_CyberneticBulk3"
+        },
+        {
+            "key": "CyberneticImplants1",
+            "name": "Cybernetic Implants I",
+            "desc": "Your champions holding an item gain 80 Health and 10% Attack Damage.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_CyberneticImplants1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_CyberneticImplants1"
+        },
+        {
+            "key": "CyberneticImplants2",
+            "name": "Cybernetic Implants II",
+            "desc": "Your champions holding an item gain 120 Health and 20% Attack Damage.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_CyberneticImplants2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_CyberneticImplants2"
+        },
+        {
+            "key": "CyberneticImplants3",
+            "name": "Cybernetic Implants III",
+            "desc": "Your champions holding an item gain 200 Health and 30% Attack Damage.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_CyberneticImplants3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_CyberneticImplants3"
+        },
+        {
+            "key": "CyberneticLeech1",
+            "name": "Cybernetic Leech I",
+            "desc": "Your units holding an item gain 80 Health and 10% Omnivamp.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_CyberneticLeech1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_CyberneticLeech1"
+        },
+        {
+            "key": "CyberneticLeech2",
+            "name": "Cybernetic Leech II",
+            "desc": "Your units holding an item gain 120 Health and 15% Omnivamp.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_CyberneticLeech2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_CyberneticLeech2"
+        },
+        {
+            "key": "CyberneticLeech3",
+            "name": "Cybernetic Leech III",
+            "desc": "Your units holding an item gain 250 Health and 20% Omnivamp.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_CyberneticLeech3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_CyberneticLeech3"
+        },
+        {
+            "key": "CyberneticShell1",
+            "name": "Cybernetic Shell I",
+            "desc": "Your champions holding an item gain 80 Health and 30 Armor.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_CyberneticShell1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_CyberneticShell1"
+        },
+        {
+            "key": "CyberneticShell2",
+            "name": "Cybernetic Shell II",
+            "desc": "Your champions holding an item gain 120 Health and 40 Armor.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_CyberneticShell2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_CyberneticShell2"
+        },
+        {
+            "key": "CyberneticShell3",
+            "name": "Cybernetic Shell III",
+            "desc": "Your champions holding an item gain 200 Health and 60 Armor.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_CyberneticShell3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_CyberneticShell3"
+        },
+        {
+            "key": "CyberneticUplink1",
+            "name": "Cybernetic Uplink I",
+            "desc": "Your champions holding an item gain 80 Health and restore 2 Mana per second.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_CyberneticUplink1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_CyberneticUplink1"
+        },
+        {
+            "key": "CyberneticUplink2",
+            "name": "Cybernetic Uplink II",
+            "desc": "Your champions holding an item gain 120 Health and restore 2.5 Mana per second.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_CyberneticUplink2",
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_CyberneticUplink2"
+        },
+        {
+            "key": "CyberneticUplink3",
+            "name": "Cybernetic Uplink III",
+            "desc": "Your champions holding an item gain 200 Health and restore 3.5 Mana per second.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_CyberneticUplink3",
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_CyberneticUplink3"
+        },
+        {
+            "key": "DangerousToGoAlone",
+            "name": "Parting Gifts",
+            "desc": "When a champion dies, the nearest ally with open slots receieves a temporary copy of an item they were holding and a 10% max Health Shield.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_DangerousToGoAlone",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_DangerousToGoAlone"
+        },
+        {
+            "key": "Dedication",
+            "name": "Dedication",
+            "desc": "The first time you field at least 4 distinct units of the same trait in a player combat, gain an Emblem for that trait.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Dedication",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_Dedication"
+        },
+        {
+            "key": "Determinedinvestors",
+            "name": "Determined investors",
+            "desc": "The first time you have 40 gold at the end of combat, gain Diamond Hands and 2 item component(s).<br><br>This defensive item helps you gain more gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_Determinedinvestors",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT10_Augment_Determinedinvestors"
+        },
+        {
+            "key": "Disintegrator1",
+            "name": "Disintegrator I",
+            "desc": "Your units' attacks deal bonus magic damage equal to 2% of the target's maximum Health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Disintegrator1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_Disintegrator1"
+        },
+        {
+            "key": "Disintegrator2",
+            "name": "Disintegrator II",
+            "desc": "Your units' attacks deal bonus magic damage equal to 3% of the target's maximum Health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Disintegrator2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_Disintegrator2"
+        },
+        {
+            "key": "Disintegrator3",
+            "name": "Disintegrator III",
+            "desc": "Your units' attacks deal bonus magic damage equal to 4% of the target's maximum Health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Disintegrator3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_Disintegrator3"
+        },
+        {
+            "key": "Distancing",
+            "name": "Exiles I",
+            "desc": "Your units that start combat with no adajacent allies gain a 25% maximum Health shield for 10 seconds.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Distancing",
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_Distancing"
+        },
+        {
+            "key": "Distancing2",
+            "name": "Exiles II",
+            "desc": "Your units that start combat with no adajacent allies gain a 35% maximum Health shield for 10 seconds.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Distancing2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_Distancing2"
+        },
+        {
+            "key": "Distancing3",
+            "name": "Exiles III",
+            "desc": "Your units that start combat with no adajacent allies gain a 50% maximum Health shield for 10 seconds.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Distancing3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_Distancing3"
+        },
+        {
+            "key": "Diversify1",
+            "name": "Stand United I",
+            "desc": "Your units gain 1.5% Attack Damage and 1.5 Ability Power per Trait active across your team.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Diversify1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_Diversify1"
+        },
+        {
+            "key": "Diversify2",
+            "name": "Stand United II",
+            "desc": "Your units gain 2.5% Attack Damage and 2.5 Ability Power for each non-unique Trait active across your team.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Diversify2",
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_Diversify2"
+        },
+        {
+            "key": "Diversify3",
+            "name": "Stand United III",
+            "desc": "Your units gain 3 Attack Damage and Ability Power per Trait active across your team.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Diversify3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_Diversify3"
+        },
+        {
+            "key": "DravenSpoilsOfWar",
+            "name": "Spoils of War I",
+            "desc": "Enemies have a 25% chance to drop loot when killed.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_DravenSpoilsOfWar",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_DravenSpoilsOfWar"
+        },
+        {
+            "key": "DravenSpoilsOfWar2",
+            "name": "Spoils of War II",
+            "desc": "Enemies have a 30% chance to drop loot when killed.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_DravenSpoilsOfWar2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_DravenSpoilsOfWar2"
+        },
+        {
+            "key": "DravenSpoilsOfWar3",
+            "name": "Spoils of War III",
+            "desc": "Enemies have a 40% chance to drop loot when killed.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_DravenSpoilsOfWar3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_DravenSpoilsOfWar3"
+        },
+        {
+            "key": "EarlyEducation",
+            "name": "Early Education",
+            "desc": "Your units permanently gain 1 Ability Power whenever they kill an enemy. Champions start with 15 bonus Ability Power.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_EarlyEducation",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_EarlyEducation"
+        },
+        {
+            "key": "Electrocharge1",
+            "name": "Electrocharge I",
+            "desc": "When your units receive critical strikes, they deal 30-90 (based on current Stage) magic damage to nearby enemies. (1 second cooldown).",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Electrocharge1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_Electrocharge1"
+        },
+        {
+            "key": "Electrocharge2",
+            "name": "Electrocharge II",
+            "desc": "When your units receive critical strikes, they deal 50-110 (based on current Stage) magic damage to nearby enemies. (1 second cooldown).",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Electrocharge2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_Electrocharge2"
+        },
+        {
+            "key": "Electrocharge3",
+            "name": "Electrocharge III",
+            "desc": "When your units receive critical strikes, they deal 100-205 (based on current Stage) magic damage to nearby enemies. (1 second cooldown).",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Electrocharge3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_Electrocharge3"
+        },
+        {
+            "key": "EnduranceTraining",
+            "name": "Endurance Training",
+            "desc": "Your champions permanently gain 18 Health every time they kill an enemy. Champions start with 100 bonus Health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_EnduranceTraining",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_EnduranceTraining"
+        },
+        {
+            "key": "EnshroudingStillness",
+            "name": "Mana Burn",
+            "desc": "All enemies take 1% of their max Health as true damage each second until they cast their Ability. Gain a Shroud of Stillness.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_EnshroudingStillness",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_EnshroudingStillness"
+        },
+        {
+            "key": "EscortQuest",
+            "name": "Escort Quest",
+            "desc": "Gain a Training Dummy. You gain 3 gold every time it survives player combat.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_EscortQuest",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_EscortQuest"
+        },
+        {
+            "key": "Featherweights1",
+            "name": "Featherweights I",
+            "desc": "Your 1 and 2 cost champions gain 15% Attack Speed and Move Speed.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Featherweights1",
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_Featherweights1"
+        },
+        {
+            "key": "Featherweights2",
+            "name": "Featherweights II",
+            "desc": "Your 1 and 2 cost champions gain 30% Attack Speed and Move Speed.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Featherweights2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_Featherweights2"
+        },
+        {
+            "key": "Featherweights3",
+            "name": "Featherweights III",
+            "desc": "Your 1 and 2 cost units gain 50% Attack Speed and Move Speed.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Featherweights3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_Featherweights3"
+        },
+        {
+            "key": "FinalGrabBag",
+            "name": "Final Grab Bag",
+            "desc": "Gain a random component, 12 gold, and a Reforger. ",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_FinalGrabBag",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_FinalGrabBag"
+        },
+        {
+            "key": "FinalGrabBagPlus",
+            "name": "Final Grab Bag II",
+            "desc": "Gain 2 random components, 15 gold, and a Magentic Remover. ",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_FinalGrabBagPlus",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_FinalGrabBagPlus"
+        },
+        {
+            "key": "FinalGrabBagPlusPlus",
+            "name": "Urf's Grab Bag",
+            "desc": "Gain 2 random components, a Champion Duplicator, and a Spatula. ",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_FinalGrabBagPlusPlus",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_FinalGrabBagPlusPlus"
+        },
+        {
+            "key": "FinalReserves",
+            "name": "Final Reserves",
+            "desc": "The first time you would be eliminated, you instead remain alive. After this happens, gain 70 XP and set your gold to 50. Excess gold is converted to XP.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_FinalReserves",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_FinalReserves"
+        },
+        {
+            "key": "FirstAidKit",
+            "name": "First Aid Kit",
+            "desc": "All healing and shielding on your units is increased by 25%.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_FirstAidKit",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_FirstAidKit"
+        },
+        {
+            "key": "FirstAidKitIII",
+            "name": "First Aid Kit II",
+            "desc": "All healing and shielding on your units is increased by 35%.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_FirstAidKit2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT7_Augment_FirstAidKit2"
+        },
+        {
+            "key": "Formation1",
+            "name": "Unified Resistance I",
+            "desc": "If you have 3 or more champions in the same row at the start of combat, they all gain 15 Armor and Magic Resist.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Formation1",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_Formation1"
+        },
+        {
+            "key": "Formation2",
+            "name": "Unified Resistance II",
+            "desc": "If you have 3 or more champions in the same row at the start of combat, they all gain 25 Armor and Magic Resist.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Formation2",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_Formation2"
+        },
+        {
+            "key": "FullyAdapted",
+            "name": "Fully Adapted",
+            "desc": "Gain an Adaptive Helm. Champions holding this item gain both effects, regardless of position.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_FullyAdapted",
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_FullyAdapted"
+        },
+        {
+            "key": "FuturePeepers",
+            "name": "Future Sight I",
+            "desc": "Know who you will fight next. Gain a Zephyr.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_FuturePeepers",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_FuturePeepers"
+        },
+        {
+            "key": "FuturePeepers2",
+            "name": "Future Sight II",
+            "desc": "Know who you fight next. Gain a Radiant Zephyr.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_FuturePeepers2",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_FuturePeepers2"
+        },
+        {
+            "key": "GachaAddict",
+            "name": "Prismatic Ticket",
+            "desc": "Each time your Shop is rerolled, you have a 50% chance to gain a free reroll.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_GachaAddict",
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_GachaAddict"
+        },
+        {
+            "key": "GadgetExpert",
+            "name": "Gadget Expert",
+            "desc": "Direct Damage items deal 25% more damage as true damage. Gain a Statikk Shiv.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_GadgetExpert",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT7_Augment_GadgetExpert"
+        },
+        {
+            "key": "GargantuanResolve",
+            "name": "Gargantuan Resolve",
+            "desc": "Gain a Titan's Resolve. Your Titan's Resolves can continue stacking to 40 instead of 25.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_GargantuanResolve",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_GargantuanResolve"
+        },
+        {
+            "key": "GiantGrabBag",
+            "name": "Giant Grab Bag",
+            "desc": "Gain 3 random components, 4 gold, and a Lesser Champion Duplicator. ",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_GiantGrabBag",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_GiantGrabBag"
+        },
+        {
+            "key": "GiftsFromAbove",
+            "name": "Spectral Supplies",
+            "desc": "Combat start: Distribute 4 temporary items to the champions with the fewest items.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_GiftsFromAbove",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_GiftsFromAbove"
+        },
+        {
+            "key": "GiftsFromTheFallen",
+            "name": "Gifts from the fallen",
+            "desc": "Your team gains 3% Attack Damage, 3 Ability Power, 3 Armor, and 3 Magic Resist.<br><br>Each time an ally dies, gain these stats again.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_GiftsFromTheFallen",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_GiftsFromTheFallen"
+        },
+        {
+            "key": "GoingLong",
+            "name": "Going Long",
+            "desc": "You no longer gain interest. Gain 10 gold now. Round start: gain 4 XP.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_GoingLong",
+            "tier": 3,
+            "inGameKey": "TFT10_Augment_GoingLong"
+        },
+        {
+            "key": "GoodForSomething",
+            "name": "Good For Something II",
+            "desc": "Champions that aren't holding items have a 50% to drop 1 gold on death.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_GoodForSomething",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_GoodForSomething"
+        },
+        {
+            "key": "GoodForSomethingSilver",
+            "name": "Good For Something I",
+            "desc": "Champions that aren't holding items have a 35% to drop 1 gold on death.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_GoodForSomethingSilver",
+            "tier": 1,
+            "inGameKey": "TFT10_Augment_GoodForSomethingSilver"
+        },
+        {
+            "key": "GottaGoFast",
+            "name": "Gotta Go Fast!",
+            "desc": "Your team generates 10% more mana and moves 35% faster.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_GottaGoFast",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_GottaGoFast"
+        },
+        {
+            "key": "GottaGoFastII",
+            "name": "Gotta Go Fast! II",
+            "desc": "Your team generates 20% more mana and moves 60% faster.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_GottaGoFastII",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_GottaGoFastII"
+        },
+        {
+            "key": "GottaGoFastIII",
+            "name": "Gotta Go Fast!!! III",
+            "desc": "Your team generates 30% more mana and moves 100% faster.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_GottaGoFastIII",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_GottaGoFastIII"
+        },
+        {
+            "key": "GrandGambler",
+            "name": "High Roller",
+            "desc": "Gain 3 Loaded Dice and 3 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_GrandGambler",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_GrandGambler"
+        },
+        {
+            "key": "GreaterJeweledLotus",
+            "name": "Jeweled Lotus III",
+            "desc": "Your team gains 40% Critical Strike chance, and their Abilities can critically strike.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_GreaterJeweledLotus",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_GreaterJeweledLotus"
+        },
+        {
+            "key": "Harmacist1",
+            "name": "Harmacist I",
+            "desc": "Your team has 10% Omnivamp and convert 20% of excess healing to true damage on their next attack.<br><br>(Omnivamp: healing for a percent of damage dealt)",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Harmacist1",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_Harmacist1"
+        },
+        {
+            "key": "Harmacist2",
+            "name": "Harmacist II",
+            "desc": "Your team has 15% Omnivamp and convert 25% of excess healing to true damage on their next attack.<br><br>(Omnivamp: healing for a percent of damage dealt)",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Harmacist2",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_Harmacist2"
+        },
+        {
+            "key": "Harmacist3",
+            "name": "Harmacist III",
+            "desc": "Your team has 25% Omnivamp and converts 30% of excess healing to true damage on their next attack.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Harmacist3",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_Harmacist3"
+        },
+        {
+            "key": "HealingOrbsI",
+            "name": "Healing Orbs I",
+            "desc": "When an enemy dies, the nearest ally is healed for 225.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_HealingOrbsI",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_HealingOrbsI"
+        },
+        {
+            "key": "HealingOrbsII",
+            "name": "Healing Orbs II",
+            "desc": "When an enemy dies, the nearest ally is healed for 450.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_HealingOrbsII",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_HealingOrbsII"
+        },
+        {
+            "key": "HeavyHitters",
+            "name": "Heavy Hitters",
+            "desc": "Your units with at least 1500 max Health gain Attack Damage and Ability Power equal to 1% of their max Health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_HeavyHitters",
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_HeavyHitters"
+        },
+        {
+            "key": "HedgeFund",
+            "name": "Hedge Fund",
+            "desc": "Gain 20 gold. Your max interest is increased to 10.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_HedgeFund",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_HedgeFund"
+        },
+        {
+            "key": "HedgeFundPlus",
+            "name": "Hedge Fund+",
+            "desc": "Gain 30 gold. Your max interest is increased to 10.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_HedgeFundPlus",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_HedgeFundPlus"
+        },
+        {
+            "key": "HedgeFundPlusPlus",
+            "name": "Hedge Fund++",
+            "desc": "Gain 40 gold. Your max interest is increased to 10.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_HedgeFundPlusPlus",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_HedgeFundPlusPlus"
+        },
+        {
+            "key": "HelpIsOnTheWay",
+            "name": "Help Is On The Way",
+            "desc": "After 8 player combats. choose 1 of 4 Support items.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_HelpIsOnTheWay",
+            "tier": 1,
+            "inGameKey": "TFT10_Augment_HelpIsOnTheWay"
+        },
+        {
+            "key": "Heroicgrabbag",
+            "name": "Heroic grab bag",
+            "desc": "Gain 2 Lesser Champion Duplicators and 6 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_HeroicGrabBag",
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_HeroicGrabBag"
+        },
+        {
+            "key": "HighEndSector",
+            "name": "Shopping Spree",
+            "desc": "Gain 4 gold. When you level up, gain a number of free shop refreshes equal to your level, which carry over between rounds.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_HighEndSector",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_HighEndSector"
+        },
+        {
+            "key": "HighEndShopping",
+            "name": "High End Shopping",
+            "desc": "Champions appear in your Shop as if you were 1 level higher. Gain 3 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_HighEndShopping",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_HighEndShopping"
+        },
+        {
+            "key": "HyperRoll",
+            "name": "Hustler",
+            "desc": "Instead of having no interest, you get 3 golds at the beginning of player combat rounds.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_HyperRoll",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_HyperRoll"
+        },
+        {
+            "key": "Idealism",
+            "name": "Idealism",
+            "desc": "Gain a Hand of Justice. Champions holding this item deal 12% increased damage.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Idealism",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_Idealism"
+        },
+        {
+            "key": "ImpenetrableBulwark",
+            "name": "Impenetrable Bulwark",
+            "desc": "Gain a Bramble Vest, a Dragon's Claw, a Giant's Belt, and a Magnetic Remover.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_ImpenetrableBulwark",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_ImpenetrableBulwark"
+        },
+        {
+            "key": "ImpromptuInventions",
+            "name": "Scrappy Inventions",
+            "desc": "Combat start: Up to 5 equipped components turn into completed items for the rest of combat. Gain a component at the start of the next 2 stages.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_ImpromptuInventions",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_ImpromptuInventions"
+        },
+        {
+            "key": "Inconsistency",
+            "name": "Inconsistency",
+            "desc": "If your streak is less than 3, gain 2 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Inconsistency",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_Inconsistency"
+        },
+        {
+            "key": "IndomitableWill",
+            "name": "Indomitable Will",
+            "desc": "When your units score a Takedown they shed all negative effects and become immune to Crowd Control for 10 seconds.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_IndomitableWill",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_IndomitableWill"
+        },
+        {
+            "key": "InfernalContract",
+            "name": "Infernal Contract",
+            "desc": "Your max level is 7. Gain 90 Gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_InfernalContract",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_InfernalContract"
+        },
+        {
+            "key": "Infusion",
+            "name": "Infusion",
+            "desc": "Your team restores 20 Mana every 5 seconds.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Infusion",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_Infusion"
+        },
+        {
+            "key": "InspiringEpitaph",
+            "name": "Inspiring Epitaph",
+            "desc": "When a unit dies, the nearest ally gains a 20% max Health shield and 10% stacking Attack Speed.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_InspiringEpitaph",
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_InspiringEpitaph"
+        },
+        {
+            "key": "IronAssets",
+            "name": "Iron Assets",
+            "desc": "Gain a Component Anvil and 4 Gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_IronAssets",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_IronAssets"
+        },
+        {
+            "key": "ItemGrabBag1",
+            "name": "Item Grab Bag I",
+            "desc": "Gain 1 random completed item.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_ItemGrabBag1",
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_ItemGrabBag1"
+        },
+        {
+            "key": "ItemGrabBag2",
+            "name": "Item Grab Bag II",
+            "desc": "Gain 2 random completed items and 2 Reforgers.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_ItemGrabBag2",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_ItemGrabBag2"
+        },
+        {
+            "key": "ItemGrabBagPlus",
+            "name": "Item Grab Bag II",
+            "desc": "Gain a random completed item, a random component, and 1 gold. ",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_ItemGrabBagPlus",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_ItemGrabBagPlus"
+        },
+        {
+            "key": "ItemGrabBagPlusPlus",
+            "name": "Item Grab Bag III",
+            "desc": "Gain 2 random full items and 4 Gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_ItemGrabBagPlusPlus",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_ItemGrabBagPlusPlus"
+        },
+        {
+            "key": "ItPaysToLearn",
+            "name": "It Pays To Learn",
+            "desc": "Gain 10 XP and 8 gold. ",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_ItPaysToLearn",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_ItPaysToLearn"
+        },
+        {
+            "key": "ItPaysToLearnII",
+            "name": "It Pays to Learn II",
+            "desc": "Gain 16 XP and 12 gold. ",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_ItPaysToLearnII",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_ItPaysToLearnII"
+        },
+        {
+            "key": "ItPaysToLearnIII",
+            "name": "It Pays to Learn III",
+            "desc": "Gain 24 XP and 16 gold. ",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_ItPaysToLearnIII",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_ItPaysToLearnIII"
+        },
+        {
+            "key": "Jackpot",
+            "name": "Missing Link",
+            "desc": "After you refresh your shop 40 times, gain a copy of each Tier 5 unit.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Jackpot",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_Jackpot"
+        },
+        {
+            "key": "JeweledLotus",
+            "name": "Jeweled Lotus II",
+            "desc": "Your team gains 15% Critical Strike chance, and their Abilities can critically strike.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_JeweledLotus",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_JeweledLotus"
+        },
+        {
+            "key": "JustKeepRolling",
+            "name": "Frequent Flier",
+            "desc": "After you reroll your shop 8 times, reroll only cost 1 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_JustKeepRolling",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_JustKeepRolling"
+        },
+        {
+            "key": "Keepers1",
+            "name": "Keepers I",
+            "desc": "Combat start: grant units with adjacent allies a 175 Health Shield for 8 seconds. This Shield stacks.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Keepers1",
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_Keepers1"
+        },
+        {
+            "key": "Keepers2",
+            "name": "Keepers II",
+            "desc": "Combat start: grant units with adjacent allies a 260 Health Shield for 8 seconds. This Shield stacks.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Keepers2",
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_Keepers2"
+        },
+        {
+            "key": "KnifesEdgeI",
+            "name": "Knife's Edge I",
+            "desc": "Your units that start combat in the front 2 rows gain 15 Attack Damage.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_MeleeStarBlade1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_MeleeStarBlade1"
+        },
+        {
+            "key": "KnifesEdgeII",
+            "name": "Knife's Edge II",
+            "desc": "Your units that start combat in the front 2 rows gain 25 Attack Damage.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_MeleeStarBlade2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_MeleeStarBlade2"
+        },
+        {
+            "key": "KnifesEdgeIII",
+            "name": "Knife's Edge III",
+            "desc": "Your units that start combat in the first 2 rows gain 55% Attack Damage.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_MeleeStarBlade3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_MeleeStarBlade3"
+        },
+        {
+            "key": "KnowledgeIsPower",
+            "name": "Library Card",
+            "desc": "Gain a Tome of Traits and a Component Anvil",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_KnowledgeIsPower",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_KnowledgeIsPower"
+        },
+        {
+            "key": "KnowYourEnemy",
+            "name": "Know Your Enemy",
+            "desc": "Your team deals 10% more damage. Deal 15% more damage instead if you and your opponent have any of the same traits active.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_KnowYourEnemy",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_KnowYourEnemy"
+        },
+        {
+            "key": "LastStand",
+            "name": "Last Stand",
+            "desc": "The first time you would be eliminated, you escape death and your team permanently gains 160 Health, 16 Armor and Magic Resist, and 16% Omnivamp.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_LastStand",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT7_Augment_LastStand"
+        },
+        {
+            "key": "LategameSpecialist",
+            "name": "Lategame Specialist",
+            "desc": "When you reach Level 9, gain 33 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_LategameSpecialist",
+            "tier": 1,
+            "inGameKey": "TFT7_Augment_LategameSpecialist"
+        },
+        {
+            "key": "LearningFromExperience2",
+            "name": "Patient Study",
+            "desc": "After player combat, gain 2 XP if you won or 3 XP if you lost.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_LearningFromExperience2",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_LearningFromExperience2"
+        },
+        {
+            "key": "LearningToSpell",
+            "name": "Learning To Spell",
+            "desc": "Your team gains 18 bonus Ability Power, and permanently gains 1 Ability Power every 2 takedowns.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_LearningToSpell",
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_LearningToSpell"
+        },
+        {
+            "key": "LesserJeweledLotus",
+            "name": "Jeweled Lotus I",
+            "desc": "Combat Start: Your strongest unit gains 40% critical strike chance and their spells can critically strike.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_LesserJeweledLotus",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_LesserJeweledLotus"
+        },
+        {
+            "key": "LittleBuddies",
+            "name": "Little Buddies",
+            "desc": "Your 4-cost and 5-cost champions gain 65 Health and 9% Attack Speed for each 1-cost and 2-cost champion on your board.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_LittleBuddies",
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_LittleBuddies"
+        },
+        {
+            "key": "LivingForge",
+            "name": "Living Forge",
+            "desc": "Gain an Artifact anvil now and after every 8 player combats.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_LivingForge",
+            "tier": 3,
+            "inGameKey": "TFT7_Augment_LivingForge"
+        },
+        {
+            "key": "LivingForgeHR",
+            "name": "Living Forge",
+            "desc": "Gain an Artifact anvil now and after every 4 player combats.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_LivingForgeHR",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT7_Augment_LivingForgeHR"
+        },
+        {
+            "key": "LongDistanceRelationship2",
+            "name": "Long Distance Pals",
+            "desc": "Combat start: Your 2 units furthest form each other form a bond, sharing 20% of their Armor, Magic Resist, Attack Damage, and Ability Power with each other.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_LongDistanceRelationship2",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_LongDistanceRelationship2"
+        },
+        {
+            "key": "LongTimeCrafting",
+            "name": "Latent Forge",
+            "desc": "After 8 player combats, gain an Artifact anvil.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_LongTimeCrafting",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_LongTimeCrafting"
+        },
+        {
+            "key": "LowInterestRates",
+            "name": "Low Interest Rates",
+            "desc": "Your max interest is capped at 4 gold but you gain 2 gold at the start of every player combat.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_LowInterestRates",
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_LowInterestRates"
+        },
+        {
+            "key": "LuckyGloves",
+            "name": "Lucky Gloves",
+            "desc": "Thief's Gloves will always give your champions ideal items. Gain 2 Sparring Gloves.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_LuckyGloves",
+            "tier": 3,
+            "inGameKey": "TFT7_Augment_LuckyGloves"
+        },
+        {
+            "key": "LuckyGlovesPlus",
+            "name": "Lucky Gloves+",
+            "desc": "Thief's Gloves will always give your champions ideal items. Gain 3 Sparring Gloves.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_LuckyGlovesPlus",
+            "tier": 3,
+            "inGameKey": "TFT7_Augment_LuckyGlovesPlus"
+        },
+        {
+            "key": "LuckyStreak",
+            "name": "Lucky Streak",
+            "desc": "Gain a Gambler's Blade and a Magnetic Remover.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_LuckyStreak",
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_LuckyStreak"
+        },
+        {
+            "key": "LudensEcho1",
+            "name": "Luden's Echo I",
+            "desc": "When your units cast and deal Ability damage, the first target hit and a nearby enemy take 35-80 (based on current Stage) magic damage.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_LudensEcho1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_LudensEcho1"
+        },
+        {
+            "key": "LudensEcho2",
+            "name": "Luden's Echo II",
+            "desc": "When your units cast and deal Ability damage, the first target hit and a nearby enemy take 50-110 (based on current Stage) magic damage.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_LudensEcho2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_LudensEcho2"
+        },
+        {
+            "key": "LudensEcho3",
+            "name": "Luden's Echo III",
+            "desc": "When your units cast and deal Ability damage, the first target hit and a nearby enemy take 90-210 (based on current Stage) magic damage.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_LudensEcho3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_LudensEcho3"
+        },
+        {
+            "key": "MakeshiftArmor1",
+            "name": "Makeshift Armor I",
+            "desc": "Your units with no items gain 30 Armor and Magic Resist.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_MakeshiftArmor1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_MakeshiftArmor1"
+        },
+        {
+            "key": "MakeshiftArmor2",
+            "name": "Makeshift Armor II",
+            "desc": "Your units with no items gain 45 Armor and Magic Resist.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_MakeshiftArmor2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_MakeshiftArmor2"
+        },
+        {
+            "key": "MakeshiftArmor3",
+            "name": "Makeshift Armor III",
+            "desc": "Your units with no items gain 65 Armor and Magic Resist.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_MakeshiftArmor3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_MakeshiftArmor3"
+        },
+        {
+            "key": "Martyr",
+            "name": "Martyr",
+            "desc": "Whenever one of your allies die, your team heals for 9% of their amx Health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Martyr",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_Martyr"
+        },
+        {
+            "key": "MaxLevel10",
+            "name": "Level Up!",
+            "desc": "When you buy XP, gain an additional 2. Gain 8 immediately.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_MaxLevel10",
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_MaxLevel10"
+        },
+        {
+            "key": "MediumEndShopping",
+            "name": "Medium-End Shopping",
+            "desc": "Gain a 1 gold. Champions appear in the first 3 slots of your Shop as if you were 1 level higher.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_MediumEndShopping",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_MediumEndShopping"
+        },
+        {
+            "key": "MetabolicAccelerator",
+            "name": "Metabolic Accelerator",
+            "desc": "Gain 2 player health after every player combat. Your Tactician also moves faster.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_MetabolicAccelerator",
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_MetabolicAccelerator"
+        },
+        {
+            "key": "MissedConnections",
+            "name": "Missed Connections",
+            "desc": "Gain a copy of each 1-cost champion.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_MissedConnections",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_MissedConnections"
+        },
+        {
+            "key": "MoneyHealsAllWounds",
+            "name": "Wellness Trust",
+            "desc": "Round Start: Gain 3 gold. If you have at least 40 gold, heal 2 player Health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_MoneyHealsAllWounds",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_MoneyHealsAllWounds"
+        },
+        {
+            "key": "MoneyLaundering",
+            "name": "Money Laundering",
+            "desc": "You earn no interest, but at the start of every player combat round gain 1 Gold per 2 units on your bench.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_MoneyLaundering",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_MoneyLaundering"
+        },
+        {
+            "key": "NewRecruit3",
+            "name": "New Recruit",
+            "desc": "Gain +1 max team size and a Champion Duplicator.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_ForceOfNature",
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_ForceOfNature"
+        },
+        {
+            "key": "NotToday",
+            "name": "Not Today",
+            "desc": "Gain an Edge of Night. Champions holding this item gain 35% Attack Speed.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_NotToday",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_NotToday"
+        },
+        {
+            "key": "OldMansWalkingStick",
+            "name": "Magic Wand",
+            "desc": "Gain a Needlessly Large Rod. Your units gain 18 Ability Power.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_OldMansWalkingStick",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_OldMansWalkingStick"
+        },
+        {
+            "key": "OnARoll",
+            "name": "On a Roll",
+            "desc": "Whenever you star up a champion, gain up to 3 free Shop rerolls per round. Gain 3 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_OnARoll",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_OnARoll"
+        },
+        {
+            "key": "OneHundredDuckSizedHorses",
+            "name": "Endless Hordes",
+            "desc": "Gain +3 maximum team size, but your units can only hold 1 item and their total health is reduced by 15%. Gain 4 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_OneHundredDuckSizedHorses",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_OneHundredDuckSizedHorses"
+        },
+        {
+            "key": "OneHundredDuckSizedHorsesplus",
+            "name": "Endless Hordes+",
+            "desc": "Gain +3 maximum team size, but your units can only hold 1 item and their total health is reduced by 15%. Gain 4 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_OneHundredDuckSizedHorsesPlus",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_OneHundredDuckSizedHorsesPlus"
+        },
+        {
+            "key": "OneTwoFive",
+            "name": "One, Two, Five!",
+            "desc": "Gain 1 random component, 2 gold, and 1 random 5-cost champion.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_OneTwoFive",
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_OneTwoFive"
+        },
+        {
+            "key": "OneTwosThree",
+            "name": "Ones Twos Three",
+            "desc": "Gain 3 1-cost champion, 2 2-cost champions, and 1 3-cost champion.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_OneTwosThree",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_OneTwosThree"
+        },
+        {
+            "key": "OverwhelmingForce",
+            "name": "Overwhelming Force",
+            "desc": "Gain a Deathblade, an Infinity Edge, a BF Sword, and a Magnetic Remover.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_OverwhelmingForce",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_OverwhelmingForce"
+        },
+        {
+            "key": "PandorasBench",
+            "name": "Pandora's Bench",
+            "desc": "Gain 2 gold. At the start of every round, champions on the 3 rightmost bench slots transform into random champions of the same cost.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_PandorasBench",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT7_Augment_PandorasBench"
+        },
+        {
+            "key": "PandorasItems",
+            "name": "Pandora's Items",
+            "desc": "Round start: items on your bench are randomized (except Tactician's Crown and Spatula).<br><br>Gain 1 random component.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_PandorasItems",
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_PandorasItems"
+        },
+        {
+            "key": "PandorasItems2",
+            "name": "Pandora's Items II",
+            "desc": "Round Start: items on your bench are randomized (excluding Tactician's Crown, Spatula, and consumables).<br><br>Gain 2 random component items.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_PandorasItems2",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_PandorasItems2"
+        },
+        {
+            "key": "PandorasRadiantBox",
+            "name": "Pandora's Items III",
+            "desc": "Round Start: items on your bench are randomized (excluding Tactician's Crown, Spatula, and consumables).<br><br>Gain 1 random Radiant item.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_PandorasRadiantBox",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_PandorasRadiantBox"
+        },
+        {
+            "key": "PhreakyFriday",
+            "name": "Phreaky Friday",
+            "desc": "Gain an Infinity Force. After 5 player combats, gain another.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_PhreakyFriday",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_PhreakyFriday"
+        },
+        {
+            "key": "PhreakyFridayPlus",
+            "name": "Phreaky Friday+",
+            "desc": "Gain an Infinity Force. After 3 player combats, gain another.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_PhreakyFridayPlus",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_PhreakyFridayPlus"
+        },
+        {
+            "key": "PortableForge",
+            "name": "Portable Forge",
+            "desc": "Choose 1 of 4 Artifacts.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_PortableForge",
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_PortableForge"
+        },
+        {
+            "key": "PortableForgePlus",
+            "name": "Portable Forge+",
+            "desc": "Choose 1 of 3 Artifacts.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_PortableForgePlus",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_PortableForgePlus"
+        },
+        {
+            "key": "PortableForgePlusPlus",
+            "name": "Portable Forge++",
+            "desc": "Choose 1 of 4 Artifacts.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_PortableForgePlusPlus",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_PortableForgePlusPlus"
+        },
+        {
+            "key": "Preparation",
+            "name": "Preparation I",
+            "desc": "Champions on your bench permanently gain 25 Health, 3% Attack Damage and 3 Ability Power every round. Champions start with I stack of this effect, and can stack up to 4 times.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_Preparation",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT7_Augment_Preparation"
+        },
+        {
+            "key": "PreparationHR",
+            "name": "Preparation I",
+            "desc": "Champions on your bench permanently gain 35, 4 Attack Damage and Ability Power every round, up to 3 times.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_Preparation1HR",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT7_Augment_Preparation1HR"
+        },
+        {
+            "key": "PreparationII",
+            "name": "Preparation II",
+            "desc": "Champions on your bench permanently gain 35 Health, 4% Attack Damage and 4 Ability Power every round. Champions start with I stack of this effect, and can stack up to 4 times.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_Preparation2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT7_Augment_Preparation2"
+        },
+        {
+            "key": "PreparationIIHR",
+            "name": "Preparation II",
+            "desc": "Champions on your bench permanently gain 50, 6 Attack Damage and Ability Power every round, up to 3 times.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_Preparation2HR",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT7_Augment_Preparation2HR"
+        },
+        {
+            "key": "PreparationIII",
+            "name": "Preparation III",
+            "desc": "Champions on your bench permanently gain 50 Health, 7% Attack Damage and 7 Ability Power every round. Champions start with I stack of this effect, and can stack up to 4 times.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_Preparation3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT7_Augment_Preparation3"
+        },
+        {
+            "key": "PreparationIIIHR",
+            "name": "Preparation III",
+            "desc": "Champions on your bench permanently gain 70, 9% Attack Damage and Ability Power every round, up to 3 times.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_Preparation3HR",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT7_Augment_Preparation3HR"
+        },
+        {
+            "key": "PumpingUp",
+            "name": "Pumping Up I",
+            "desc": "Your team gains 6% Attack Speed now. Each round after, they gain 0.5% more.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_PumpingUp",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_PumpingUp"
+        },
+        {
+            "key": "PumpingUp2",
+            "name": "Pumping Up II",
+            "desc": "Your team gains 8% Attack Speed now. Each round after, they gain 1% more.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_PumpingUp2",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_PumpingUp2"
+        },
+        {
+            "key": "PumpingUp3",
+            "name": "Pumping Up III",
+            "desc": "Your team gains 10% Attack Speed now. Each round after, they gain 2% more.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_PumpingUp3",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_PumpingUp3"
+        },
+        {
+            "key": "RadiantRelics",
+            "name": "Radiant Relics",
+            "desc": "Choose 1 of 5 Radiant items. Gain a Magnetic Remover.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_RadiantRelics",
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_RadiantRelics"
+        },
+        {
+            "key": "ReachTheSummit",
+            "name": "Reach The Summit",
+            "desc": "When you reach Level 9, gain 10 gold and 50.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_ReachTheSummit",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT10_Augment_ReachTheSummit"
+        },
+        {
+            "key": "Recombobulator",
+            "name": "Recombobulator",
+            "desc": "Champions on your board permanently transform into random champions 1 cost tier higher. Gain 2 Magnetic Removers.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Recombobulator",
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_Recombobulator"
+        },
+        {
+            "key": "RedBuff",
+            "name": "Blistering Strikes",
+            "desc": "Your team's attacks burn their targets for 5% of their maximum Health over 5 seconds. Attacks also reduce their targets' healing received by 33%.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_RedBuff",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_RedBuff"
+        },
+        {
+            "key": "ReturnOnInvestment",
+            "name": "Return on Investment",
+            "desc": "When you reroll your Shop 16 times, gain a Tactician's Crown.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_ReturnOnInvestment",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_ReturnOnInvestment"
+        },
+        {
+            "key": "RichGetRicher",
+            "name": "Rich Get Richer",
+            "desc": "Gain 12 gold. Your max interest is increased to 7.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_RichGetRicher",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_RichGetRicher"
+        },
+        {
+            "key": "RichGetRicherPlus",
+            "name": "Rich Get Richer+",
+            "desc": "Gain 18 gold. Your max interest is increased to 7.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_RichGetRicherPlus",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_RichGetRicherPlus"
+        },
+        {
+            "key": "RiskyMoves",
+            "name": "Risky Moves",
+            "desc": "Your Tactician loses 20 Health, but after 7 Player combats, gain 33 Gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_RiskyMoves",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_RiskyMoves"
+        },
+        {
+            "key": "RollTheDice",
+            "name": "Roll The Dice",
+            "desc": "Gain a Rascal's Gloves item. This equips 2 random Radiant items every round.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_RollTheDice",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_RollTheDice"
+        },
+        {
+            "key": "SacrificialPact",
+            "name": "Cruel Pact",
+            "desc": "Buying XP costs 6 Health instead of 4 gold. Heal 3 player health before each player combat.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_SacrificialPact",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT7_Augment_SacrificialPact"
+        },
+        {
+            "key": "SalvageBin",
+            "name": "Salvage Bin",
+            "desc": "Gain 1 random completed item now, and 1 component after 7 player combats. Selling champions breaks completed items into components (excluding Tactician's Crown).",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_SalvageBin",
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_SalvageBin"
+        },
+        {
+            "key": "SalvageBinPlus",
+            "name": "Salvage Bin+",
+            "desc": "Gain 1 random completed item now, and 1 component after 4 player combats. Selling champions breaks completed items into components (excluding Tactician's Crown).",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT8_Augment_SalvageBinPlus",
+            "tier": 2,
+            "inGameKey": "TFT8_Augment_SalvageBinPlus"
+        },
+        {
+            "key": "Scapegoat",
+            "name": "Scapegoat",
+            "desc": "Gain a Training Dummy and 4 gold. If it is the first to die each player combat, gain 1 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_Scapegoat",
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_Scapegoat"
+        },
+        {
+            "key": "ScopedWeapons1",
+            "name": "Scoped Weapons",
+            "desc": "Your units that start combat in the back 2 rows gain +2 Attack Range and 15% Attack Speed.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_ScopedWeapons1",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT7_Augment_ScopedWeapons1"
+        },
+        {
+            "key": "ScopedWeaponsII",
+            "name": "Scoped Weapons II",
+            "desc": "Your units that start combat in the back 2 rows gain infinite Attack Range.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_ScopedWeapons2",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT7_Augment_ScopedWeapons2"
+        },
+        {
+            "key": "SecondWind1",
+            "name": "Second Wind I",
+            "desc": "After 10 seconds of combat, your units heal 40% of their missing Health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_SecondWind1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_SecondWind1"
+        },
+        {
+            "key": "SecondWind2",
+            "name": "Second Wind II",
+            "desc": "After 10 seconds of combat, your units heal 60% of their missing Health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_SecondWind2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_SecondWind2"
+        },
+        {
+            "key": "SettTheBoss",
+            "name": "The Boss",
+            "desc": "Gain a Sett. The first time your strongest Sett falls below 60% Health, he takes a break to do sit-ups. Each sit-up heals him 10% of his max Health and grants 40% Attack Speed and Ability Power.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_SettTheBoss",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_SettTheBoss"
+        },
+        {
+            "key": "ShockTreatment",
+            "name": "Shock Treatment",
+            "desc": "Gain a Statikk Shiv. Your Stikk Shivs' chain lightning effect deals 40~125% more damage (based on stage level).",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_ShockTreatment",
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_ShockTreatment"
+        },
+        {
+            "key": "Shoplifting",
+            "name": "Shoplifting",
+            "desc": "After your first shop refresh each turn, gain the highest cost champion for free.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Shoplifting",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_Shoplifting"
+        },
+        {
+            "key": "SilverSpoon",
+            "name": "Silver Spoon",
+            "desc": "Gain 10 XP.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_SilverSpoon",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_SilverSpoon"
+        },
+        {
+            "key": "SilverTicket",
+            "name": "Golden Ticket",
+            "desc": "Each time your Shop is rerolled, you have a 30% chance to gain a free reroll.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_SilverTicket",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_SilverTicket"
+        },
+        {
+            "key": "SilverVeil",
+            "name": "Silver Veil",
+            "desc": "Your team gains 5% Attack Speed and is immune to the first crowd control effect in combat.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_SilverVeil",
+            "tier": 1,
+            "inGameKey": "TFT10_Augment_SilverVeil"
+        },
+        {
+            "key": "Sleightofhand",
+            "name": "Sleight of Hand",
+            "desc": "Gain a Thief's Gloves. Champions holding this item gain 200 Health and 20% Attack Speed.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Sleightofhand",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_Sleightofhand"
+        },
+        {
+            "key": "SlowAndSteady",
+            "name": "March of Progress",
+            "desc": "Gain 3 XP now, and bonus XP equal to your level at the start of every player combat round. You can no longer use gold to level up.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_SlowAndSteady",
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_SlowAndSteady"
+        },
+        {
+            "key": "SocialDistancing",
+            "name": "Social Distancing I",
+            "desc": "Units that begin combat with no adjacent allies gain 10% Attack Damage and Ability Power.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_SocialDistancing",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_SocialDistancing"
+        },
+        {
+            "key": "SocialDistancing2",
+            "name": "Social Distancing II",
+            "desc": "Units that begin combat with no adjacent allies gain 16% Attack Damage and Ability Power.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_SocialDistancing2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_SocialDistancing2"
+        },
+        {
+            "key": "SocialDistancing3",
+            "name": "Social Distancing III",
+            "desc": "Combat start: Units with no adjacent allies gain 25% Attack Damage and Ability Power.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_SocialDistancing3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_SocialDistancing3"
+        },
+        {
+            "key": "StarsAreBorn",
+            "name": "Stars are Born",
+            "desc": "The first 1-cost and 2-cost champions you buy are instantly upgraded to 2-star. Gain 7 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_StarsAreBorn",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_StarsAreBorn"
+        },
+        {
+            "key": "StarterKit",
+            "name": "Starter Kit",
+            "desc": "Gain a 4-cost champion, a 2-star 1-cost champion that shares a trait with them, and 4 gold.<br><br>At the start of the next 2 stages, gain that 4-cost champion again.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_StarterKit",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_StarterKit"
+        },
+        {
+            "key": "StationarySupportI",
+            "name": "Stationary Support I",
+            "desc": "After 8 player combats, gain 1 Training Dummy(s) equipped with 1 permanently attached Support item(s).",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_StationarySupport1",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_StationarySupport1"
+        },
+        {
+            "key": "StationarySupportII",
+            "name": "Stationary Support II",
+            "desc": "Gain 1 Training Dummy with 1 permanently attached Support item(s).",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_StationarySupport2",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_StationarySupport2"
+        },
+        {
+            "key": "StationarySupportIII",
+            "name": "Stationary Support III",
+            "desc": "Gain 1 Training Dummy with 2 permanently attached Support item(s).",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_StationarySupport3",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_StationarySupport3"
+        },
+        {
+            "key": "SticksAndStones",
+            "name": "Sticks And Stones",
+            "desc": "Champions that aren't holding items Shred and Sunder enemies for 3 seconds. Physical damage Sunders for 30%, and magic damage Shreds for 30%.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_SticksAndStones",
+            "tier": 1,
+            "inGameKey": "TFT10_Augment_SticksAndStones"
+        },
+        {
+            "key": "Stimpack",
+            "name": "Stimpack",
+            "desc": "Gain 4 components after you lose 50 player health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_Stimpack",
+            "tier": 1,
+            "inGameKey": "TFT10_Augment_Stimpack"
+        },
+        {
+            "key": "SunfireBoard",
+            "name": "Sunfire Board",
+            "desc": "At the start of combat, burn all enemies for 10% of their maximum Health over 20 seconds and reduce healing received by 33%.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_SunfireBoard",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_SunfireBoard"
+        },
+        {
+            "key": "SupportCache",
+            "name": "Support Cache",
+            "desc": "Choose 1 of 4 Support items.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_SupportCache",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_SupportCache"
+        },
+        {
+            "key": "SwitchingGears",
+            "name": "Switching Gears",
+            "desc": "Gain 3 gold whenever you break your win or loss streak.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_SwitchingGears",
+            "tier": 1,
+            "inGameKey": "TFT10_Augment_SwitchingGears"
+        },
+        {
+            "key": "TacticiansTools",
+            "name": "Tactician's Tools",
+            "desc": "Gain two Spatulas and 1 Component Anvil.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_TacticiansTools",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_TacticiansTools"
+        },
+        {
+            "key": "TargetDummies",
+            "name": "Phony Frontline",
+            "desc": "Gain 2 Target Dummies.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_TargetDummies",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_TargetDummies"
+        },
+        {
+            "key": "TeamingUpI",
+            "name": "Teaming Up I",
+            "desc": "Gain 1 random component and 2 random 3-cost champions.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Commander_TeamingUp1",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_Commander_TeamingUp1"
+        },
+        {
+            "key": "TeamingUpII",
+            "name": "Teaming Up II",
+            "desc": "Gain 1 random Support item and 2 random 4-cost champions.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Commander_TeamingUp2",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_Commander_TeamingUp2"
+        },
+        {
+            "key": "TheGoldenEgg",
+            "name": "The Golden Egg",
+            "desc": "Gain a golden egg that hatches in 11 turns for a huge amount of loot. Winning player combat speeds up the hatch timer by an extra turn.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_TheGoldenEgg",
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_TheGoldenEgg"
+        },
+        {
+            "key": "TheGoldenEggHR",
+            "name": "The Golden Egg",
+            "desc": "Gain a golden egg that hatches in 6 turns for a huge amount of loot. Winning player combat speeds up the hatch timer by an extra turn.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_TheGoldenEggHR",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_TheGoldenEggHR"
+        },
+        {
+            "key": "ThinkFast",
+            "name": "Think Fast",
+            "desc": "Shop refreshes are free until the end of this round. Traits and other augments do not benefit from these free shops. Gain 3 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_ThinkFast",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT7_Augment_ThinkFast"
+        },
+        {
+            "key": "ThreesACrowd",
+            "name": "Three's a Crowd",
+            "desc": "Your team gains 66 Health for each unique 3-cost champion on your board.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_ThreesACrowd",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_ThreesACrowd"
+        },
+        {
+            "key": "ThreesCompany",
+            "name": "Three's Company",
+            "desc": "Gain 4 random 3-cost champions.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_ThreesCompany",
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_ThreesCompany"
+        },
+        {
+            "key": "ThriftShop",
+            "name": "Wise Spending",
+            "desc": "Gain 2 experience points when you refresh your Shop.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_ThriftShop",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_ThriftShop"
+        },
+        {
+            "key": "ThrillOfTheHunt1",
+            "name": "Thrill of the Hunt I",
+            "desc": "Your units heal 350 Health on kill.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_ThrillOfTheHunt1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_ThrillOfTheHunt1"
+        },
+        {
+            "key": "ThrillOfTheHunt2",
+            "name": "Thrill of the Hunt II",
+            "desc": "Your units heal 550 Health on kill.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_ThrillOfTheHunt2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_ThrillOfTheHunt2"
+        },
+        {
+            "key": "TiniestTitan",
+            "name": "Tiniest Titan",
+            "desc": "Gain 2 player health and 1 gold after every player combat. Your Tactician also moves faster.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_TiniestTitan",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_TiniestTitan"
+        },
+        {
+            "key": "TiniestTitanPlus",
+            "name": "Tiniest Titan+",
+            "desc": "Gain 2 player health and 1 gold after every player combat. Your Tactician also moves faster.<br><br>Gain 15 gold now.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_TiniestTitanPlus",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_TiniestTitanPlus"
+        },
+        {
+            "key": "TinyGrabBag",
+            "name": "Tiny Grab Bag",
+            "desc": "Gain a random component, 2 gold, a Magnetic Remover. ",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_TinyGrabBag",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_TinyGrabBag"
+        },
+        {
+            "key": "TinyTitans",
+            "name": "Tiny Titans",
+            "desc": "Increase your current and maximum player health by 30.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_TinyTitans",
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_TinyTitans"
+        },
+        {
+            "key": "TomeOfTraits1",
+            "name": "Ancient Archives I",
+            "desc": "Gain 1 Tome of Traits and 3 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_TomeOfTraits1",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_TomeOfTraits1"
+        },
+        {
+            "key": "TomeOfTraits2",
+            "name": "Ancient Archives II",
+            "desc": "Gain 2 Tome of Traits and 5 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_TomeOfTraits2",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT7_Augment_TomeOfTraits2"
+        },
+        {
+            "key": "TonsOfStats",
+            "name": "Tons of Stats!",
+            "desc": "Your team gains 44 Health, 4% Attack Damage, 4 Ability Power, 4 Armor, 4 Magic Resist, 4% Attack Speed, and 4 Mana.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_TonsOfStats",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_TonsOfStats"
+        },
+        {
+            "key": "TooBigToFail",
+            "name": "Too Big To Fail",
+            "desc": "On death, Bruisers deal 35% of their max Health to enemies within 1 hex. After 15 seconds, expand the range to 2 hexes. Gain an Olaf and a Gragas.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_TooBigToFail",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_TooBigToFail"
+        },
+        {
+            "key": "TopDeck",
+            "name": "Training Reward",
+            "desc": "Gain 5 gold and a Lesser Champion Duplicator.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_TopDeck",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_TopDeck"
+        },
+        {
+            "key": "TopDeckPlus",
+            "name": "Training Reward II",
+            "desc": "Gain 12 gold and a Lesser Champion Duplicator.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_TopDeckPlus",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_TopDeckPlus"
+        },
+        {
+            "key": "TopDeckPlusPlus",
+            "name": "Training Reward III",
+            "desc": "Gain 24 gold and a Champion Duplicator. ",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_TopDeckPlusPlus",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_TopDeckPlusPlus"
+        },
+        {
+            "key": "TradeSector",
+            "name": "Trade Sector",
+            "desc": "Gain a free Shop reroll every round. Gain 4 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_TradeSector",
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_TradeSector"
+        },
+        {
+            "key": "TradeSectorPlus",
+            "name": "Trade Sector+",
+            "desc": "Gain a free Shop refresh each round. Gain 10 golds.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_TradeSectorPlus",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_TradeSectorPlus"
+        },
+        {
+            "key": "Traitless1",
+            "name": "Built Different I",
+            "desc": "Your units with no Traits active gain 200-300 Health and 25-55% Attack Speed. (based on current Stage)",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Traitless1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_Traitless1"
+        },
+        {
+            "key": "Traitless2",
+            "name": "Built Different II",
+            "desc": "Your units with no Traits active gain 220-480 Health and 45-60% Attack Speed (based on current Stage).",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Traitless2",
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_Traitless2"
+        },
+        {
+            "key": "Traitless3",
+            "name": "Built Different III",
+            "desc": "Your units with no Traits active gain 300-600 Health and 50-70% Attack Speed (based on current Stage).",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Traitless3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_Traitless3"
+        },
+        {
+            "key": "Transfusion",
+            "name": "Transfusion I",
+            "desc": "Your team gains 20 Health, plus 2 Health per missing Tactician Health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_Transfusion",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_Transfusion"
+        },
+        {
+            "key": "TransfusionPlus",
+            "name": "Transfusion II",
+            "desc": "Your team gains 40 Health, plus 3 Health per missing Tactician Health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_TransfusionPlus",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_TransfusionPlus"
+        },
+        {
+            "key": "TransfusionPlusPlus",
+            "name": "Transfusion III",
+            "desc": "Your team gains 50 Health, plus 5 Health per missing Tactician Health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_TransfusionPlusPlus",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_TransfusionPlusPlus"
+        },
+        {
+            "key": "TriForce",
+            "name": "Tri Force I",
+            "desc": "Your Tier 3 champions gain 150 Health, 10 starting Mana, and 10% Attack Speed.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_TriForce1",
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_TriForce1"
+        },
+        {
+            "key": "TriForce2",
+            "name": "Tri Force II",
+            "desc": "Your Tier 3 champions gain 125 Health, 15 starting Mana, and 15% Attack Speed.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_TriForce2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_TriForce2"
+        },
+        {
+            "key": "TriForce3",
+            "name": "Tri Force III",
+            "desc": "Your Tier 3 champions gain 200 Health, 25 starting Mana, and 25% Attack Speed.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_TriForce3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_TriForce3"
+        },
+        {
+            "key": "TrueTwos",
+            "name": "True Twos",
+            "desc": "Gain 1 random 2-star Tier 1 champions and 1 random 2-star Tier 2 champion.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_TrueTwos",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_TrueTwos"
+        },
+        {
+            "key": "Twins1",
+            "name": "Double Trouble I",
+            "desc": "If you have exactly 2 copies of a champion on your board, they both gain 25 Attack Damage, Ability Power, Armor, and Magic Resist. When you 3-star, gain a 2-star copy.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Twins1",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT6_Augment_Twins1"
+        },
+        {
+            "key": "Twins2",
+            "name": "Double Trouble II",
+            "desc": "When you field exactly 2 copies of a champion, they both gain 30% Attack Damage and 30 Ability Power, Armor, and Magic Resist. When you 3-star, gain a 2-star copy.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Twins2",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT6_Augment_Twins2"
+        },
+        {
+            "key": "Twins3",
+            "name": "Double Trouble III",
+            "desc": "When you field exactly 2 copies of a champion, they both gain 40% Attack Damage and 40 Ability Power, Armor, and Magic Resist. When you 3-star, gain a 2-star copy.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Twins3",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_Twins3"
+        },
+        {
+            "key": "TwinTerror1",
+            "name": "Twin Terror I",
+            "desc": "When you field exactly 2 copies of a champion, they both gain 350 Health and 35% Attack Speed. Anytime you 3-star, gain a 2-star copy.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_TwinTerror1",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_TwinTerror1"
+        },
+        {
+            "key": "TwinTerror2",
+            "name": "Twin Terror II",
+            "desc": "When you field exactly 2 copies of a champion, they both gain 500 Health, 50% Attack Speed. Anytime you 3-star, gain a 2-star copy.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_TwinTerror2",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT10_Augment_TwinTerror2"
+        },
+        {
+            "key": "TwoHealthy",
+            "name": "Two Healthy",
+            "desc": "Your team gains 90 Health for each unique 2-cost champion on your board.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_TwoHealthy",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_TwoHealthy"
+        },
+        {
+            "key": "UnknownAugment1",
+            "name": "Legend Augment - Silver",
+            "desc": "To comply Riot Games' policy, selected Legend Augments will not be displayed. In stage 2-1, a silver-level legend augment was selected.",
+            "imageUrl": "https://localhost:7235/api/image/augments/None",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": null
+        },
+        {
+            "key": "UnknownAugment2",
+            "name": "Legend Augment - Gold",
+            "desc": "To comply Riot Games' policy, selected Legend Augments will not be displayed. In stage 2-1, a gold-level legend augment was selected.",
+            "imageUrl": "https://localhost:7235/api/image/augments/None",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": null
+        },
+        {
+            "key": "UnknownAugment3",
+            "name": "Legend Augment - Prismatic",
+            "desc": "To comply Riot Games' policy, selected Legend Augments will not be displayed. In stage 2-1, a prismatic-level legend augment was selected.",
+            "imageUrl": "https://localhost:7235/api/image/augments/None",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": null
+        },
+        {
+            "key": "UnleashedArcana",
+            "name": "Unleashed Arcana",
+            "desc": "Gain a Jeweled Gauntlet, a Rabadon's Deathcap, a Needlessly Large Rod, and a Magnetic Remover.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_UnleashedArcana",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_UnleashedArcana"
+        },
+        {
+            "key": "UrfsGrabBagI",
+            "name": "Urf's Grab Bag I",
+            "desc": "Gain 1 Spatula and 1 random item component.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_UrfsGrabBag1",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT7_Augment_UrfsGrabBag1"
+        },
+        {
+            "key": "UrfsGrabBagII",
+            "name": "Urf's Grab Bag II",
+            "desc": "Gain 1 Spatula and 3 random item components.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT7_Augment_UrfsGrabBag2",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT7_Augment_UrfsGrabBag2"
+        },
+        {
+            "key": "Vampirism",
+            "name": "Vampirism I",
+            "desc": "Your team gains 20 Health. Gain another 2 Health and 1% Omnivamp per 5 missing player health.<br>(Omnivamp: healing for a percent of damage dealt)",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_Vampirism",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT10_Augment_Vampirism"
+        },
+        {
+            "key": "VampirismPlus",
+            "name": "Vampirism II",
+            "desc": "Your team gains 50 Health. Gain another 6 Health and 1% Omnivamp per 5 missing player health.<br>(Omnivamp: healing for a percent of damage dealt)",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT10_Augment_VampirismPlus",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT10_Augment_VampirismPlus"
+        },
+        {
+            "key": "VerdantVeil",
+            "name": "Verdant Veil",
+            "desc": "Your units are immune to crowd control effects for the first 20 seconds of combat. Gains 15% Attack Speed.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_VerdantVeil",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_VerdantVeil"
+        },
+        {
+            "key": "WanderingTrainerGold",
+            "name": "Wandering Trainer I",
+            "desc": "Gain 1 gold and a Training Dummy with 2 permanently attached Emblems.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_WanderingTrainerGold",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_WanderingTrainerGold"
+        },
+        {
+            "key": "WhatDoesntKillYou",
+            "name": "What Doesn't Kill You",
+            "desc": "Gain 2 gold after losing a player combat. Gain a random component after every 4 losses.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_WhatDoesntKillYou",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_WhatDoesntKillYou"
+        },
+        {
+            "key": "WhatTheForge",
+            "name": "What The Forge",
+            "desc": "Completed items you own (except Tactician's Crown and Emblems) are transformed into random Artifacts. Champions gain 110 Health per equipped Artifact.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_WhatTheForge",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_WhatTheForge"
+        },
+        {
+            "key": "Windfall",
+            "name": "Windfall",
+            "desc": "Gain 20 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_Windfall",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_Windfall"
+        },
+        {
+            "key": "WindfallPlus",
+            "name": "Windfall+",
+            "desc": "Gain 35 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_WindfallPlus",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_WindfallPlus"
+        },
+        {
+            "key": "WindfallPlusPlus",
+            "name": "Windfall++",
+            "desc": "Gain 40 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_WindfallPlusPlus",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_WindfallPlusPlus"
+        },
+        {
+            "key": "WoodlandCharm",
+            "name": "Woodland Charm",
+            "desc": "Your highest Health champion is cloned. Clones cannot hold items.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT6_Augment_WoodlandCharm",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT6_Augment_WoodlandCharm"
+        },
+        {
+            "key": "YouHaveMyBow",
+            "name": "You Have My Bow",
+            "desc": "Gain a Recurve Bow. Your units gain 12% Attack Speed. ",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_YouHaveMyBow",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_YouHaveMyBow"
+        },
+        {
+            "key": "YouHaveMySword",
+            "name": "You Have My Sword",
+            "desc": "Gain a B.F. Sword. Your units gain 15% Attack Damage. ",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_YouHaveMySword",
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_YouHaveMySword"
+        },
+        {
+            "key": "YoungAndWildAndFree",
+            "name": "Young and Wild and Free",
+            "desc": "You can always move freely on Carousel rounds. Gain 2 Gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_YoungAndWildAndFree",
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_YoungAndWildAndFree"
+        },
+        {
+            "key": "Accomplice",
+            "name": "Accomplice",
+            "desc": "Get a Support Thief's Gloves and 2 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Accomplice",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_Accomplice"
+        },
+        {
+            "key": "AltruistCrest",
+            "name": "Altruist Crest",
+            "desc": "Gain an Altruist Emblem and a Riven.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_AltruistCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_AltruistCrest"
+        },
+        {
+            "key": "AltruistCrown",
+            "name": "Altruist Crown",
+            "desc": "Gain an Altruist Emblem, a Bloodthirster, and a Riven.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_AltruistCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_AltruistCrown"
+        },
+        {
+            "key": "ArcanistCrest",
+            "name": "Arcanist Crest",
+            "desc": "Gain an Arcanist Emblem and a Lux.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_ArcanistCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_ArcanistCrest"
+        },
+        {
+            "key": "ArcanistCrown",
+            "name": "Arcanist Crown",
+            "desc": "Gain an Arcanist Emblem, a Statikk Shiv, and a Lux.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_ArcanistCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_ArcanistCrown"
+        },
+        {
+            "key": "AtWhatCost",
+            "name": "At What Cost",
+            "desc": "Immediately go to level 6. You don't get to choose your future augments. Gain 1 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_AtWhatCost",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_AtWhatCost"
+        },
+        {
+            "key": "BaBOOM",
+            "name": "Ba-BOOM!",
+            "desc": "Your champions deal 90% more damage for 2 seconds on every other cast.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_BaBoom",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_BaBoom"
+        },
+        {
+            "key": "BehemothCrest",
+            "name": "Behemoth Crest",
+            "desc": "Gain a Behemoth Emblem, a Shen, and a Thresh.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_BehemothCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_BehemothCrest"
+        },
+        {
+            "key": "BehemothCrown",
+            "name": "Behemoth Crown",
+            "desc": "Gain a Behemoth Emblem, a Sunfire Cape, a Yorick, and a Thresh.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_BehemothCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_BehemothCrown"
+        },
+        {
+            "key": "BloodBank",
+            "name": "Lunch Money",
+            "desc": "Every 8 damage you deal to enemy tacticians gives you 2 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_BloodBank",
+            "tier": 1,
+            "inGameKey": "TFT11_Augment_BloodBank"
+        },
+        {
+            "key": "Porcelain",
+            "name": "Boiling Point",
+            "desc": "Porcelains' attacks grant 3 bonus Mana. While boiling, their attacks also Burn and Wound. Gain a Lux and an Amumu.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Porcelain",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Porcelain"
+        },
+        {
+            "key": "BruiserCrest",
+            "name": "Bruiser Crest",
+            "desc": "Gain a Bruiser Emblem and an Aatrox.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_BrawlerCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_BrawlerCrest"
+        },
+        {
+            "key": "BruiserCrown",
+            "name": "Bruiser Crown",
+            "desc": "Gain a Bruiser Emblem, a Bloodthirster, and an Aatrox.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_BrawlerCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_BrawlerCrown"
+        },
+        {
+            "key": "BuildaBud",
+            "name": "Build a Bud!",
+            "desc": "Gain a random three star 1-cost unit and 8 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Buildabud",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_Buildabud"
+        },
+        {
+            "key": "Storyweaver",
+            "name": "Call to Adventure",
+            "desc": "Every 2 takedowns, Storyweaver Kayle permanently gains 3 Ability Power and 18 Health. Gain a Garen and a Sivir.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Storyweaver",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Storyweaver"
+        },
+        {
+            "key": "CalltoChaos",
+            "name": "Call to Chaos",
+            "desc": "Gain a powerful and random reward.\r\n(Randomly gain one of the following:)\r\n[58 gold], [64 experience], [40 rerolls that do not expire], [Training dummy with 2x Zeke's Herald], [Training dummy with 2x Locket of the Iron Solari], [3x Hullcrushers and an item remover], [3x Snipers focus and an item remover], [Random 3-star 3-cost unit and 20 gold], [3x Thief's Gloves and an item remover], [5 random emblems(no duplicates) and an item remover]",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Calltochaos",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_Calltochaos"
+        },
+        {
+            "key": "Heavenly",
+            "name": "Divine Rolls",
+            "desc": "At the start of every stage, including this one, gain 4 free rerolls + 1 for each of your Heavenly champions. Gain a Kha'Zix and a Malphite.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Heavenly",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Heavenly"
+        },
+        {
+            "key": "DragonsSpirit",
+            "name": "Dragon's Spirit",
+            "desc": "Gain a Dragon's Claw. Every time you heal 7000 Health with Dragon's Claws, gain an item component, up to 4.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_DragonSpirit",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_DragonSpirit"
+        },
+        {
+            "key": "DragonlordCrest",
+            "name": "Dragonlord Crest",
+            "desc": "Gain a Dragonlord Emblem, a Janna, and a Diana.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_DragonlordCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_DragonlordCrest"
+        },
+        {
+            "key": "DragonlordCrown",
+            "name": "Dragonlord Crown",
+            "desc": "Gain a Dragonlord Emblem, a Guinsoo's Rageblade, a Janna, and a Diana.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_DragonlordCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_DragonlordCrown"
+        },
+        {
+            "key": "NeekoCarry",
+            "name": "Drop Blossom!",
+            "desc": "Gain a Neeko. Your strongest Neeko's spell Heals 35% more, and slams for 35% increased damage. Each cast increases the spell radius by 1.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_NeekoCarry",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_NeekoCarry"
+        },
+        {
+            "key": "DryadCrest",
+            "name": "Dryad Crest",
+            "desc": "Gain a Dryad Emblem and a Gnar.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_DryadCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_DryadCrest"
+        },
+        {
+            "key": "DryadCrown",
+            "name": "Dryad Crown",
+            "desc": "Gain a Dryad Emblem, a Titans Resolve, and a Gnar.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_DryadCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_DryadCrown"
+        },
+        {
+            "key": "DuelistCrest",
+            "name": "Duelist Crest",
+            "desc": "Gain a Duelist Emblem and a Qiyana.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_DuelistCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_DuelistCrest"
+        },
+        {
+            "key": "DuelistCrown",
+            "name": "Duelist Crown",
+            "desc": "Gain a Duelist Emblem, a Giant Slayer, and a Qiyana.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_DuelistCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_DuelistCrown"
+        },
+        {
+            "key": "DynamicDuo",
+            "name": "Dynamic Duo",
+            "desc": "Get a random 5-cost champion and a random champion that shares a trait with them. Get 20 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_DynamicDuo",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_DynamicDuo"
+        },
+        {
+            "key": "Duelist",
+            "name": "Extended Duel",
+            "desc": "Your Duelists start combat with 2 stacks. At max stacks, they gain 10% Omnivamp. Gain a Darius and a Yasuo.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Duelist",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Duelist"
+        },
+        {
+            "key": "Dragonlord",
+            "name": "Enter the Dragon",
+            "desc": "After the dragon strikes, Dragonlords deal 20% bonus true damage. Gain a Janna.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Dragonlord",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Dragonlord"
+        },
+        {
+            "key": "Epoch",
+            "name": "Epoch",
+            "desc": "Now, and at the start of every stage, gain 6 XP and 2 free rerolls for that round only.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Epoch",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Epoch"
+        },
+        {
+            "key": "Epochplus",
+            "name": "Epoch+",
+            "desc": "Now, and at the start of every stage, gain 8 XP and 3 free rerolls for that round only.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_EpochPlus",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_EpochPlus"
+        },
+        {
+            "key": "ShenCarry",
+            "name": "Ethereal Blades",
+            "desc": "Gain a Shen. Your Strongest Shen gains +3 Range and his spell does 100% increased damage.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_ShenCarry",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_ShenCarry"
+        },
+        {
+            "key": "EverythingMustGo",
+            "name": "Everything Must Go!",
+            "desc": "Your units buy and sell for 0 gold. Gain 1 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Common_EverythingMustGo",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Common_EverythingMustGo"
+        },
+        {
+            "key": "FatedCrest",
+            "name": "Fated Crest",
+            "desc": "Gain a Fated Emblem and a Kindred.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_FatedCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_FatedCrest"
+        },
+        {
+            "key": "FatedCrown",
+            "name": "Fated Crown",
+            "desc": "Gain a Fated Emblem, a Sunfire Cape, and a Kindred.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_FatedCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_FatedCrown"
+        },
+        {
+            "key": "FineVintage",
+            "name": "Fine Vintage",
+            "desc": "Completed items left on your bench for 4 rounds transform into Support items.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_FineVintage",
+            "tier": 1,
+            "inGameKey": "TFT11_Augment_FineVintage"
+        },
+        {
+            "key": "FortuneCrest",
+            "name": "Fortune Crest",
+            "desc": "Gain a Fortune Emblem and a Teemo.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_FortuneCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_FortuneCrest"
+        },
+        {
+            "key": "FortuneCrown",
+            "name": "Fortune Crown",
+            "desc": "Gain a Fortune Emblem, a Sunfire Cape, and a Teemo.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_FortuneCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_FortuneCrown"
+        },
+        {
+            "key": "GhostlyCrest",
+            "name": "Ghostly Crest",
+            "desc": "Gain a Ghostly Emblem and an Shen.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_GhostlyCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_GhostlyCrest"
+        },
+        {
+            "key": "GhostlyCrown",
+            "name": "Ghostly Crown",
+            "desc": "Gain a Ghostly Emblem, a Bramble Vest, and a Shen.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_GhostlyCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_GhostlyCrown"
+        },
+        {
+            "key": "Reaper",
+            "name": "Grim Harvest",
+            "desc": "Your Reapers gain 8% Critical Strike chance and 5% Omnivamp. They gain this bonus again every time they get a takedown. Gain a Kindred and Yone.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Reaper",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Reaper"
+        },
+        {
+            "key": "Ghostly",
+            "name": "Haunted House",
+            "desc": "Enemies that die while haunted by Ghostly pass 2 extra spectre to a nearby enemy. Gain a Caitlyn and a Shen.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Ghostly",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Ghostly"
+        },
+        {
+            "key": "HeavenlyCrest",
+            "name": "Heavenly Crest",
+            "desc": "Gain a Heavenly Emblem and a Neeko.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_HeavenlyCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_HeavenlyCrest"
+        },
+        {
+            "key": "HeavenlyCrown",
+            "name": "Heavenly Crown",
+            "desc": "Gain a Heavenly Emblem, a Hand of Justice, and a Neeko.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_HeavenlyCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_HeavenlyCrown"
+        },
+        {
+            "key": "InkshadowCrest",
+            "name": "Inkshadow Crest",
+            "desc": "Gain an Inkshadow Emblem and a Senna.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_InkshadowCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_InkshadowCrest"
+        },
+        {
+            "key": "InkshadowCrown",
+            "name": "Inkshadow Crown",
+            "desc": "Gain an Inkshadow Emblem, an Evenshroud, and a Senna.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_InkshadowCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_InkshadowCrown"
+        },
+        {
+            "key": "InvokerCrest",
+            "name": "Invoker Crest",
+            "desc": "Gain an Invoker Emblem and a Janna.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_InvokerCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_InvokerCrest"
+        },
+        {
+            "key": "InvokerCrown",
+            "name": "Invoker Crown",
+            "desc": "Gain an Invoker Emblem, a Rabadon's Deathcap, and a Janna.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_InvokerCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_InvokerCrown"
+        },
+        {
+            "key": "Mythic",
+            "name": "It's Going to be Epic",
+            "desc": "Every time a unique Mythic champion becomes Epic, gain 2 player health and 3 gold. Gain a Cho'Gath and Kog'Maw.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Mythic",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Mythic"
+        },
+        {
+            "key": "Sniper",
+            "name": "Long Shot",
+            "desc": "Snipers gain 15% Attack Speed. Gain a Caitlyn and a Kog'Maw. After Snipers have attacked a total distance of 1200 hexes, gain a Sniper's Focus.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Sniper",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Sniper"
+        },
+        {
+            "key": "KobukoCarry",
+            "name": "Lucky Paws",
+            "desc": "Gain a 2-star Kobuko. Your strongest Kobuko's Ability deals 225% damage. If Kobuko kills an enemy, they have a 100% chance to drop 1 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_KobukoCarry",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_KobukoCarry"
+        },
+        {
+            "key": "Trickshot",
+            "name": "Lucky Ricochet",
+            "desc": "Trickshots bounce 1 additional time for 40% of original damage. Gain a Sivir and Teemo.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Trickshot",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Trickshot"
+        },
+        {
+            "key": "Invoker",
+            "name": "Mana Shield",
+            "desc": "Whenever an Invoker casts, grant the lowest Health ally Shield equal to 200% of Mana spent. Gain a Janna.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Invoker",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Invoker"
+        },
+        {
+            "key": "YorickCarry",
+            "name": "Midnight Siphon",
+            "desc": "Gain a Yorick. Your Strongest Yorick gains 25% max Health and additionally deals 20% of his max Health with his ability.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_YorickCarry",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_YorickCarry"
+        },
+        {
+            "key": "Arcanist",
+            "name": "Mind Over Matter",
+            "desc": "Arcanists grant 250% of their combined Ability Power as bonus Health to your Training Dummies. Get a Zoe and a Training Dummy.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Arcanist",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Arcanist"
+        },
+        {
+            "key": "Dryad",
+            "name": "Mulched",
+            "desc": "Every round, gain 2 Dryad stacks. If a Dryad deals 5% additional damage. Gain a Rek'Sai and a Gnar.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Dryad",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Dryad"
+        },
+        {
+            "key": "MythicCrest",
+            "name": "Mythic Crest",
+            "desc": "Gain a Mythic Emblem and a Neeko.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_MythicCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_MythicCrest"
+        },
+        {
+            "key": "MythicCrown",
+            "name": "Mythic Crown",
+            "desc": "Gain a Mythic Emblem, a Guardbreaker, and a Neeko.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_MythicCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_MythicCrown"
+        },
+        {
+            "key": "OverEncumbered",
+            "name": "Over Encumbered",
+            "desc": "For the next stage, you only get 1 bench slots. After, get 3 item components.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_OverEncumbered",
+            "tier": 1,
+            "inGameKey": "TFT11_Augment_OverEncumbered"
+        },
+        {
+            "key": "Inkshadow",
+            "name": "Full Sleeve",
+            "desc": "Open an armory that grants an extra Inkshadow item while the trait is active. Gain a Jax and an Aatrox.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Inkshadow",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Inkshadow"
+        },
+        {
+            "key": "PickoftheLitter",
+            "name": "Pick of the Litter",
+            "desc": "Open a special shop with three free 3-cost champions. You can only pick one, but you get 2 copies of it.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_PickOfTheLitter",
+            "tier": 1,
+            "inGameKey": "TFT11_Augment_PickOfTheLitter"
+        },
+        {
+            "key": "PickoftheLitterplus",
+            "name": "Pick of the Litter+",
+            "desc": "Open a special shop with three free 4-cost champions. You can only pick one, but you get 2 copies of it.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_PickOfTheLitter_Plus",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT11_Augment_PickOfTheLitter_Plus"
+        },
+        {
+            "key": "PorcelainCrest",
+            "name": "Porcelain Crest",
+            "desc": "Gain a Porcelain Emblem and a Lux.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_PorcelainCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_PorcelainCrest"
+        },
+        {
+            "key": "PorcelainCrown",
+            "name": "Porcelain Crown",
+            "desc": "Gain a Porcelain Emblem, an Adaptive Helm, and an Amumu.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_PorcelainCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_PorcelainCrown"
+        },
+        {
+            "key": "Prizefighter",
+            "name": "Prizefighter",
+            "desc": "Gain 1 item component(s). Every 3 wins gives you an item component.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Prizefighter",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Prizefighter"
+        },
+        {
+            "key": "RadiantRefactor",
+            "name": "Radiant Refactor",
+            "desc": "Gain a Masterwork Upgrade and 1 component anvils.<br><br>Masterwork Upgrade upgrades an item to Radiant!",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_RadiantRefactor",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_RadiantRefactor"
+        },
+        {
+            "key": "Behemoth",
+            "name": "Raid Boss",
+            "desc": "Combat start: Your strongest Behemoth gains 20% Health. When other Behomoths die, they transfer 20% of their Armor and Magic Resist to it. Gain a Cho'Gath and a Malphite.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Behemoth",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Behemoth"
+        },
+        {
+            "key": "RainingGold",
+            "name": "Raining Gold",
+            "desc": "Gain 8 gold now and 1 gold every round.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_RainingGold",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_RainingGold"
+        },
+        {
+            "key": "RainingGoldplus",
+            "name": "Raining Gold+",
+            "desc": "Gain 18 gold now and 1 gold every round.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_RainingGoldPlus",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_RainingGoldPlus"
+        },
+        {
+            "key": "ReaperCrest",
+            "name": "Reaper Crest",
+            "desc": "Gain a Reaper Emblem and a Kindred",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_ReaperCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_ReaperCrest"
+        },
+        {
+            "key": "ReaperCrown",
+            "name": "Reaper Crown",
+            "desc": "Gain a Reaper Emblem, a Hand of Justice, and a Kindred.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_ReaperCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_ReaperCrown"
+        },
+        {
+            "key": "ReinFOURcement",
+            "name": "ReinFOURcement",
+            "desc": "The next 4-cost champion you buy is instantly upgraded to 2-star. Get 12 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Reinfourcement",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Reinfourcement"
+        },
+        {
+            "key": "SageCrest",
+            "name": "Sage Crest",
+            "desc": "Gain a Sage Emblem, a Zyra, and a Diana.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_SageCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_SageCrest"
+        },
+        {
+            "key": "SageCrown",
+            "name": "Sage Crown",
+            "desc": "Gain a Sage Emblem, an Adaptive Helm, a Zyra, and a Diana.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_SageCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_SageCrown"
+        },
+        {
+            "key": "ScoreboardScrapper",
+            "name": "Scoreboard Scrapper",
+            "desc": "Every round, if you're in the bottom 4, your team permanently gains 1.5% Attack Damage and Ability Power. If you're in the top 4, they have 10% more Health.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_ScoreboardScrapper",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_ScoreboardScrapper"
+        },
+        {
+            "key": "SharingIsCaring",
+            "name": "Sharing Is Caring",
+            "desc": "Combat start: You gain 1 gold and your opponent gains 1 gold.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_SharingIsCaring",
+            "tier": 1,
+            "inGameKey": "TFT11_Augment_SharingIsCaring"
+        },
+        {
+            "key": "Slammin",
+            "name": "Slammin'",
+            "desc": "Gain 1 Component Anvil. After each player combat, if there are no items on your bench (other than Consumables), gain 2 XP.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Slammin",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Slammin"
+        },
+        {
+            "key": "Slamminplus",
+            "name": "Slammin'+",
+            "desc": "Gain 1 Component Anvil and 10 XP now. After each player combat, if there are no items on your bench (other than Consumables), gain 2 XP.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Slammin_Plus",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Slammin_Plus"
+        },
+        {
+            "key": "SniperCrest",
+            "name": "Sniper Crest",
+            "desc": "Gain a Sniper Emblem and a Senna.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_SniperCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_SniperCrest"
+        },
+        {
+            "key": "SniperCrown",
+            "name": "Sniper Crown",
+            "desc": "Gain a Sniper Emblem, a Guinsoo's Rageblade, and a Senna.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_SniperCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_SniperCrown"
+        },
+        {
+            "key": "Warden",
+            "name": "Spirit Guardians",
+            "desc": "Wardens' start of combat damage reduction is increased by 12%. 20% of damage dealt to non-Wardens is instead distributed across your Wardens. Get a Garen and a Jax.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Warden",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Warden"
+        },
+        {
+            "key": "GarenCarry",
+            "name": "Storied Champion",
+            "desc": "Gain a 2-star Garen. Your strongest Garen's Ability now grants stacking max Health instead of Shield. If he has more max Health than his target, his Ability deals 40% bonus true damage.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_GarenCarry",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_GarenCarry"
+        },
+        {
+            "key": "StoryweaverCrest",
+            "name": "Storyweaver Crest",
+            "desc": "Gain a Storyweaver Emblem and a Garen.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_StoryweaverCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_StoryweaverCrest"
+        },
+        {
+            "key": "StoryweaverCrown",
+            "name": "Storyweaver Crown",
+            "desc": "Gain a Storyweaver Emblem, a Gargoyle Stoneplate, and a Riven.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_StoryweaverCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_StoryweaverCrown"
+        },
+        {
+            "key": "TheGoldenRemover",
+            "name": "The Golden Remover",
+            "desc": "Gain a Golden Remover and component item anvil.<br><br>Golden Remover is an Item Remover with infinite uses.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_GoldenRemover",
+            "tier": 1,
+            "inGameKey": "TFT11_Augment_GoldenRemover"
+        },
+        {
+            "key": "Sage",
+            "name": "The Road Less Traveled",
+            "desc": "Gain 1 XP. Each unique Sage that starts combat in the middle 2 rows grants 1 XP. Gain a Zyra.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Sage",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Sage"
+        },
+        {
+            "key": "TinybutDeadly",
+            "name": "Tiny, but Deadly",
+            "desc": "Your units are 50% smaller, but move and attack 30% faster.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_TinyButDeadly",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_TinyButDeadly"
+        },
+        {
+            "key": "TooMuchCandy",
+            "name": "Too Much Candy",
+            "desc": "Your rerolls cost 0 gold. Every 6 rerolls, the cost goes up by 1 gold. At the start of each stage your reroll cost is reset to 0.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_TooMuchCandy",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_TooMuchCandy"
+        },
+        {
+            "key": "TrashToTreasure",
+            "name": "Trash to Treasure",
+            "desc": "Reforging completed items turns them into a random Artifact and does not consume the reforger. Gain a Reforger and 2 Component Anvil(s).",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_TrashToTreasure",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_TrashToTreasure"
+        },
+        {
+            "key": "TwoforOne",
+            "name": "Two for One",
+            "desc": "Each round, get a copy of the first champion you buy that costs 3 or less.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_TwoforOne",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_TwoforOne"
+        },
+        {
+            "key": "UmbralCrest",
+            "name": "Umbral Crest",
+            "desc": "Gain an Umbral Emblem and a Yorick.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_UmbralCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_UmbralCrest"
+        },
+        {
+            "key": "UmbralCrown",
+            "name": "Umbral Crown",
+            "desc": "Gain an Umbral Emblem, a Redemption, and a Yorick.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_UmbralCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_UmbralCrown"
+        },
+        {
+            "key": "Exalted",
+            "name": "Venerable Piggy Bank",
+            "desc": "Gain 2 Exalted Champions. Your Exalted Soul Core gains gold instead of XP. If you lose combat, it gets 3 bonus gold.<br><br>If there no 1 or 2-cost Exalted champions, get one 3-cost instead.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Exalted",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Exalted"
+        },
+        {
+            "key": "WardenCrest",
+            "name": "Warden Crest",
+            "desc": "Gain a Warden Emblem, a Jax, and an Amumu.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_WardenCrest",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_WardenCrest"
+        },
+        {
+            "key": "WardenCrown",
+            "name": "Warden Crown",
+            "desc": "Gain a Warden Emblem, a Redemption and a Gnar.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_WardenCrown",
+            "tier": 3,
+            "inGameKey": "TFT11_Augment_WardenCrown"
+        },
+        {
+            "key": "Bruiser",
+            "name": "Well Fed",
+            "desc": "Bruisers heal 2% of their max Health every 1 second. Gain a Kobuko and a Rek'Sai.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Bruiser",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Bruiser"
+        },
+        {
+            "key": "Umbral",
+            "name": "Wrath of the Moon",
+            "desc": "Umbral champions deal 3.5% more damage every second they continue attacking an enemy. Resets when they swap targets. Gain a Darius and a Yorick.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Umbral",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Umbral"
+        },
+        {
+            "key": "WanderingTrainer",
+            "name": "Wandering Trainer II",
+            "desc": "Gain 6 gold and a Training Dummy with 3 permanently attached Emblems.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_WanderingTrainer",
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_WanderingTrainer"
+        },
+        {
+            "key": "Fated",
+            "name": "My Heart Will Go On",
+            "desc": "When one of your Fated pair dies, your team gains 100% of the surviving one's bonus for the rest of combat. Gain an Ahri and a Yasuo.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_Fated",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_Fated"
+        },
+        {
+            "key": "NeekoCarryPlus",
+            "name": "Drop Blossom!+",
+            "desc": "Gain a 2-star Neeko. Your strongest Neeko's spell Heals 35% more, and slams for 35% increased damage. Each cast increases the spell radius by 1.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_NeekoCarryPlus",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_NeekoCarryPlus"
+        },
+        {
+            "key": "ShenCarryPlus",
+            "name": "Ethereal Blades+",
+            "desc": "Gain a 2-star Shen. Your Strongest Shen gains +3 Range and his spell does 100% increased damage.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_ShenCarryPlus",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_ShenCarryPlus"
+        },
+        {
+            "key": "YorickCarryPlus",
+            "name": "Midnight Siphon+",
+            "desc": "Gain a 2-star Yorick. Your Strongest Yorick gains 25% max Health and additionally deals 20% of his max Health with his ability.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT11_Augment_YorickCarryPlus",
+            "tier": 2,
+            "inGameKey": "TFT11_Augment_YorickCarryPlus"
+        },
+        {
+            "key": "LongTimeCraftingHR",
+            "name": "Latent Forge",
+            "desc": "After 4 player combats, gain an Artifact anvil.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_LongTimeCraftingHR",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_LongTimeCraftingHR"
+        },
+        {
+            "key": "ArmyBuildingHR",
+            "name": "Team Building",
+            "desc": "Gain a Lesser Champion Duplicator. Gain another after 3 player combats.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_ArmyBuildingHR",
+            "isHidden": true,
+            "tier": 1,
+            "inGameKey": "TFT9_Augment_ArmyBuildingHR"
+        },
+        {
+            "key": "ACutAboveHR",
+            "name": "A Cut Above",
+            "desc": "Gain a Deathblade. Champions holding this item have a 25% chance to drop 2 gold on kill.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_ACutAboveHR",
+            "isHidden": true,
+            "tier": 2,
+            "inGameKey": "TFT9_Augment_ACutAboveHR"
+        },
+        {
+            "key": "PhreakyFridayHR",
+            "name": "Phreaky Friday",
+            "desc": "Gain an Infinity Force. After 3 player combats, gain another.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_PhreakyFridayHR",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_PhreakyFridayHR"
+        },
+        {
+            "key": "PhreakyFridayPlusHR",
+            "name": "Phreaky Friday+",
+            "desc": "Gain an Infinity Force. After 2 player combats, gain another.",
+            "imageUrl": "https://localhost:7235/api/image/augments/TFT9_Augment_PhreakyFridayPlusHR",
+            "isHidden": true,
+            "tier": 3,
+            "inGameKey": "TFT9_Augment_PhreakyFridayPlusHR"
+        }
+    ]
+}

@@ -1,0 +1,97 @@
+.app__mypage {
+  display: flex;
+  padding: 2rem 2rem;
+  justify-content: center;
+}
+
+.app__mypage-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.app__mypage-content-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-lightred);
+  border-radius: 0.375rem;
+  padding: 1rem;
+}
+
+.app__mypage-content-profile-groups {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.25rem;
+  max-width: 100%;
+  width: fit-content;
+  overflow-x: auto;
+}
+
+.app__mypage-content-profile-groups-group {
+  display: flex;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-secondary);
+  border-radius: 2rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.app__mypage-content-profile-groups-group.active,
+.app__mypage-content-profile-groups-group:hover {
+  background-color: var(--color-hover-secondary);
+}
+
+.app__mypage-profilesidebar {
+  height: fit-content;
+  margin-left: 2rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-lightred);
+  border-radius: 0.375rem;
+  min-width: 316px;
+}
+
+.app__mypage-profilesidebar > p {
+  margin-bottom: 1rem;
+}
+
+hr {
+  border-color: var(--color-lightred);
+  margin: 0.75rem 0;
+}
+
+.app__mypage-profilesidebar-stats-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.app__mypage-profilesidebar-settings {
+  display: flex;
+  padding-bottom: 0.75rem;
+}
+
+.app__mypage-profilesidebar-section {
+  display: flex;
+  width: 100%;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app__mypage-profilesidebar-settings button {
+  background-color: var(--color-secondary);
+  border-radius: 2rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 12px;
+}
+
+@media screen and (max-width: 1250px) {
+  .app__mypage-profilesidebar {
+    display: none;
+  }
+}

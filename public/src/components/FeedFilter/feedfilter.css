@@ -1,0 +1,11 @@
+.app__feedfilters {
+  display: flex;
+  width: 100%;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--color-secondary);
+  background-color: var(--color-primary);
+}
+
+.app__feedfilters-sortby {
+  width: 90px;
+}

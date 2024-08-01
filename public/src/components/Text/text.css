@@ -1,0 +1,10 @@
+.app__text {
+  font-family: var(--font-base);
+  padding: 4px;
+  font-size: x-small;
+  border-radius: 3px;
+  width: fit-content;
+  height: fit-content;
+  min-width: 30px;
+  min-height: 19px;
+}

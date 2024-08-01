@@ -1,0 +1,126 @@
+.app__modal {
+  width: 200px;
+  position: fixed;
+  background-color: var(--color-primary);
+  border-radius: 5px;
+  border: 1px solid var(--color-lightred);
+  overflow: hidden;
+  z-index: 100;
+  visibility: hidden;
+}
+
+.app__modal.visible {
+  visibility: visible;
+}
+
+.app__modal-unit-container {
+  display: flex;
+  flex-direction: column;
+  height: 140px;
+}
+
+.app__modal-unit-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.app__modal-unit-header img {
+  width: 100%;
+  height: 100%;
+}
+
+.app__modal-unit-header-traits {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
+}
+
+.app__modal-unit-header-traits-trait {
+  display: flex;
+  max-height: 15px;
+  align-items: center;
+}
+
+.app__modal-unit-header-traits-trait img {
+  margin-right: 8px;
+  width: 15px;
+  height: 15px;
+}
+
+.app__modal-unit-header-items {
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+}
+
+.app__modal-unit-header-items-item {
+  width: 20px;
+  height: 20px;
+}
+
+.app__modal-unit-header-items-item img {
+  border: 1px solid var(--color-gold);
+}
+
+.app__modal-unit-body {
+  display: flex;
+  padding: 10px;
+}
+
+.app__modal-unit-body-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.app__modal-unit-body-cost {
+  display: flex;
+  gap: 5px;
+}
+
+.app__modal-item-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.app__modal-item-header {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-secondary);
+  padding: 10px;
+  gap: 10px;
+}
+
+.app__modal-item-header-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.app__modal-item-body {
+  display: flex;
+  padding: 10px;
+}
+
+.app__modal-item-body-recipe {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 20px;
+}
+
+.app__modal-item-body-recipe-components {
+  display: flex;
+  gap: 10px;
+}
+
+.app__modal-item-body-recipe-components img {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--color-gold);
+}

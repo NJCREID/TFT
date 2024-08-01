@@ -1,0 +1,214 @@
+.app__viewguide {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.app__viewguide-banner {
+  position: absolute;
+  max-height: calc(100vh - var(--header-height));
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: flex-start;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  overflow: hidden;
+}
+
+.app__viewguide-banner img {
+  width: 100%;
+  filter: brightness(40%);
+}
+
+.app__viewguide-guide {
+  max-width: 1080px;
+  width: 100%;
+  position: relative;
+}
+
+.app__viewguide-guide-content {
+  display: flex;
+  margin-top: 3rem;
+  gap: 2rem;
+}
+
+.app__viewguide-guide-section1 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 350px;
+  max-width: 650px;
+}
+
+.app__viewguide-guide-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-lightred);
+  border-radius: 10px;
+  padding: 1rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.app__viewguide-guide-board {
+  display: flex;
+  justify-content: center;
+}
+
+.app__viewguide-guide-units {
+  display: grid;
+  padding: 0.5rem;
+  max-height: 100%;
+  grid-template-columns: repeat(auto-fill, 48px);
+  gap: 1rem;
+}
+
+.app__viewguide-guide-comments {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-lightred);
+  border-radius: 0.625rem;
+  height: 400px;
+}
+
+.app__viewguide-guide-comment-input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-lightred);
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+.app__viewguide-guide-comment-input textarea {
+  background: none;
+  font-family: var(--font-base);
+  border: none;
+  outline: none;
+  resize: none;
+  color: white;
+}
+
+.app__viewguide-guide-comment-input button {
+  display: flex;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.app__viewguide-guide-comment-input svg {
+  color: var(--color-lightred);
+}
+
+.app__viewguide-guide-comment-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: var(--color-primary);
+  border-radius: 0.625rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.app__viewguide-guide-comment p:nth-child(2) {
+  padding: 0.25rem;
+}
+
+.app__viewguide-guide-section2 {
+  width: 40%;
+  min-width: 300px;
+  max-width: 400px;
+}
+
+.app__viewguide-guide-augments {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-lightred);
+  border-radius: 10px;
+}
+
+.app__viewguide-guide-componentpriority {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-lightred);
+  border-radius: 10px;
+}
+
+.app__viewguide-guide-components {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.app__viewguide-guide-components img {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--color-gold);
+}
+
+.app__viewguide-guide-carries {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-lightred);
+  border-radius: 10px;
+}
+
+.app__viewguide-guide-carry {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.app__viewguide-guide-carry-items {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.app__viewguide-guide-carry-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.app__viewguide-guide-carry-item-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.app__viewguide-guide-item-recipe {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.app__viewguide-guide-item-recipe img {
+  border: 1px solid var(--color-gold);
+  height: 24px;
+  width: 24px;
+}
