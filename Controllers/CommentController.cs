@@ -10,12 +10,13 @@ namespace TFT_API.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [ValidateRequestBody]
-    public class CommentController(ICommentDataAccess commentRepo, IUserDataAccess userRepo, IMapper mapper) : ControllerBase
+    public class CommentController(ICommentDataAccess commentRepo, IUserDataAccess userRepo, IGuideDataAccess guideRepo, IMapper mapper) : ControllerBase
     {
 
         private readonly ICommentDataAccess _commentRepo = commentRepo;
         private readonly IUserDataAccess _userRepo = userRepo; 
         private readonly IMapper _mapper = mapper;
+        private readonly IGuideDataAccess _guideRepo = guideRepo;
 
         [Authorize]
         [HttpGet("{id}", Name = "GetComment")]
@@ -32,8 +33,12 @@ namespace TFT_API.Controllers
         {
             var existingUser = await _userRepo.GetUserByIdAsync(request.UserId);
             if (existingUser == null) return NotFound("User not found.");
+            var existingGuide = await _guideRepo.GetFullUserGuideByIdAsync(request.UserGuideId);
+            if (existingGuide == null) return NotFound("Guide not found.");
 
             var comment = _mapper.Map<Comment>(request);
+            comment.User = existingUser;
+            comment.UserGuide = existingGuide;
             comment.Author = existingUser.Username;
             comment.UpdatedAt = DateTime.Now;
             comment.CreatedAt = DateTime.Now;

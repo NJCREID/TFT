@@ -52,6 +52,7 @@ namespace TFT_API.Persistence
             return query.Select(i => new ItemDto
             {
                 InGameKey = i.InGameKey,
+                Key = i.Key,
                 Name = i.Name,
                 Tags = i.Tags,
                 Recipe = i.Recipe,

@@ -36,7 +36,11 @@ const Table = ({ headers, rows, searchQuery }: TableProps) => {
 
   const filteredRows = useMemo(() => {
     if (!searchQuery) return rows;
-    return rows.filter((row) => String(row["name"]).toLowerCase().includes(searchQuery.toLowerCase()));
+    return rows.filter((row) =>
+      String((row.object as RowObject).name)
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
+    );
   }, [searchQuery, rows, headers]);
 
   const sortedRows = useMemo(() => {

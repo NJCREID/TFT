@@ -8,9 +8,9 @@ import "./statstable.css";
 
 const leagueTiers = [
   { key: "", name: "All", imageUrl: "/images/general/all-option.svg" },
-  { key: "Challenger", name: "Challenger", imageUrl: "images/regalia/TFT_Regalia_Challenger.png" },
-  { key: "GrandMaster", name: "Grand Master", imageUrl: "images/regalia/TFT_Regalia_GrandMaster.png" },
-  { key: "Master", name: "Master", imageUrl: "images/regalia/TFT_Regalia_Master.png" },
+  { key: "Challenger", name: "Challenger", imageUrl: "/images/regalia/TFT_Regalia_Challenger.png" },
+  { key: "GrandMaster", name: "Grand Master", imageUrl: "/images/regalia/TFT_Regalia_GrandMaster.png" },
+  { key: "Master", name: "Master", imageUrl: "/images/regalia/TFT_Regalia_Master.png" },
 ];
 
 export type RowObject = { name: string; inGameKey: string };

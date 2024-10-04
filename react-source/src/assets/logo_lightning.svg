@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+  xmlns:mydata="http://www.w3.org/2000/svg"
+  mydata:contrastcolor="393b3c"
+  mydata:template="Contrast"
+  mydata:presentation="2.5"
+  mydata:layouttype="undefined"
+  mydata:specialfontid="undefined"
+  mydata:id1="199"
+  mydata:id2="079"
+  mydata:companyname="Team Tactix"
+  mydata:companytagline=""
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="42 155 170 160"
+>
+  <defs style="animation-play-state: running">
+    <filter
+      id="electric-filter"
+      x="-50%"
+      y="-50%"
+      width="200%"
+      height="200%"
+      style="animation-play-state: running"
+    >
+      <feFlood
+        flood-color="#ffffff"
+        result="flood-white"
+        style="animation-play-state: running"
+      ></feFlood>
+      <feFlood
+        flood-color="#d10754"
+        result="flood-accent"
+        style="animation-play-state: running"
+      ></feFlood>
+      <feComposite
+        operator="out"
+        in="flood-accent"
+        in2="SourceAlpha"
+        result="comp"
+        style="animation-play-state: running"
+      ></feComposite>
+      <feGaussianBlur
+        in="comp"
+        result="comp"
+        stdDeviation="0.4"
+        style="animation-play-state: running"
+      ></feGaussianBlur>
+      <feComposite
+        operator="in"
+        in="comp"
+        in2="SourceAlpha"
+        result="comp"
+        style="animation-play-state: running"
+      ></feComposite>
+      <feComposite
+        operator="in"
+        in="flood-white"
+        in2="SourceAlpha"
+        result="comp2"
+        style="animation-play-state: running"
+      ></feComposite>
+      <feGaussianBlur
+        in="comp2"
+        result="comp2"
+        stdDeviation="0.4"
+        style="animation-play-state: running"
+      ></feGaussianBlur>
+      <feBlend
+        in="comp"
+        in2="comp2"
+        result="output"
+        mode="screen"
+        style="animation-play-state: running"
+      ></feBlend>
+    </filter>
+    <filter
+      id="electric-electric"
+      x="-50%"
+      y="-50%"
+      width="200%"
+      height="200%"
+      style="animation-play-state: running"
+    >
+      <feTurbulence
+        baseFrequency="0.08"
+        type="fractalNoise"
+        numOctaves="1"
+        seed="1"
+        result="noise"
+        style="animation-play-state: running"
+      ></feTurbulence>
+      <feColorMatrix
+        in="noise"
+        result="noise"
+        type="hueRotate"
+        values="90"
+        style="animation-play-state: running"
+      >
+        <animate
+          attributeType="XML"
+          attributeName="values"
+          values="0;180;360"
+          dur="3s"
+          repeatCount="indefinite"
+          style="animation-play-state: running"
+        ></animate>
+      </feColorMatrix>
+      <feDisplacementMap
+        in="SourceGraphic"
+        xChannelSelector="R"
+        in2="noise"
+        scale="13"
+        result="lines"
+        style="animation-play-state: running"
+      ></feDisplacementMap>
+      <feGaussianBlur
+        in="lines"
+        result="output"
+        stdDeviation="10"
+        style="animation-play-state: running"
+      ></feGaussianBlur>
+      <feBlend
+        in="lines"
+        in2="output"
+        result="output"
+        mode="screen"
+        style="animation-play-state: running"
+      ></feBlend>
+    </filter>
+  </defs>
+  <defs style="animation-play-state: running">
+    <linearGradient
+      x1="65"
+      y1="235"
+      x2="485"
+      y2="235"
+      gradientUnits="userSpaceOnUse"
+      id="color-12797432201"
+      style="animation-play-state: running"
+    >
+      <stop
+        offset="0"
+        stop-color="#bdc3c7"
+        style="animation-play-state: running"
+      ></stop>
+      <stop
+        offset="1"
+        stop-color="#767a7c"
+        style="animation-play-state: running"
+      ></stop>
+    </linearGradient>
+  </defs>
+  <g
+    fill="url(#color-12797432201)"
+    fill-rule="none"
+    stroke="none"
+    stroke-width="1"
+    stroke-linecap="butt"
+    stroke-linejoin="miter"
+    stroke-miterlimit="10"
+    stroke-dasharray=""
+    stroke-dashoffset="0"
+    font-family="none"
+    font-weight="none"
+    font-size="none"
+    text-anchor="none"
+    style="mix-blend-mode: normal; animation-play-state: running"
+  >
+    <g
+      data-paper-data='{"isGlobalGroup":true,"bounds":{"x":64.99999999999999,"y":172.8381773222716,"width":420,"height":124.32364535545682}}'
+      style="animation-play-state: running"
+    >
+      <g
+        data-paper-data='{"fillRule":"evenodd","fillRuleOriginal":"evenodd","isIcon":true,"iconStyle":"standalone","selectedEffects":{"container":"","transformation":"rotate0;translate50","pattern":""},"bounds":{"x":64.99999999999999,"y":172.8381773222716,"width":125.39267433083053,"height":124.32364535545682},"iconType":"initial","initialText":"TT","rawInitialId":199,"disableIconEffects":"true","monogramSpecial":"half-moon","suitableAsStandaloneIcon":true}'
+        fill-rule="evenodd"
+        style="animation-play-state: running"
+      >
+        <path
+          d="M65,235c0,-34.331 27.83078,-62.16182 62.16182,-62.16182c14.47805,0 27.79998,4.94964 38.36603,13.24887c-8.04621,-4.48007 -17.31339,-7.03278 -27.17689,-7.03278c-30.89795,0 -55.94564,25.04761 -55.94564,55.94573c0,30.89795 25.04769,55.94564 55.94564,55.94564c9.86349,0 19.13068,-2.55244 27.17689,-7.03287c-10.56605,8.29941 -23.88799,13.24905 -38.36603,13.24905c-34.33105,0 -62.16182,-27.83078 -62.16182,-62.16182zM190.39267,235c0,27.4648 -22.26439,49.72946 -49.72941,49.72946c-11.58245,0 -22.24003,-3.95971 -30.69292,-10.59923c6.43719,3.58432 13.85094,5.62627 21.7416,5.62627c24.71846,0 44.75609,-20.03818 44.75609,-44.7565c0,-24.7185 -20.03764,-44.75658 -44.75609,-44.75658c-7.89066,0 -15.30441,2.04216 -21.7416,5.62631c8.45288,-6.63929 19.11046,-10.59937 30.69292,-10.59937c27.46503,0 49.72941,22.26484 49.72941,49.72964zM116.78329,223.3845v30.90262h-7.72566v-30.90262h-9.61655v-7.67163h26.95876v7.67163zM146.33527,223.3845v30.90262h-7.72566v-30.90262h-9.61655v-7.67163h26.95876v7.67163z"
+          data-paper-data='{"isPathIcon":true}'
+          style="animation-play-state: running"
+        ></path>
+      </g>
+    </g>
+  </g>
+  <g
+    fill-rule="none"
+    font-family="none"
+    font-weight="none"
+    font-size="none"
+    text-anchor="none"
+    style="mix-blend-mode: normal; animation-play-state: running"
+    filter="url(#electric-electric)"
+    fill="none"
+    stroke="#d10754"
+    stroke-width="2.5"
+  >
+    <g
+      data-paper-data='{"isGlobalGroup":true,"bounds":{"x":64.99999999999999,"y":172.8381773222716,"width":420,"height":124.32364535545682}}'
+      style="animation-play-state: running"
+    >
+      <g
+        data-paper-data='{"fillRule":"evenodd","fillRuleOriginal":"evenodd","isIcon":true,"iconStyle":"standalone","selectedEffects":{"container":"","transformation":"rotate0;translate50","pattern":""},"bounds":{"x":64.99999999999999,"y":172.8381773222716,"width":125.39267433083053,"height":124.32364535545682},"iconType":"initial","initialText":"TT","rawInitialId":199,"disableIconEffects":"true","monogramSpecial":"half-moon","suitableAsStandaloneIcon":true}'
+        fill-rule="evenodd"
+        style="animation-play-state: running"
+      >
+        <path
+          d="M65,235c0,-34.331 27.83078,-62.16182 62.16182,-62.16182c14.47805,0 27.79998,4.94964 38.36603,13.24887c-8.04621,-4.48007 -17.31339,-7.03278 -27.17689,-7.03278c-30.89795,0 -55.94564,25.04761 -55.94564,55.94573c0,30.89795 25.04769,55.94564 55.94564,55.94564c9.86349,0 19.13068,-2.55244 27.17689,-7.03287c-10.56605,8.29941 -23.88799,13.24905 -38.36603,13.24905c-34.33105,0 -62.16182,-27.83078 -62.16182,-62.16182zM190.39267,235c0,27.4648 -22.26439,49.72946 -49.72941,49.72946c-11.58245,0 -22.24003,-3.95971 -30.69292,-10.59923c6.43719,3.58432 13.85094,5.62627 21.7416,5.62627c24.71846,0 44.75609,-20.03818 44.75609,-44.7565c0,-24.7185 -20.03764,-44.75658 -44.75609,-44.75658c-7.89066,0 -15.30441,2.04216 -21.7416,5.62631c8.45288,-6.63929 19.11046,-10.59937 30.69292,-10.59937c27.46503,0 49.72941,22.26484 49.72941,49.72964zM116.78329,223.3845v30.90262h-7.72566v-30.90262h-9.61655v-7.67163h26.95876v7.67163zM146.33527,223.3845v30.90262h-7.72566v-30.90262h-9.61655v-7.67163h26.95876v7.67163z"
+          data-paper-data='{"isPathIcon":true}'
+          style="animation-play-state: running"
+        ></path>
+      </g>
+    </g>
+  </g>
+  <g
+    fill-rule="none"
+    font-family="none"
+    font-weight="none"
+    font-size="none"
+    text-anchor="none"
+    style="mix-blend-mode: normal; animation-play-state: running"
+    filter="url(#electric-electric)"
+    fill="none"
+    stroke="#ffffff"
+    opacity="0.5"
+  >
+    <g
+      data-paper-data='{"isGlobalGroup":true,"bounds":{"x":64.99999999999999,"y":172.8381773222716,"width":420,"height":124.32364535545682}}'
+      style="animation-play-state: running"
+    >
+      <g
+        data-paper-data='{"fillRule":"evenodd","fillRuleOriginal":"evenodd","isIcon":true,"iconStyle":"standalone","selectedEffects":{"container":"","transformation":"rotate0;translate50","pattern":""},"bounds":{"x":64.99999999999999,"y":172.8381773222716,"width":125.39267433083053,"height":124.32364535545682},"iconType":"initial","initialText":"TT","rawInitialId":199,"disableIconEffects":"true","monogramSpecial":"half-moon","suitableAsStandaloneIcon":true}'
+        fill-rule="evenodd"
+        style="animation-play-state: running"
+      >
+        <path
+          d="M65,235c0,-34.331 27.83078,-62.16182 62.16182,-62.16182c14.47805,0 27.79998,4.94964 38.36603,13.24887c-8.04621,-4.48007 -17.31339,-7.03278 -27.17689,-7.03278c-30.89795,0 -55.94564,25.04761 -55.94564,55.94573c0,30.89795 25.04769,55.94564 55.94564,55.94564c9.86349,0 19.13068,-2.55244 27.17689,-7.03287c-10.56605,8.29941 -23.88799,13.24905 -38.36603,13.24905c-34.33105,0 -62.16182,-27.83078 -62.16182,-62.16182zM190.39267,235c0,27.4648 -22.26439,49.72946 -49.72941,49.72946c-11.58245,0 -22.24003,-3.95971 -30.69292,-10.59923c6.43719,3.58432 13.85094,5.62627 21.7416,5.62627c24.71846,0 44.75609,-20.03818 44.75609,-44.7565c0,-24.7185 -20.03764,-44.75658 -44.75609,-44.75658c-7.89066,0 -15.30441,2.04216 -21.7416,5.62631c8.45288,-6.63929 19.11046,-10.59937 30.69292,-10.59937c27.46503,0 49.72941,22.26484 49.72941,49.72964zM116.78329,223.3845v30.90262h-7.72566v-30.90262h-9.61655v-7.67163h26.95876v7.67163zM146.33527,223.3845v30.90262h-7.72566v-30.90262h-9.61655v-7.67163h26.95876v7.67163z"
+          data-paper-data='{"isPathIcon":true}'
+          style="animation-play-state: running"
+        ></path>
+      </g>
+    </g>
+  </g>
+  <g
+    fill-rule="none"
+    font-family="none"
+    font-weight="none"
+    font-size="none"
+    text-anchor="none"
+    style="mix-blend-mode: normal; animation-play-state: running"
+    filter="url(#electric-filter)"
+    fill="#ffffff"
+    stroke="none"
+  >
+    <g
+      data-paper-data='{"isGlobalGroup":true,"bounds":{"x":64.99999999999999,"y":172.8381773222716,"width":420,"height":124.32364535545682}}'
+      style="animation-play-state: running"
+    >
+      <g
+        data-paper-data='{"fillRule":"evenodd","fillRuleOriginal":"evenodd","isIcon":true,"iconStyle":"standalone","selectedEffects":{"container":"","transformation":"rotate0;translate50","pattern":""},"bounds":{"x":64.99999999999999,"y":172.8381773222716,"width":125.39267433083053,"height":124.32364535545682},"iconType":"initial","initialText":"TT","rawInitialId":199,"disableIconEffects":"true","monogramSpecial":"half-moon","suitableAsStandaloneIcon":true}'
+        fill-rule="evenodd"
+        style="animation-play-state: running"
+      >
+        <path
+          d="M65,235c0,-34.331 27.83078,-62.16182 62.16182,-62.16182c14.47805,0 27.79998,4.94964 38.36603,13.24887c-8.04621,-4.48007 -17.31339,-7.03278 -27.17689,-7.03278c-30.89795,0 -55.94564,25.04761 -55.94564,55.94573c0,30.89795 25.04769,55.94564 55.94564,55.94564c9.86349,0 19.13068,-2.55244 27.17689,-7.03287c-10.56605,8.29941 -23.88799,13.24905 -38.36603,13.24905c-34.33105,0 -62.16182,-27.83078 -62.16182,-62.16182zM190.39267,235c0,27.4648 -22.26439,49.72946 -49.72941,49.72946c-11.58245,0 -22.24003,-3.95971 -30.69292,-10.59923c6.43719,3.58432 13.85094,5.62627 21.7416,5.62627c24.71846,0 44.75609,-20.03818 44.75609,-44.7565c0,-24.7185 -20.03764,-44.75658 -44.75609,-44.75658c-7.89066,0 -15.30441,2.04216 -21.7416,5.62631c8.45288,-6.63929 19.11046,-10.59937 30.69292,-10.59937c27.46503,0 49.72941,22.26484 49.72941,49.72964zM116.78329,223.3845v30.90262h-7.72566v-30.90262h-9.61655v-7.67163h26.95876v7.67163zM146.33527,223.3845v30.90262h-7.72566v-30.90262h-9.61655v-7.67163h26.95876v7.67163z"
+          data-paper-data='{"isPathIcon":true}'
+          style="animation-play-state: running"
+        ></path>
+      </g>
+    </g>
+  </g>
+</svg>

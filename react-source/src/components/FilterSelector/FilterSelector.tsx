@@ -19,19 +19,25 @@ const FilterSelector = ({ items, onSelect }: FilterSelectorProps) => {
 
   const handleClick = (index: number) => {
     setIsActive(index);
-    const selectedItem = items[index].key == "all" ? items[index].key : items[index].key || items[index].name;
+    const selectedItem =
+      items[index].key == "all"
+        ? items[index].key
+        : items[index].inGameKey
+        ? items[index].inGameKey
+        : items[index].key || items[index].name;
     onSelect(selectedItem ?? "");
   };
 
   return (
     <div className="app__filterselector">
       {items.map((item, index) => {
-        const imageUrl =
-          item.imageUrl || item.key === "all"
-            ? "/images/general/all-option.svg"
-            : item.inGameKey
-            ? getImageUrl(item.inGameKey, "items")
-            : "";
+        const imageUrl = item.imageUrl
+          ? item.imageUrl
+          : item.key === "all"
+          ? "/images/general/all-option.svg"
+          : item.inGameKey
+          ? getImageUrl(item.inGameKey, "items")
+          : "";
         const altText = item.inGameKey || item.name;
 
         return (

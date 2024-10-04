@@ -8,7 +8,7 @@ namespace TFT_API.Models.UserGuides
     {
         public int Id { get; set; }
         public int? UserId { get; set; }
-        public PersistedUser User { get; set; } = new PersistedUser();
+        public PersistedUser? User { get; set; } 
         public PersistedUnit? InitialUnit { get; set; } 
         public string? UsersUsername { get; set; } = string.Empty;
         public int UpVotes { get; set; }

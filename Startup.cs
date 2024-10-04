@@ -91,7 +91,7 @@ namespace TFT_API
             
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, TeamBuilderService teamBuilderService)
         {
             if (env.IsDevelopment())
             {
@@ -147,6 +147,7 @@ namespace TFT_API
                 endpoints.MapControllers();
                 endpoints.MapFallbackToFile("dist/index.html");
             });
+            teamBuilderService.BuildTeams().GetAwaiter().GetResult();
         }
     }
 }

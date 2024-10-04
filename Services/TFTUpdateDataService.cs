@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using TFT_API.Data;
 using TFT_API.Interfaces;
@@ -31,10 +32,10 @@ namespace TFT_API.Services
 
         public async Task UpdateSetDataAsync()
         {
-            await FetchAndSaveAugmentsAsync();
-            await FetchAndSaveChampionsAsync();
+            //await FetchAndSaveAugmentsAsync();
+            //await FetchAndSaveChampionsAsync();
             await FetchAndSaveItemsAsync();
-            await FetchAndSaveTraitsAsync();
+            //await FetchAndSaveTraitsAsync();
             ClearCacheEntries();
         }
 
@@ -96,9 +97,9 @@ namespace TFT_API.Services
             var url = _url.Replace("{type}", "items");
             var items = await _TFTDataService.FetchDataAsync<Item>(url, "items");
 
-            var imageDirecectory = _baseImageDirectory + "/items";
+            //var imageDirecectory = _baseImageDirectory + "/items";
 
-            await _TFTDataService.SaveImagesAsync(items, item => item.ImageUrl, item => item.IngameKey, imageDirecectory);
+            //await _TFTDataService.SaveImagesAsync(items, item => item.ImageUrl, item => item.IngameKey, imageDirecectory);
 
             var persistedItems = ProcessItems(items);
 
@@ -185,9 +186,19 @@ namespace TFT_API.Services
             return  [..items.Select(item =>
             {
                 item.FromDesc = ProcessDescription(item.FromDesc);
-                if (item.Tags == null || item.Tags.Count == 0)
+                var properties = item.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                foreach (var property in properties)
                 {
-                    item.Tags = item.Desc.Contains("Support item") ? ["support"] : ["artifact"];
+                    var value = property.GetValue(item)?.ToString();
+
+                    if (property.Name.StartsWith("Is", StringComparison.OrdinalIgnoreCase) && value != null)
+                    {
+                        string tag = property.Name.Substring(2).ToLower();
+                        if (!item.Tags.Contains(tag))
+                        {
+                            item.Tags.Add(tag);
+                        }
+                    }
                 }
                 if(item.Compositions != null && item.Compositions.Count > 0){
                     item.Compositions = item.Compositions

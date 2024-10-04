@@ -43,7 +43,7 @@ namespace TFT_API.Helper
             CreateMap<Champion, PersistedUnit>()
                 .ForMember(dest => dest.InGameKey, opt => opt.MapFrom(src => src.IngameKey))
                 .ForMember(dest => dest.Health, opt => opt.MapFrom(src => src.Health.Select(h => (int)Math.Round((double)h)).ToList()))
-                .ForMember(dest => dest.Health, opt => opt.MapFrom(src => src.Cost.FirstOrDefault()))
+                .ForMember(dest => dest.Tier, opt => opt.MapFrom(src => src.Cost.FirstOrDefault()))
                 .ForMember(dest => dest.Traits, opt => opt.MapFrom<TraitResolver>());
             CreateMap<Item, PersistedItem>()
                 .ForMember(dest => dest.InGameKey, opt => opt.MapFrom(src => src.IngameKey))

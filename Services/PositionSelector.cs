@@ -138,6 +138,10 @@ namespace TFT_API.Services
 
         private static int FindAvailableFrontPosition(Dictionary<int, string> occupiedHexes, int frontCount)
         {
+            if(frontCount == 1)
+            {
+                if (!occupiedHexes.ContainsKey(3)) return 3;
+            }
             if(frontCount == 2)
             {
                 if (!occupiedHexes.ContainsKey(1)) return 1;
@@ -157,8 +161,10 @@ namespace TFT_API.Services
             {
                 if (!occupiedHexes.ContainsKey(i) && !occupiedHexes.ContainsKey(i - 1)) return i;
             }
-            if (!occupiedHexes.ContainsKey(2)) return 2;
-            if (!occupiedHexes.ContainsKey(4)) return 4;
+            for (var i = 1; i < 6; i++)
+            {
+                if (!occupiedHexes.ContainsKey(i)) return i;
+            }
             if ((!occupiedHexes.ContainsKey(0)) && !occupiedHexes.ContainsKey(7)) return 0;
             if ((!occupiedHexes.ContainsKey(6)) && !occupiedHexes.ContainsKey(13)) return 6;
 
