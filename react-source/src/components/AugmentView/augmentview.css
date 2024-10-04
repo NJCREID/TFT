@@ -1,0 +1,17 @@
+.app__augmentview {
+  display: flex;
+  border: 3px solid;
+  aspect-ratio: 1/1;
+  user-select: none;
+}
+
+.app__augmentview.tier1 {
+  border-color: var(--color-augment-tier1);
+}
+.app__augmentview.tier2 {
+  border-color: var(--color-augment-tier2);
+}
+
+.app__augmentview.tier3 {
+  border-image: var(--color-augment-tier3);
+}

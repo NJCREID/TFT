@@ -8,10 +8,11 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # React (Public Folder)
-public/node_modules
-public/dist
-public/dist-ssr
-public/*.local
+node_modules
+
+dist-ssr
+*.local
+.env
 
 # Editor directories and files
 .vscode/*
@@ -25,6 +26,9 @@ public/*.local
 *.sw?
 
 # ASP.NET
+wwwroot
+Migrations/
+.github/
 bin/
 obj/
 .vs/

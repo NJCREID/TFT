@@ -1,13 +1,11 @@
 ﻿using TFT_API.Models.Augments;
-using TFT_API.Models.Item;
 
 namespace TFT_API.Interfaces
 {
     public interface IAugmentDataAccess
     {
-        List<PersistedAugment> GetAugments();
-        PersistedAugment? GetAugmentByKey(string key);
-        PersistedAugment AddAugment(PersistedAugment item);
-        List<PersistedAugment> GetAugmentsByTier(int tier);
+        Task<List<AugmentDto>> GetAugmentsAsync();
+        Task<AugmentDto?> GetAugmentByKeyAsync(string key);
+        Task<List<AugmentDto>> GetAugmentsByTierAsync(int tier);
     }
 }

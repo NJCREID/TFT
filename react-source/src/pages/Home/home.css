@@ -1,0 +1,9 @@
+.app__home {
+  height: 100%;
+}
+
+.app__home-feed {
+  display: flex;
+  justify-content: center;
+  height: calc(100% - 49px);
+}

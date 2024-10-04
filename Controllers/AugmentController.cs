@@ -1,54 +1,59 @@
-﻿using AutoMapper;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
+using System.ComponentModel.DataAnnotations;
 using TFT_API.Interfaces;
 using TFT_API.Models.Augments;
-using TFT_API.Models.Item;
 
 namespace TFT_API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class AugmentController : Controller
+    public class AugmentController(IAugmentDataAccess augmentRepo, IMemoryCache memoryCache) : ControllerBase
     {
-        private readonly IAugmentDataAccess _augmentRepo;
-        private readonly IMapper _mapper;
-        public AugmentController(IAugmentDataAccess augmentRepo, IMapper mapper)
-        {
-            _augmentRepo = augmentRepo;
-            _mapper = mapper;
-        }
+        private readonly IAugmentDataAccess _augmentRepo = augmentRepo;
+        private readonly IMemoryCache _memoryCache = memoryCache;
 
+        [AllowAnonymous]
         [HttpGet]
-        public ActionResult<List<AugmentDto>> GetAugments()
+        public async Task<ActionResult<List<AugmentDto>>> GetAugments()
         {
-            var items = _augmentRepo.GetAugments();
-            return Ok(_mapper.Map<List<AugmentDto>>(items));
+            var cacheKey = "augments";
+            if(!_memoryCache.TryGetValue(cacheKey, out List<AugmentDto>? cachedAugments))
+            {
+                cachedAugments = await _augmentRepo.GetAugmentsAsync();
+                var cacheEntryOptions = new MemoryCacheEntryOptions
+                {
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(30)
+                };
+                _memoryCache.Set(cacheKey, cachedAugments, cacheEntryOptions);
+            }
+            if (cachedAugments == null || cachedAugments.Count == 0)
+            {
+                return NotFound("No augmnets found.");
+            }
+            return Ok(cachedAugments);
         }
 
+        [AllowAnonymous]
         [HttpGet("tier/{tier}")]
-        public ActionResult<List<AugmentDto>> GetAugmentByTier(int tier)
+        public async Task<ActionResult<List<AugmentDto>>> GetAugmentByTier([FromRoute, Range(1, 3, ErrorMessage = "Tier must be between 1 and 3")] int tier)
         {
-            var items = _augmentRepo.GetAugmentsByTier(tier);
-            return Ok(_mapper.Map<List<AugmentDto>>(items));
+            var augments = await _augmentRepo.GetAugmentsByTierAsync(tier);
+            if (augments == null || augments.Count == 0)
+            {
+                return NotFound($"No augments found for tier {tier}.");
+            }
+            return Ok(augments);
         }
 
+        [AllowAnonymous]
         [HttpGet("{key}", Name = "GetAugment")]
-        public ActionResult<AugmentDto> GetAugmentByKey(string key)
+        public async Task<ActionResult<AugmentDto>> GetAugmentByKey([FromRoute, Required(ErrorMessage = "Key is required")] string key)
         {
-            var item = _augmentRepo.GetAugmentByKey(key);
-            if (item == null) return NotFound();
-            return Ok(_mapper.Map<AugmentDto>(item));
-        }
-
-        [HttpPost]
-        public ActionResult<AugmentDto> AddAugment(PersistedAugment request)
-        {
-            var currentItems = _augmentRepo.GetAugments();
-            if (request == null) return BadRequest();
-            if (currentItems.Any(c => c.Key == request.Key))
-                return Conflict("A item with that key already exists.");
-            var result = _augmentRepo.AddAugment(request);
-            return CreatedAtRoute("GetAugment", new { key = result.Key }, result);
+            var augments = await _augmentRepo.GetAugmentByKeyAsync(key);
+            if (augments == null) return NotFound($"Augment with key '{key}' not found.");
+            return Ok(augments);
         }
     }
 }

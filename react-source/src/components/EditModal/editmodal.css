@@ -1,0 +1,46 @@
+.app__editmodal {
+  position: absolute;
+  top: 12rem;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: calc(100% - 32px);
+  max-width: 400px;
+  height: fit-content;
+  border-radius: 0.375rem;
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-lightred);
+  padding: 2rem;
+}
+
+.app__editmodal p {
+  margin-bottom: 2rem;
+}
+
+.app__editmodal-input {
+  margin-bottom: 1rem;
+}
+
+.app__editmodal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: end;
+}
+
+.app__editmodal input[type="file"] {
+  display: none;
+}
+
+.app__editmodal-image {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  width: 100%;
+  border: 2px solid var(--color-lightred);
+  outline: none;
+  margin-bottom: 1rem;
+  background-color: white;
+  overflow: hidden;
+}

@@ -5,61 +5,72 @@ using TFT_API.Models.Votes;
 
 namespace TFT_API.Persistence
 {
-    public class VoteRepository : IVoteDataAccess
+    public class VoteRepository(TFTContext context) : IVoteDataAccess
     {
-        private readonly TFTContext _context;
+        private readonly TFTContext _context = context;
 
-        public VoteRepository(TFTContext context)
-        {
-            _context = context;
-        }
-
-        public Vote AddVote(Vote vote)
+        public async Task<VoteDto> AddVoteAsync(Vote vote)
         {
             _context.Votes.Add(vote);
-            return Save(vote);
+            await _context.SaveChangesAsync();
+
+            return MapVoteToDto(vote);
         }
 
-        public void DeleteVote(int id)
+        public async Task DeleteVoteAsync(int id)
         {
-            var vote = _context.Votes.Find(id);
+            var vote = await _context.Votes.FindAsync(id);
             if (vote != null)
             {
                 _context.Votes.Remove(vote);
-                _context.SaveChanges();  
+                await _context.SaveChangesAsync();
             }
         }
-        public Vote? GetVoteById(int id)
+
+        public async Task<VoteDto?> GetVoteByIdAsync(int id)
         {
-            return _context.Votes.Find(id);
+            return await _context.Votes
+                .Where(v => v.Id == id)
+                .Select(v => MapVoteToDto(v))
+                .FirstOrDefaultAsync();
         }
 
-        public List<Vote> GetVotesByUserId(int userId)
+        public async Task<List<VoteDto>> GetVotesByUserIdAsync(int userId)
         {
-            return _context.Votes.AsNoTracking().Where(v => v.UserId == userId).ToList();
+            return await _context.Votes
+                .Where(v => v.UserId == userId)
+                .Select(v => MapVoteToDto(v))
+                .ToListAsync();
         }
 
-        public Vote? GetVoteStatus(int userId, int userGuideId)
+        public async Task<Vote?> GetVoteStatusAsync(int userId, int userGuideId)
         {
-            return _context.Votes.AsNoTracking().FirstOrDefault(v => v.UserId == userId && v.UserGuideId == userGuideId);
+            return await _context.Votes
+                .Where(v => v.UserId == userId && v.UserGuideId == userGuideId)
+                .FirstOrDefaultAsync();
         }
 
-        public Vote? UpdateVote(Vote vote)
+        public async Task<VoteDto?> UpdateVoteAsync(Vote vote)
         {
-            var currentVote = GetVoteById(vote.Id);
+            var currentVote = await _context.Votes.FindAsync(vote.Id);
             if (currentVote != null)
             {
                 _context.Entry(currentVote).CurrentValues.SetValues(vote);
-                return Save(vote);
+                await _context.SaveChangesAsync();
+                return MapVoteToDto(vote);
             }
             return null;
         }
 
-        public Vote Save(Vote vote)
+        private static VoteDto MapVoteToDto(Vote vote)
         {
-            _context.SaveChanges();
-            return vote;
+            return new VoteDto
+            {
+                Id = vote.Id,
+                UserId = vote.UserId,
+                UserGuideId = vote.UserGuideId,
+                IsUpvote = vote.IsUpvote
+            };
         }
-
     }
 }

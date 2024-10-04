@@ -13,8 +13,10 @@ namespace TFT_API.Models.User
         public int CommentsCount { get; set; }
         public int UpVotesCount { get; set; }
         public int DownVotesCount { get; set; }
+        public string ProfileImageUrl { get; set; } = string.Empty;
         public List<UserGuide> UserGuides { get; set; } = [];
-        public List<Saved> Saved { get; set; } = [];
+        public List<Comment> Comments { get; set; } = [];
+        public List<Vote> Votes { get; set; } = [];
         public string PasswordHash { get; set; } = string.Empty;
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }

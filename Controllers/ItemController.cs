@@ -1,53 +1,79 @@
-﻿using AutoMapper;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TFT_API.Interfaces;
 using TFT_API.Models.Item;
+using Microsoft.Extensions.Caching.Memory;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace TFT_API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ItemController : Controller
+    public class ItemController(IItemDataAccess itemRepo, IMemoryCache memoryCache) : ControllerBase
     {
-        private readonly IItemDataAccess _itemRepo;
-        private readonly IMapper _mapper;
-        public ItemController(IItemDataAccess itemRepo, IMapper mapper)
+        private readonly IItemDataAccess _itemRepo = itemRepo;
+        private readonly IMemoryCache _memoryCache = memoryCache;
+
+        [AllowAnonymous]
+        [HttpGet("full")]
+        public async Task<ActionResult<List<ItemDto>>> GetFullItems()
         {
-            _itemRepo = itemRepo;
-            _mapper = mapper;
+            var cacheKey = "items_full";
+            if(!_memoryCache.TryGetValue(cacheKey, out List<ItemDto>? cachedItems))
+            {
+                cachedItems = await _itemRepo.GetFullItemsAsync();
+                var cacheEntryOptions = new MemoryCacheEntryOptions
+                {
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(30)
+                };
+                _memoryCache.Set(cacheKey, cachedItems, cacheEntryOptions);
+            }
+            if(cachedItems == null || cachedItems.Count == 0)
+            {
+                return NotFound("No items found.");
+            }
+            return Ok(cachedItems);
         }
 
-        [HttpGet]
-        public ActionResult<List<ItemDto>> GetItems()
+        [AllowAnonymous]
+        [HttpGet("partial")]
+        public async Task<ActionResult<List<PartialItemDto>>> GetPartialItems()
         {
-            var items = _itemRepo.GetItems();
-            return Ok(_mapper.Map<List<ItemDto>>(items));
+            var cacheKey = "items_partial";
+            if (!_memoryCache.TryGetValue(cacheKey, out List<PartialItemDto>? cachedItems))
+            {
+                cachedItems = await _itemRepo.GetPartialItemsAsync();
+                var cacheEntryOptions = new MemoryCacheEntryOptions
+                {
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(30)
+                };
+                _memoryCache.Set(cacheKey, cachedItems, cacheEntryOptions);
+            }
+            if (cachedItems == null || cachedItems.Count == 0)
+            {
+                return NotFound("No items found.");
+            }
+            return Ok(cachedItems);
         }
 
+        [AllowAnonymous]
         [HttpGet("components")]
-        public ActionResult<List<ItemDto>>  GetComponents()
+        public async Task<ActionResult<List<ItemDto>>>  GetComponents()
         {
-            var items = _itemRepo.GetComponents();
-            return Ok(_mapper.Map<List<ItemDto>>(items));
+            var items = await _itemRepo.GetComponentsAsync();
+            if (items == null || items.Count == 0) return NotFound("No components found.");
+            return Ok(items);
         }
 
+        [AllowAnonymous]
         [HttpGet("{key}", Name = "GetItem")]
-        public ActionResult<ItemDto> GetItemByKey(string key)
+        public async Task<ActionResult<ItemDto>> GetItemByKey(
+            [FromRoute, Required, MinLength(1, ErrorMessage = "Key cannot be empty")] string key)
         {
-            var item = _itemRepo.GetItemByKey(key);
-            if (item == null) return NotFound();
-            return Ok(_mapper.Map<ItemDto>(item));
-        }
-
-        [HttpPost]
-        public ActionResult<ItemDto> AddItem(PersistedItem request)
-        {
-            var currentItems = _itemRepo.GetItems();
-            if (request == null) return BadRequest();
-            if (currentItems.Any(c => c.Key == request.Key))
-                return Conflict("A item with that key already exists.");
-            var result = _itemRepo.AddItem(request);
-            return CreatedAtRoute("GetItem", new { key = result.Key }, result);
+            var item = await _itemRepo.GetItemByKeyAsync(key);
+            if (item == null) NotFound($"Item with key '{key}' not found.");
+            return Ok(item);
         }
     }
 }

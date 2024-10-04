@@ -34,10 +34,6 @@ namespace TFT_API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("InGameKey")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -76,7 +72,7 @@ namespace TFT_API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrl")
+                    b.Property<string>("FromDesc")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -87,12 +83,11 @@ namespace TFT_API.Migrations
                     b.Property<bool?>("IsComponent")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("IsHidden")
+                    b.Property<bool?>("IsEmblem")
                         .HasColumnType("bit");
 
-                    b.Property<string>("ItemStats")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool?>("IsHidden")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Key")
                         .IsRequired()
@@ -113,8 +108,11 @@ namespace TFT_API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("isEmblem")
-                        .HasColumnType("bit");
+                    b.Property<string>("TraitCompatabilityKey")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UnitCompatabilityKey")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -247,8 +245,12 @@ namespace TFT_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("BaseAugmentStatId")
+                    b.Property<int>("BaseAugmentStatId")
                         .HasColumnType("int");
+
+                    b.Property<string>("InGameKey")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -272,9 +274,72 @@ namespace TFT_API.Migrations
                     b.Property<int>("Games")
                         .HasColumnType("int");
 
+                    b.Property<string>("League")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("BaseAugmentStat");
+                });
+
+            modelBuilder.Entity("TFT_API.Models.Stats.CoOccurrence.BaseCoOccurrence", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Games")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BaseCoOccurrences");
+                });
+
+            modelBuilder.Entity("TFT_API.Models.Stats.CoOccurrence.CoOccurrence", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BaseCoOccurrenceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Key1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Key2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StatId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BaseCoOccurrenceId");
+
+                    b.HasIndex("StatId");
+
+                    b.ToTable("CoOccurrences");
                 });
 
             modelBuilder.Entity("TFT_API.Models.Stats.CompStats.BaseCompStat", b =>
@@ -287,6 +352,10 @@ namespace TFT_API.Migrations
 
                     b.Property<int>("Games")
                         .HasColumnType("int");
+
+                    b.Property<string>("League")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -301,8 +370,12 @@ namespace TFT_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("BaseCompStatId")
+                    b.Property<int>("BaseCompStatId")
                         .HasColumnType("int");
+
+                    b.Property<string>("InGameKey")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -354,6 +427,10 @@ namespace TFT_API.Migrations
                     b.Property<int>("Games")
                         .HasColumnType("int");
 
+                    b.Property<string>("League")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("BaseItemStat");
@@ -367,8 +444,12 @@ namespace TFT_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("BaseItemStatId")
+                    b.Property<int>("BaseItemStatId")
                         .HasColumnType("int");
+
+                    b.Property<string>("InGameKey")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -430,6 +511,10 @@ namespace TFT_API.Migrations
                     b.Property<int>("Games")
                         .HasColumnType("int");
 
+                    b.Property<string>("League")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("BaseTraitStat");
@@ -443,8 +528,12 @@ namespace TFT_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("BaseTraitStatId")
+                    b.Property<int>("BaseTraitStatId")
                         .HasColumnType("int");
+
+                    b.Property<string>("InGameKey")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -476,6 +565,10 @@ namespace TFT_API.Migrations
                     b.Property<int>("Games")
                         .HasColumnType("int");
 
+                    b.Property<string>("League")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("BaseUnitStat");
@@ -489,8 +582,12 @@ namespace TFT_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("BaseUnitStatId")
+                    b.Property<int>("BaseUnitStatId")
                         .HasColumnType("int");
+
+                    b.Property<string>("InGameKey")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -516,8 +613,12 @@ namespace TFT_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("BaseUnitStatId")
+                    b.Property<int>("BaseUnitStatId")
                         .HasColumnType("int");
+
+                    b.Property<string>("InGameKey")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -547,10 +648,6 @@ namespace TFT_API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("InGameKey")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -563,6 +660,10 @@ namespace TFT_API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Stats")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -590,15 +691,15 @@ namespace TFT_API.Migrations
                     b.Property<int>("Level")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PersistedTraitId")
+                    b.Property<int>("Rarity")
                         .HasColumnType("int");
 
-                    b.Property<int>("Rarity")
+                    b.Property<int>("TraitId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PersistedTraitId");
+                    b.HasIndex("TraitId");
 
                     b.ToTable("TraitTier");
                 });
@@ -624,8 +725,7 @@ namespace TFT_API.Migrations
                     b.Property<double>("AttackSpeed")
                         .HasColumnType("float");
 
-                    b.Property<string>("CenteredImageUrl")
-                        .IsRequired()
+                    b.Property<string>("CompatabilityType")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Cost")
@@ -640,15 +740,17 @@ namespace TFT_API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("InGameKey")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("IsHidden")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsItemIncompatible")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsTriggerUnit")
                         .HasColumnType("bit");
 
                     b.Property<string>("Key")
@@ -669,12 +771,11 @@ namespace TFT_API.Migrations
                     b.Property<int>("SkillId")
                         .HasColumnType("int");
 
-                    b.Property<string>("SplashImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Tier")
                         .HasColumnType("int");
+
+                    b.Property<string>("UniqueItemKey")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -696,10 +797,6 @@ namespace TFT_API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Key")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -772,6 +869,10 @@ namespace TFT_API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ProfileImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("UpVotesCount")
                         .HasColumnType("int");
 
@@ -782,33 +883,6 @@ namespace TFT_API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("TFT_API.Models.User.Saved", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("GuideId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PersistedUserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PersistedUserId");
-
-                    b.ToTable("SavedGuides");
                 });
 
             modelBuilder.Entity("TFT_API.Models.UserGuides.Comment", b =>
@@ -843,6 +917,8 @@ namespace TFT_API.Migrations
 
                     b.HasIndex("UserGuideId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Comments");
                 });
 
@@ -857,10 +933,7 @@ namespace TFT_API.Migrations
                     b.Property<int>("AugmentId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AutoGeneratedGuideId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserGuideId")
+                    b.Property<int>("UserGuideId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -880,16 +953,13 @@ namespace TFT_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AutoGeneratedGuideId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Tier")
                         .HasColumnType("int");
 
                     b.Property<int>("TraitId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserGuideId")
+                    b.Property<int>("UserGuideId")
                         .HasColumnType("int");
 
                     b.Property<int>("Value")
@@ -912,9 +982,6 @@ namespace TFT_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AutoGeneratedGuideId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Coordinates")
                         .HasColumnType("int");
 
@@ -924,7 +991,7 @@ namespace TFT_API.Migrations
                     b.Property<int>("UnitId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserGuideId")
+                    b.Property<int>("UserGuideId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -987,6 +1054,9 @@ namespace TFT_API.Migrations
                     b.Property<bool?>("IsArchived")
                         .HasColumnType("bit");
 
+                    b.Property<bool?>("IsAutoGenerated")
+                        .HasColumnType("bit");
+
                     b.Property<bool?>("IsDraft")
                         .HasColumnType("bit");
 
@@ -997,9 +1067,6 @@ namespace TFT_API.Migrations
                     b.Property<string>("Patch")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("PersistedUserId")
-                        .HasColumnType("int");
 
                     b.Property<string>("PlayStyle")
                         .IsRequired()
@@ -1036,14 +1103,11 @@ namespace TFT_API.Migrations
                     b.Property<int>("Views")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("isAutoGenerated")
-                        .HasColumnType("bit");
-
                     b.HasKey("Id");
 
                     b.HasIndex("InitialUnitId");
 
-                    b.HasIndex("PersistedUserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserGuides");
                 });
@@ -1075,6 +1139,8 @@ namespace TFT_API.Migrations
 
                     b.HasIndex("UserGuideId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Votes");
                 });
 
@@ -1094,22 +1160,49 @@ namespace TFT_API.Migrations
 
             modelBuilder.Entity("TFT_API.Models.Stats.AugmentStats.AugmentStat", b =>
                 {
-                    b.HasOne("TFT_API.Models.Stats.AugmentStats.BaseAugmentStat", null)
+                    b.HasOne("TFT_API.Models.Stats.AugmentStats.BaseAugmentStat", "BaseAugmentStat")
                         .WithMany("AugmentStats")
-                        .HasForeignKey("BaseAugmentStatId");
+                        .HasForeignKey("BaseAugmentStatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BaseAugmentStat");
                 });
 
-            modelBuilder.Entity("TFT_API.Models.Stats.CompStats.CompStat", b =>
+            modelBuilder.Entity("TFT_API.Models.Stats.CoOccurrence.CoOccurrence", b =>
                 {
-                    b.HasOne("TFT_API.Models.Stats.CompStats.BaseCompStat", null)
-                        .WithMany("CompStats")
-                        .HasForeignKey("BaseCompStatId");
+                    b.HasOne("TFT_API.Models.Stats.CoOccurrence.BaseCoOccurrence", "BaseCoOccurrence")
+                        .WithMany("CoOccurrences")
+                        .HasForeignKey("BaseCoOccurrenceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TFT_API.Models.Stats.Stat", "Stat")
                         .WithMany()
                         .HasForeignKey("StatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("BaseCoOccurrence");
+
+                    b.Navigation("Stat");
+                });
+
+            modelBuilder.Entity("TFT_API.Models.Stats.CompStats.CompStat", b =>
+                {
+                    b.HasOne("TFT_API.Models.Stats.CompStats.BaseCompStat", "BaseCompStat")
+                        .WithMany("CompStats")
+                        .HasForeignKey("BaseCompStatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TFT_API.Models.Stats.Stat", "Stat")
+                        .WithMany()
+                        .HasForeignKey("StatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BaseCompStat");
 
                     b.Navigation("Stat");
                 });
@@ -1133,61 +1226,78 @@ namespace TFT_API.Migrations
 
             modelBuilder.Entity("TFT_API.Models.Stats.ItemStats.ItemStat", b =>
                 {
-                    b.HasOne("TFT_API.Models.Stats.ItemStats.BaseItemStat", null)
+                    b.HasOne("TFT_API.Models.Stats.ItemStats.BaseItemStat", "BaseItemStat")
                         .WithMany("ItemStats")
-                        .HasForeignKey("BaseItemStatId");
+                        .HasForeignKey("BaseItemStatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TFT_API.Models.Stats.Stat", "Stat")
                         .WithMany()
                         .HasForeignKey("StatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("BaseItemStat");
 
                     b.Navigation("Stat");
                 });
 
             modelBuilder.Entity("TFT_API.Models.Stats.Stat", b =>
                 {
-                    b.HasOne("TFT_API.Models.Stats.AugmentStats.AugmentStat", null)
+                    b.HasOne("TFT_API.Models.Stats.AugmentStats.AugmentStat", "AugmentStat")
                         .WithMany("Stats")
-                        .HasForeignKey("AugmentStatId");
+                        .HasForeignKey("AugmentStatId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("AugmentStat");
                 });
 
             modelBuilder.Entity("TFT_API.Models.Stats.TraitStats.TraitStat", b =>
                 {
-                    b.HasOne("TFT_API.Models.Stats.TraitStats.BaseTraitStat", null)
+                    b.HasOne("TFT_API.Models.Stats.TraitStats.BaseTraitStat", "BaseTraitStat")
                         .WithMany("TraitStats")
-                        .HasForeignKey("BaseTraitStatId");
+                        .HasForeignKey("BaseTraitStatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TFT_API.Models.Stats.Stat", "Stat")
                         .WithMany()
                         .HasForeignKey("StatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("BaseTraitStat");
 
                     b.Navigation("Stat");
                 });
 
             modelBuilder.Entity("TFT_API.Models.Stats.UnitStats.StarredUnitStat", b =>
                 {
-                    b.HasOne("TFT_API.Models.Stats.UnitStats.BaseUnitStat", null)
+                    b.HasOne("TFT_API.Models.Stats.UnitStats.BaseUnitStat", "BaseUnitStat")
                         .WithMany("StarredUnitStats")
-                        .HasForeignKey("BaseUnitStatId");
+                        .HasForeignKey("BaseUnitStatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TFT_API.Models.Stats.Stat", "Stat")
                         .WithMany()
                         .HasForeignKey("StatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("BaseUnitStat");
 
                     b.Navigation("Stat");
                 });
 
             modelBuilder.Entity("TFT_API.Models.Stats.UnitStats.UnitStat", b =>
                 {
-                    b.HasOne("TFT_API.Models.Stats.UnitStats.BaseUnitStat", null)
+                    b.HasOne("TFT_API.Models.Stats.UnitStats.BaseUnitStat", "BaseUnitStat")
                         .WithMany("UnitStats")
-                        .HasForeignKey("BaseUnitStatId");
+                        .HasForeignKey("BaseUnitStatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TFT_API.Models.Stats.Stat", "Stat")
                         .WithMany()
@@ -1195,14 +1305,20 @@ namespace TFT_API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("BaseUnitStat");
+
                     b.Navigation("Stat");
                 });
 
             modelBuilder.Entity("TFT_API.Models.Trait.TraitTier", b =>
                 {
-                    b.HasOne("TFT_API.Models.Trait.PersistedTrait", null)
+                    b.HasOne("TFT_API.Models.Trait.PersistedTrait", "Trait")
                         .WithMany("Tiers")
-                        .HasForeignKey("PersistedTraitId");
+                        .HasForeignKey("TraitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Trait");
                 });
 
             modelBuilder.Entity("TFT_API.Models.Unit.PersistedUnit", b =>
@@ -1235,20 +1351,23 @@ namespace TFT_API.Migrations
                     b.Navigation("Unit");
                 });
 
-            modelBuilder.Entity("TFT_API.Models.User.Saved", b =>
-                {
-                    b.HasOne("TFT_API.Models.User.PersistedUser", null)
-                        .WithMany("Saved")
-                        .HasForeignKey("PersistedUserId");
-                });
-
             modelBuilder.Entity("TFT_API.Models.UserGuides.Comment", b =>
                 {
-                    b.HasOne("TFT_API.Models.UserGuides.UserGuide", null)
+                    b.HasOne("TFT_API.Models.UserGuides.UserGuide", "UserGuide")
                         .WithMany("Comments")
                         .HasForeignKey("UserGuideId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("TFT_API.Models.User.PersistedUser", "User")
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+
+                    b.Navigation("UserGuide");
                 });
 
             modelBuilder.Entity("TFT_API.Models.UserGuides.GuideAugment", b =>
@@ -1259,11 +1378,15 @@ namespace TFT_API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TFT_API.Models.UserGuides.UserGuide", null)
+                    b.HasOne("TFT_API.Models.UserGuides.UserGuide", "UserGuide")
                         .WithMany("Augments")
-                        .HasForeignKey("UserGuideId");
+                        .HasForeignKey("UserGuideId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Augment");
+
+                    b.Navigation("UserGuide");
                 });
 
             modelBuilder.Entity("TFT_API.Models.UserGuides.GuideTrait", b =>
@@ -1274,11 +1397,15 @@ namespace TFT_API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TFT_API.Models.UserGuides.UserGuide", null)
+                    b.HasOne("TFT_API.Models.UserGuides.UserGuide", "UserGuide")
                         .WithMany("Traits")
-                        .HasForeignKey("UserGuideId");
+                        .HasForeignKey("UserGuideId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Trait");
+
+                    b.Navigation("UserGuide");
                 });
 
             modelBuilder.Entity("TFT_API.Models.UserGuides.Hex", b =>
@@ -1289,16 +1416,20 @@ namespace TFT_API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TFT_API.Models.UserGuides.UserGuide", null)
+                    b.HasOne("TFT_API.Models.UserGuides.UserGuide", "UserGuide")
                         .WithMany("Hexes")
-                        .HasForeignKey("UserGuideId");
+                        .HasForeignKey("UserGuideId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Unit");
+
+                    b.Navigation("UserGuide");
                 });
 
             modelBuilder.Entity("TFT_API.Models.UserGuides.HexItem", b =>
                 {
-                    b.HasOne("TFT_API.Models.UserGuides.Hex", null)
+                    b.HasOne("TFT_API.Models.UserGuides.Hex", "Hex")
                         .WithMany("CurrentItems")
                         .HasForeignKey("HexId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1310,6 +1441,8 @@ namespace TFT_API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Hex");
+
                     b.Navigation("Item");
                 });
 
@@ -1319,20 +1452,33 @@ namespace TFT_API.Migrations
                         .WithMany()
                         .HasForeignKey("InitialUnitId");
 
-                    b.HasOne("TFT_API.Models.User.PersistedUser", null)
+                    b.HasOne("TFT_API.Models.User.PersistedUser", "User")
                         .WithMany("UserGuides")
-                        .HasForeignKey("PersistedUserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("InitialUnit");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("TFT_API.Models.Votes.Vote", b =>
                 {
-                    b.HasOne("TFT_API.Models.UserGuides.UserGuide", null)
+                    b.HasOne("TFT_API.Models.UserGuides.UserGuide", "UserGuide")
                         .WithMany("Votes")
                         .HasForeignKey("UserGuideId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("TFT_API.Models.User.PersistedUser", "User")
+                        .WithMany("Votes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+
+                    b.Navigation("UserGuide");
                 });
 
             modelBuilder.Entity("TFT_API.Models.Match.Match", b =>
@@ -1350,6 +1496,11 @@ namespace TFT_API.Migrations
             modelBuilder.Entity("TFT_API.Models.Stats.AugmentStats.BaseAugmentStat", b =>
                 {
                     b.Navigation("AugmentStats");
+                });
+
+            modelBuilder.Entity("TFT_API.Models.Stats.CoOccurrence.BaseCoOccurrence", b =>
+                {
+                    b.Navigation("CoOccurrences");
                 });
 
             modelBuilder.Entity("TFT_API.Models.Stats.CompStats.BaseCompStat", b =>
@@ -1391,9 +1542,11 @@ namespace TFT_API.Migrations
 
             modelBuilder.Entity("TFT_API.Models.User.PersistedUser", b =>
                 {
-                    b.Navigation("Saved");
+                    b.Navigation("Comments");
 
                     b.Navigation("UserGuides");
+
+                    b.Navigation("Votes");
                 });
 
             modelBuilder.Entity("TFT_API.Models.UserGuides.Hex", b =>

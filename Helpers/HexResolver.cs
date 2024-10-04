@@ -1,21 +1,12 @@
 ﻿using AutoMapper;
-using TFT_API.Models.Item;
 using TFT_API.Models.UserGuides;
-using System.Collections.Generic;
-using TFT_API.Models.Unit;
-using System.Linq;
 using TFT_API.Data;
 
 namespace TFT_API.Helper
 {
-    public class HexResolver : IValueResolver<UserGuideRequest, UserGuide, List<Hex>>
+    public class HexResolver(TFTContext context) : IValueResolver<UserGuideRequest, UserGuide, List<Hex>>
     {
-        private readonly TFTContext _context;
-
-        public HexResolver(TFTContext context)
-        {
-            _context = context;
-        }
+        private readonly TFTContext _context = context;
 
         public List<Hex> Resolve(UserGuideRequest source, UserGuide destination, List<Hex> destMember, ResolutionContext context)
         {
@@ -29,7 +20,7 @@ namespace TFT_API.Helper
                     IsStarred = hexRequest.IsStarred
                 };
 
-                var existingUnit = _context.Units.FirstOrDefault(u => u.Key == hexRequest.Unit.Key);
+                var existingUnit = _context.Units.FirstOrDefault(u => u.InGameKey == hexRequest.Unit.InGameKey);
                 if (existingUnit != null)
                 {
                     hex.Unit = existingUnit;
@@ -38,7 +29,7 @@ namespace TFT_API.Helper
                 var existingItems = new List<HexItem>();
                 foreach (var itemRequest in hexRequest.CurrentItems)
                 {
-                    var existingItem = _context.Items.FirstOrDefault(i => i.Key == itemRequest.Key);
+                    var existingItem = _context.Items.FirstOrDefault(i => i.InGameKey == itemRequest.InGameKey);
                     if (existingItem != null)
                     {
                         var hexItem = new HexItem

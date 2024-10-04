@@ -1,0 +1,25 @@
+.app__selectedview {
+  display: flex;
+  width: 450px;
+  min-width: 450px;
+  height: 350px;
+  background-color: var(--color-secondary);
+  border-radius: 5px;
+  padding: 0.625rem;
+  border: 1px solid var(--color-lightred);
+}
+
+.app__selectedview-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+  .app__selectedview {
+    width: 100%;
+  }
+}

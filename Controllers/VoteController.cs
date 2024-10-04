@@ -1,44 +1,43 @@
 ﻿using AutoMapper;
-using Azure.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
+using System.Security.Claims;
+using TFT_API.Filters;
 using TFT_API.Interfaces;
 using TFT_API.Models.Votes;
 
 namespace TFT_API.Controllers
 {
-    
+
     [ApiController]
     [Route("api/[controller]")]
-    public class VoteController : ControllerBase
+    [ValidateRequestBody]
+    public class VoteController(IVoteDataAccess voteRepo, IMapper mapper, IGuideDataAccess guideRepo, IUserDataAccess userRepo) : ControllerBase
     {
-        private readonly IVoteDataAccess _voteRepo;
-        private readonly IGuideDataAccess _guideRepo;
-        private readonly IUserDataAccess _userRepo;
-        private readonly IMapper _mapper;
-        public VoteController(IVoteDataAccess voteRepo, IMapper mapper, IGuideDataAccess guideRepo, IUserDataAccess userRepo)
+        private readonly IVoteDataAccess _voteRepo = voteRepo;
+        private readonly IGuideDataAccess _guideRepo = guideRepo;
+        private readonly IUserDataAccess _userRepo = userRepo;
+        private readonly IMapper _mapper = mapper;
+
+        [Authorize]
+        [HttpGet("user")]
+        public async Task<ActionResult<List<VoteDto>>> GetVotesByUserId()
         {
-            _voteRepo = voteRepo;
-            _guideRepo = guideRepo;
-            _userRepo = userRepo;
-            _mapper = mapper;
-        }
-        [HttpGet("user/{userId}")]
-        public ActionResult<List<VoteDto>> GetVotesByUserId(int userId)
-        {
-            var votes = _voteRepo.GetVotesByUserId(userId);
-            return Ok(_mapper.Map<List<VoteDto>>(votes));        
+            if (!int.TryParse(User.FindFirstValue("UserId"), out int userId)) return Unauthorized();
+            var votes = await _voteRepo.GetVotesByUserIdAsync(userId);
+            if(votes == null || votes.Count == 0) return NotFound("No Votes Found.");
+            return Ok(votes);
         }
 
+        [Authorize]
         [HttpGet("status")]
-        public ActionResult<VoteDto> GetVoteStatus([FromQuery] int userId, [FromQuery] int postId)
+        public async Task<ActionResult<VoteDto>> GetVoteStatus([FromQuery] int userId, [FromQuery] int postId)
         {
             if (userId <= 0 || postId <= 0)
             {
                 return BadRequest("Invalid userId or postId.");
             }
-            var vote = _voteRepo.GetVoteStatus(userId, postId);
+            var vote = await _voteRepo.GetVoteStatusAsync(userId, postId);
 
             var voteDto = vote == null
             ? new VoteDto
@@ -47,181 +46,96 @@ namespace TFT_API.Controllers
                 UserGuideId = postId,
                 IsUpvote = null,
             }
-            : _mapper.Map<VoteDto>(vote); 
+            : _mapper.Map<VoteDto>(vote);
             return Ok(voteDto);
         }
 
         [Authorize]
         [HttpPost]
-        public ActionResult AddVote(VoteRequest request)
+        public async Task<ActionResult> AddVote([FromBody] VoteRequest request)
         {
-            if(!IsAuthorized(request.UserId)) 
-            {
-                return Unauthorized();
-            }
-            if (request == null) return BadRequest("Request can not be null");
+            var existingVote = await _voteRepo.GetVoteStatusAsync(request.UserId, request.UserGuideId);
+            var guide = await _guideRepo.GetFullUserGuideByIdAsync(request.UserGuideId);
+            if (guide == null) return NotFound("No Guide Found.");
 
-            var existingVote = _voteRepo.GetVoteStatus(request.UserId, request.UserGuideId);
+            var user = await _userRepo.GetUserByIdAsync(request.UserId);
+            if (user == null) return NotFound("No User Found");
+            bool? isUpvote = request.IsUpvote;
+
             if (existingVote == null)
             {
                 var newVote = _mapper.Map<Vote>(request);
+                newVote.User = user;
+                newVote.UserGuide = guide;
                 newVote.CreatedAt = DateTime.Now;
                 newVote.UpdatedAt = DateTime.Now;
-                var result = _voteRepo.AddVote(newVote);
+                await _voteRepo.AddVoteAsync(newVote);
 
-                var guide = _guideRepo.GetUserGuideById(request.UserGuideId);
-                if (guide != null)
+                if (request.IsUpvote)
                 {
-                    if (request.IsUpvote)
-                    {
-                        guide.UpVotes++;
-                    }
-                    else
-                    {
-                        guide.DownVotes++;
-                    }
-                    _guideRepo.UpdateUserGuide(guide);
+                    guide.UpVotes++;
+                    user.UpVotesCount++;
                 }
-                var user = _userRepo.GetUserById(request.UserId);
-                if (user != null)
+                else
                 {
-                    if (request.IsUpvote)
-                    {
-                        user.UpVotesCount++;
-                    }
-                    else
-                    {
-                        user.DownVotesCount++;
-                    }
-                    _userRepo.UpdateUser(user);
+                    guide.DownVotes++;
+                    user.DownVotesCount++;
                 }
-                return Ok(new VoteResponse { UpVotes = guide?.UpVotes ?? 0, DownVotes = guide?.DownVotes ?? 0, IsUpvote = request.IsUpvote });
-            } else
+            }
+            else
             {
                 if (existingVote.IsUpvote == request.IsUpvote)
                 {
-                    _voteRepo.DeleteVote(existingVote.Id);
-                    var guide = _guideRepo.GetUserGuideById(request.UserGuideId);
-                    if (guide != null)
+                    await _voteRepo.DeleteVoteAsync(existingVote.Id);
+
+                    if (request.IsUpvote)
                     {
-                        if (request.IsUpvote)
-                        {
-                            guide.UpVotes--;
-                        }
-                        else
-                        {
-                            guide.DownVotes--;
-                        }
-                        _guideRepo.UpdateUserGuide(guide);
+                        guide.UpVotes--;
+                        user.UpVotesCount--;    
                     }
-                    var user = _userRepo.GetUserById(request.UserId);
-                    if (user != null)
+                    else
                     {
-                        if (request.IsUpvote)
-                        {
-                            user.UpVotesCount--;
-                        }
-                        else
-                        {
-                            user.DownVotesCount--;
-                        }
-                        _userRepo.UpdateUser(user);
+                        guide.DownVotes--;
+                        user.DownVotesCount--;
                     }
-                    return Ok(new VoteResponse { UpVotes = guide?.UpVotes ?? 0, DownVotes = guide?.DownVotes ?? 0, IsUpvote = null });
+                    isUpvote = null;
                 }
                 else
                 {
                     existingVote.IsUpvote = request.IsUpvote;
                     existingVote.UpdatedAt = DateTime.Now;
-                    var result = _voteRepo.UpdateVote(existingVote);
+                    await _voteRepo.UpdateVoteAsync(existingVote);
 
-                    var guide = _guideRepo.GetUserGuideById(request.UserGuideId);
-                    if (guide != null)
+                    if (request.IsUpvote)
                     {
-                        if (request.IsUpvote)
-                        {
-                            guide.UpVotes++;
-                            guide.DownVotes--;
-                        }
-                        else
-                        {
-                            guide.DownVotes++;
-                            guide.UpVotes--;
-                        }
-                        _guideRepo.UpdateUserGuide(guide);
+                        guide.UpVotes++;
+                        guide.DownVotes--;
+                        user.UpVotesCount++;
+                        user.DownVotesCount--;
                     }
-                    var user = _userRepo.GetUserById(request.UserId);
-                    if (user != null)
+                    else
                     {
-                        if (request.IsUpvote)
-                        {
-                            user.UpVotesCount++;
-                            user.DownVotesCount--;
-                        }
-                        else
-                        {
-                            user.DownVotesCount++;
-                            user.UpVotesCount--;
-                        }
-                        _userRepo.UpdateUser(user);
+                        guide.DownVotes++;
+                        guide.UpVotes--;
+                        user.DownVotesCount++;
+                        user.UpVotesCount--;
                     }
-                    return Ok(new VoteResponse { UpVotes = guide?.UpVotes ?? 0, DownVotes = guide?.DownVotes ?? 0, IsUpvote = request.IsUpvote });
                 }
             }
+
+            await _guideRepo.UpdateUserGuideAsync(guide);
+            await _userRepo.UpdateUserAsync(user);
+
+            return Ok(new VoteResponse { UpVotes = guide.UpVotes, DownVotes = guide.DownVotes, IsUpvote = isUpvote });
         }
 
         [Authorize]
         [HttpGet("{id}", Name = "GetVote")]
-        public ActionResult<VoteDto> GetVoteById(int id)
+        public async Task<ActionResult<VoteDto>> GetVoteById([FromRoute] int id)
         {
-            var vote = _voteRepo.GetVoteById(id);
-            return Ok(_mapper.Map<VoteDto>(vote));
-        }
-
-        [Authorize]
-        [HttpPut("{userId}")]
-        public ActionResult<VoteDto> UpdateVote(int userId,VoteDto request)
-        {
-            if (!IsAuthorized(userId))
-            {
-                return Unauthorized();
-            }
-            if (request == null) return BadRequest();
-            var currentVote = _voteRepo.GetVoteById(request.Id);
-            if (currentVote == null) return NotFound();
-            try
-            {
-                var updatedVote = _mapper.Map<Vote>(request);
-                updatedVote.CreatedAt = currentVote.CreatedAt;
-                updatedVote.UpdatedAt = DateTime.Now;
-                var result = _voteRepo.UpdateVote(updatedVote);
-                return Ok(result);
-            }catch (Exception ex)
-            {
-                return BadRequest("Failed to modify the vote. Error: " + ex.Message);
-            }
-        }
-        [Authorize]
-        [HttpDelete("{id}")]
-        public IActionResult DeleteVote(int id)
-        {
-            var vote = _voteRepo.GetVoteById(id);
-            if (vote == null) return NotFound();
-            if (!IsAuthorized(vote.UserId))
-            {
-                return Unauthorized();
-            }
-            _voteRepo.DeleteVote(id);
-            return NoContent();
-        }
-        private bool IsAuthorized(int userId)
-        {
-            var userIdentityClaim = HttpContext.User.FindFirst("UserId");
-            if (userIdentityClaim == null || !int.TryParse(userIdentityClaim.Value, out var userIdFromToken))
-            {
-                return false;
-            }
-            return userIdFromToken == userId;
+            var vote = await _voteRepo.GetVoteByIdAsync(id);
+            if (vote == null) return NotFound("No vote found.");
+            return Ok(vote);
         }
     }
 }

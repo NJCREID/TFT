@@ -4,7 +4,7 @@ namespace TFT_API.Interfaces
 {
     public interface ICommentDataAccess
     {
-        Comment AddComment(Comment comment);
-        Comment? GetCommentById(int id);
+        Task<CommentDto> AddCommentAsync(Comment comment);
+        Task<CommentDto?> GetCommentByIdAsync(int id);
     }
 }

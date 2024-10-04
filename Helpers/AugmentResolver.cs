@@ -4,14 +4,9 @@ using TFT_API.Models.UserGuides;
 
 namespace TFT_API.Helper
 {
-    public class AugmentResolver : IValueResolver<UserGuideRequest, UserGuide, List<GuideAugment>>
+    public class AugmentResolver(TFTContext context) : IValueResolver<UserGuideRequest, UserGuide, List<GuideAugment>>
     {
-        private readonly TFTContext _context;
-
-        public AugmentResolver(TFTContext context)
-        {
-            _context = context;
-        }
+        private readonly TFTContext _context = context;
 
         public List<GuideAugment> Resolve(UserGuideRequest source, UserGuide destination, List<GuideAugment> destMember, ResolutionContext context)
         {
@@ -19,7 +14,7 @@ namespace TFT_API.Helper
 
             foreach (var augmentDto in source.Augments)
             {
-                var existingAugment = _context.Augments.FirstOrDefault(t => t.Key == augmentDto.Key);
+                var existingAugment = _context.Augments.FirstOrDefault(t => t.InGameKey == augmentDto.InGameKey);
                 if (existingAugment != null)
                 {
                     var userGuideAugment = new GuideAugment

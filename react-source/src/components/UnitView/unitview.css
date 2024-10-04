@@ -1,0 +1,49 @@
+.app__unitview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+}
+
+.app__unitview p {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.app__unitview-border {
+  display: flex;
+  border: 3px solid;
+  border-radius: 50%;
+  position: relative;
+}
+
+.app__unitview-border > img {
+  width: 100%;
+  height: 100%;
+  border: 1px solid;
+  border-radius: 50%;
+}
+
+.app__unitview-stars {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+}
+
+.app__unitview-items {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 17px;
+}

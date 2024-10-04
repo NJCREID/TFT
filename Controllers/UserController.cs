@@ -1,81 +1,167 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using TFT_API.Filters;
 using TFT_API.Interfaces;
 using TFT_API.Models.User;
 
 namespace TFT_API.Controllers
 {
-    
+
     [ApiController]
     [Route("api/[controller]")]
-    public class UserController : Controller
+    [ValidateRequestBody]
+    public class UserController(IUserDataAccess userRepo, IMapper mapper, IPasswordHasher passwordHasher) : ControllerBase
     {
-        private readonly IUserDataAccess _userRepo;
-        private readonly IMapper _mapper;
-        private readonly IPasswordHasher _passwordHasher;
-
-
-        public UserController(IUserDataAccess userRepo, IMapper mapper, IPasswordHasher passwordHasher)
-        {
-            _userRepo = userRepo;
-            _mapper = mapper;
-            _passwordHasher = passwordHasher;
-            
-        }
+        private readonly IUserDataAccess _userRepo = userRepo;
+        private readonly IMapper _mapper = mapper;
+        private readonly IPasswordHasher _passwordHasher = passwordHasher;
 
         [Authorize]
         [HttpGet]
-        public ActionResult<List<UserDto>> GetAllUsers()
+        public async Task<ActionResult<List<UserDto>>> GetAllUsers()
         {
-            var users = _userRepo.GetUsers();
-            return Ok(_mapper.Map<List<UserDto>>(users));
+            var users = await _userRepo.GetUsersAsync();
+            if (users == null || users.Count == 0) return NotFound("No users found.");
+            return Ok(users);
         }
 
         [Authorize]
         [HttpGet("{id}", Name = "GetUser")]
-        public ActionResult<UserDto> GetUserById(int id)
+        public async Task<ActionResult<UserDto>> GetUserById([FromRoute] int id)
         {
-            var user = _userRepo.GetUserById(id);
-            if (user == null) return NotFound();
-            return Ok(_mapper.Map<UserDto>(user));
+            var user = await _userRepo.GetUserByIdAsync(id);
+            if (user == null) return NotFound("User not found.");
+            var userDto = _mapper.Map<UserDto>(user);
+            return Ok(userDto);
         }
 
         [Authorize]
         [HttpDelete("{id}")]
-        public IActionResult DeleteUser(int id)
+        public async Task<IActionResult> DeleteUser([FromRoute] int id)
         {
-            var user = _userRepo.GetUserById(id);
-            if (user == null) return NotFound();
-            _userRepo.DeleteUser(id);
+            var user = await _userRepo.GetUserByIdAsync(id);
+            if (user == null) return NotFound("User not found.");
+            await _userRepo.DeleteUserAsync(id);
             return NoContent();
         }
 
         [Authorize]
-        [HttpPatch("{id}")]
-        public ActionResult<UserDto> UpdateUserLogin(int id, UserLoginRequest request)
+        [HttpPost("update-image")]
+        public async Task<IActionResult> UpdateProfileImage([FromBody] UpdateImageRequest request)
         {
-            if (request == null)
-                return BadRequest();
-            var user = _userRepo.GetUserById(id);
-            if (user == null) return NotFound();
-            if (_userRepo.GetUsers().Any(c => c.Email == request.Email && c.Id != id))
-                return Conflict("A user with the same username already exists.");
+            if (!int.TryParse(User.FindFirstValue("UserId"), out var userId)) 
+                return Unauthorized("Invalid user ID.");
+            var user = await _userRepo.GetUserByIdAsync(userId);
+            if (user == null) return NotFound("User not found.");
+            if (!string.IsNullOrEmpty(user.ProfileImageUrl))
+            {
+                var oldFilePath = Path.Combine(Directory.GetCurrentDirectory(), "assets", "images", "uploads", "profile-images", user.ProfileImageUrl);
+                if (System.IO.File.Exists(oldFilePath))
+                {
+                    System.IO.File.Delete(oldFilePath);
+                }
+            }
+
+            var uploadsFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "assets", "images", "uploads", "profile-images");
+            Directory.CreateDirectory(uploadsFolderPath);
+
+            var fileName = $"{userId}_{Guid.NewGuid()}{Path.GetExtension(request.ProfileImage.FileName)}";
+            var filePath = Path.Combine(uploadsFolderPath, fileName);
+
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await request.ProfileImage.CopyToAsync(fileStream);
+            }
+
+            user.ProfileImageUrl = "image/uploads/profile-images/" + fileName;
+            var userDto = await _userRepo.UpdateUserAsync(user);
+            return Ok(userDto);   
+        }
+
+        [Authorize]
+        [HttpPatch("update-username")]
+        public async Task<ActionResult<UserDto>> UpdateUsersUsername([FromBody] UpdateUsernameRequest request)
+        {
+            if(!int.TryParse(User.FindFirstValue("UserId"), out var userId))
+                return Unauthorized("Invalid user ID.");
+            var user = await _userRepo.GetUserByIdAsync(userId);
+            if (user == null) return NotFound("User not found.");
+            var usernameExists = await _userRepo.CheckIfUsernameExistsAsync(request.Username);
+            if (usernameExists) return Conflict("A user with the same username already exists.");
             try
             {
-                var updatedUser = _mapper.Map<PersistedUser>(request);
-                updatedUser.Id = user.Id;
-                updatedUser.Name = user.Name;
-                updatedUser.Username = user.Username;
-                updatedUser.PasswordHash = _passwordHasher.HashPassword(request.Password);
-                updatedUser.CreatedDate = user.CreatedDate;
-                updatedUser.ModifiedDate = DateTime.Now;
-                var result = _userRepo.UpdateUser(updatedUser);
-                return Ok(_mapper.Map<UserDto>(result));
+                user.Username = request.Username;
+                var userDto = _userRepo.UpdateUserAsync(user);
+                return Ok(userDto);
             }
             catch (Exception ex)
             {
-                return BadRequest("Failed to modify the user. Error: " + ex.Message);
+                return StatusCode(500, "Failed to modify the user. Error: " + ex.Message);
+            }
+        }
+
+        [Authorize]
+        [HttpPatch("update-name")]
+        public async Task<ActionResult<UserDto>> UpdateUsersName([FromBody] UpdateNameRequest request)
+        {
+            if (!int.TryParse(User.FindFirstValue("UserId"), out var userId))
+                return Unauthorized("Invalid user ID.");
+
+            var user = await _userRepo.GetUserByIdAsync(userId);
+            if (user == null) return NotFound("User not found.");
+            try
+            {
+                user.Name = request.Name;
+                var userDto = _userRepo.UpdateUserAsync(user);
+                return Ok(userDto);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Failed to modify the user. Error: " + ex.Message);
+            }
+        }
+
+        [Authorize]
+        [HttpPatch("update-email")]
+        public async Task<ActionResult<UserDto>> UpdateUsersEmail([FromBody] UpdateEmailRequest request)
+        {
+            if (!int.TryParse(User.FindFirstValue("UserId"), out var userId))
+                return Unauthorized("Invalid user ID.");
+            var user = await _userRepo.GetUserByIdAsync(userId);
+            if (user == null) return NotFound("User not found.");
+            var emailExists = await _userRepo.CheckIfEmailExistsAsync(request.Email);
+            if (emailExists) return Conflict("A user with the same email already exists.");
+            try
+            {
+                user.Email = request.Email;
+                var userDto = _userRepo.UpdateUserAsync(user);
+                return Ok(userDto);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Failed to modify the user. Error: " + ex.Message);
+            }
+        }
+
+        [Authorize]
+        [HttpPatch("update-password")]
+        public async Task<ActionResult<UserDto>> UpdateUsersPassword([FromBody] UpdatePasswordRequest request)
+        {
+            if (!int.TryParse(User.FindFirstValue("UserId"), out var userId))
+                return Unauthorized("Invalid user ID.");
+            var user = await _userRepo.GetUserByIdAsync(userId);
+            if (user == null) return NotFound("User not found.");
+            try
+            {
+                user.PasswordHash =  _passwordHasher.HashPassword(request.Password);
+                var userDto = _userRepo.UpdateUserAsync(user);
+                return Ok(userDto);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Failed to modify the user. Error: " + ex.Message);
             }
         }
     }

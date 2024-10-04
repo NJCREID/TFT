@@ -1,4 +1,6 @@
-﻿namespace TFT_API.Models.Stats
+﻿using TFT_API.Models.Stats.AugmentStats;
+
+namespace TFT_API.Models.Stats
 {
     public class Stat
     {
@@ -8,6 +10,6 @@
         public int Top4 { get; set; }
         public int Win { get; set; }
         public double Delta { get; set; }
-        public int? AugmentStatId { get; set; }
+        public AugmentStat? AugmentStat { get; set; }
     }
 }

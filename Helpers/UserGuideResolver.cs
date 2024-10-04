@@ -4,14 +4,9 @@ using TFT_API.Models.UserGuides;
 
 namespace TFT_API.Helper
 {
-    public class UserGuideResolver : IValueResolver<UserGuideRequest, UserGuide, List<GuideTrait>>
+    public class UserGuideResolver(TFTContext context) : IValueResolver<UserGuideRequest, UserGuide, List<GuideTrait>>
     {
-        private readonly TFTContext _context;
-
-        public UserGuideResolver(TFTContext context)
-        {
-            _context = context;
-        }
+        private readonly TFTContext _context = context;
 
         public List<GuideTrait> Resolve(UserGuideRequest source, UserGuide destination, List<GuideTrait> destMember, ResolutionContext context)
         {

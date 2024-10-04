@@ -1,0 +1,93 @@
+.app__table-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  transform: rotateX(180deg);
+}
+
+.app__table-table {
+  width: 100%;
+  border-collapse: collapse;
+  transform: rotateX(180deg);
+}
+
+.app__table-table-header {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.app__table-arrow {
+  margin-left: 5px;
+  width: 16px;
+  height: 18px;
+}
+
+.app__table-object {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+tr td:not(:first-child) {
+  text-align: center;
+}
+
+.app__table-object-img {
+  width: 30px;
+  height: 30px;
+}
+
+.app__table-team {
+  flex: 0;
+  display: flex;
+  gap: 5px;
+  width: 100%;
+}
+
+.app__table-team img {
+  width: 30px;
+  height: 30px;
+}
+
+.app__table-table th > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app__table-table th:first-child,
+.app__table-table td:first-child {
+  border-left: none;
+}
+
+.app__table-table th:last-child,
+.app__table-table td:last-child {
+  border-right: none;
+}
+
+.app__table-table th:not(:first-child):not(:last-child),
+.app__table-table td:not(:first-child):not(:last-child) {
+  border-left: 3px solid #501222;
+  border-right: 3px solid #501222;
+}
+
+.app__table-table th,
+.app__table-table td {
+  padding: 12px 8px;
+  text-align: left;
+  text-wrap: nowrap;
+}
+
+.app__table-table th {
+  background-color: var(--color-secondary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.app__table-table tr {
+  background-color: var(--color-primary);
+}
+
+.app__table-table tr:nth-child(2n) {
+  background-color: var(--color-secondary);
+}

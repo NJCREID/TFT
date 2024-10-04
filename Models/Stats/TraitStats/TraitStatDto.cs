@@ -3,6 +3,7 @@
     public class TraitStatDto
     {
         public string Name { get; set; } = string.Empty;
+        public string InGameKey { get; set; } = string.Empty;
         public int NumUnits { get; set; }
         public StatDto Stat { get; set; } = new StatDto();
     }

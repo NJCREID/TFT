@@ -1,6 +1,7 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
+using System.ComponentModel.DataAnnotations;
 using TFT_API.Interfaces;
 using TFT_API.Models.Unit;
 
@@ -8,42 +9,62 @@ namespace TFT_API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UnitController : ControllerBase
+    public class UnitController(IUnitDataAccess unitRepo, IMemoryCache memoryCache) : ControllerBase
     {
-        private readonly IUnitDataAccess _unitRepo;
-        private readonly IMapper _mapper;
+        private readonly IUnitDataAccess _unitRepo = unitRepo;
+        private readonly IMemoryCache _memoryCache = memoryCache;
 
-        public UnitController(IUnitDataAccess unitRepo, IMapper mapper)
+        [AllowAnonymous]
+        [HttpGet("full")]
+        public async Task<ActionResult<List<UnitDto>>> GetUnits()
         {
-            _unitRepo = unitRepo;
-            _mapper = mapper;
+            var cacheKey = $"units_full";
+            if(!_memoryCache.TryGetValue(cacheKey, out List<UnitDto>? cachedUnits))
+            {
+                cachedUnits = await _unitRepo.GetFullUnitsAsync();
+                var cacheEntryOptions = new MemoryCacheEntryOptions
+                {
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(30)
+                };
+                _memoryCache.Set(cacheKey, cachedUnits, cacheEntryOptions);
+            }
+            if (cachedUnits == null || cachedUnits.Count == 0)
+            {
+                return NotFound("No Units Found.");
+            }
+            return Ok(cachedUnits);
         }
 
-        [HttpGet]
-        public ActionResult<List<PartialUnitDto>> GetUnits()
+        [AllowAnonymous]
+        [HttpGet("partial")]
+        public async Task<ActionResult<List<PartialUnitDto>>> GetPartialUnits()
         {
-            var units = _unitRepo.GetUnits();
-            return Ok(_mapper.Map<List<PartialUnitDto>>(units));
+            var cacheKey = $"units_partial";
+            if (!_memoryCache.TryGetValue(cacheKey, out List<PartialUnitDto>? cachedUnits))
+            {
+                cachedUnits = await _unitRepo.GetPartialUnitsAsync();
+                var cacheEntryOptions = new MemoryCacheEntryOptions
+                {
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(30)
+                };
+                _memoryCache.Set(cacheKey, cachedUnits, cacheEntryOptions);
+            }
+            if (cachedUnits == null || cachedUnits.Count == 0)
+            {
+                return NotFound("No Units Found.");
+            }
+            return Ok(cachedUnits);
+
         }
 
+        [AllowAnonymous]
         [HttpGet("{key}", Name = "GetUnit")]
-        public ActionResult<UnitDto> GetUnitByKey(string key)
+        public async Task<ActionResult<UnitDto>> GetUnitByKey(
+             [FromRoute, Required, MinLength(1, ErrorMessage = "Key cannot be empty")] string key)
         {
-            var unit = _unitRepo.GetUnitByKey(key);
-            if (unit == null) return NotFound();
-            return Ok(_mapper.Map<UnitDto>(unit));
-        }
-
-        [HttpPost]
-        public ActionResult<UnitDto> AddUnit(UnitRequest request)
-        {
-            var currentUnits = _unitRepo.GetUnits();
-            if (request == null) return BadRequest();
-            if (currentUnits.Any(c => c.Key == request.Key))
-                return Conflict("A unit with that key already exists.");
-            var newUnit = _mapper.Map<PersistedUnit>(request);
-            var result = _unitRepo.AddUnit(newUnit);
-            return CreatedAtRoute("GetUnit", new { key = result.Key }, result);
+            var unit = await _unitRepo.GetUnitByKeyAsync(key);
+            if (unit == null) return NotFound($"Unit with key '{key}' not found.");
+            return Ok(unit);
         }
     }
 }

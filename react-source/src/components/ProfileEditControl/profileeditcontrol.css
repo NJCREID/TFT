@@ -1,0 +1,30 @@
+.app__profileeditcontrol {
+  width: 100%;
+}
+
+.app__profileeditcontrol-editbtn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  cursor: pointer;
+  padding: 1rem 0;
+}
+
+.app__profileeditcontrol-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.app__profileeditcontrol-arrow {
+  display: flex;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.app__profileeditcontrol:hover .app__profileeditcontrol-arrow {
+  background-color: var(--color-hover-primary);
+}

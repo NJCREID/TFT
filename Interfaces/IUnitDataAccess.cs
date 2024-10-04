@@ -4,8 +4,8 @@ namespace TFT_API.Interfaces
 {
     public interface IUnitDataAccess
     {
-        List<PersistedUnit> GetUnits();
-        PersistedUnit? GetUnitByKey(string key);
-        PersistedUnit AddUnit(PersistedUnit unit);
+        Task<List<UnitDto>> GetFullUnitsAsync();
+        Task<List<PartialUnitDto>> GetPartialUnitsAsync();
+        Task<UnitDto?> GetUnitByKeyAsync(string key);
     }
 }

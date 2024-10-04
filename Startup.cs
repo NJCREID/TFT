@@ -7,30 +7,33 @@ using TFT_API.Data;
 using TFT_API.Interfaces;
 using TFT_API.Persistence;
 using TFT_API.Authentication;
-using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using TFT_API.Services;
+using TFT_API.Filters;
+using Microsoft.Extensions.FileProviders;
+using System;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace TFT_API
 {
-    public class Startup
+    public class Startup(IConfiguration configuration)
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; } = configuration;
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddControllers().AddJsonOptions(options =>
+            services.AddControllers(options =>
+            {
+                options.Filters.Add<ValidateRequestBodyAttribute>();
+            }).AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
                 options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
             });
+            services.AddHttpContextAccessor();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            // Data access layer services
             services.AddScoped<IItemDataAccess, ItemRepository>();
             services.AddScoped<IUserDataAccess, UserRepository>();
             services.AddScoped<IUnitDataAccess, UnitRepository>();
@@ -43,17 +46,23 @@ namespace TFT_API
             services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.AddScoped<RiotApiService>();
             services.AddScoped<TeamBuilderService>();
-            services.AddScoped<CoocurrenceStats>();
-            //services.AddScoped<StatisticsService>();
-            //services.AddHostedService<StatisticsBackgroundService>();
+            services.AddScoped<StatisticsService>();
+            services.AddScoped<CooccurrenceService>();
+            services.AddScoped<DataCheckService>();
+            services.AddScoped<ITFTDataService, TFTDataFetchService>();
+            services.AddScoped<TFTUpdateDataService>();
+
+            // Database context
             services.AddDbContext<TFTContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
                 options.ConfigureWarnings(warnings => warnings.Throw(RelationalEventId.MultipleCollectionIncludeWarning));
             });
+
+            // Authentication
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
-            var jwtKey = Configuration["Jwt:Key"];
+                var jwtKey = Configuration["Jwt:Key"];
                 if (jwtKey != null)
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
@@ -79,22 +88,14 @@ namespace TFT_API
                            .AllowAnyHeader();
                 });
             });
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API", Version = "v1" });
-            });
+            
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RiotApiService riotApiService, TeamBuilderService teamBuilderService)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API V1");
-                });
             }
             else
             {
@@ -103,23 +104,49 @@ namespace TFT_API
             }
 
             app.UseHttpsRedirection();
+            app.Use(async (context, next) =>
+            {
+                var path = context.Request.Path.Value;
+
+                if (path != null && path.StartsWith("/images/"))
+                {
+                    var remainingPath = path["/images/".Length..];
+                    if (remainingPath.Length > 0 &&
+                        (remainingPath.StartsWith("champions") ||
+                        remainingPath.StartsWith("augments") ||
+                        remainingPath.StartsWith("traits") ||
+                        remainingPath.StartsWith("items")))
+                    {
+                        var set = Configuration["TFT:Set"];
+                        context.Request.Path = $"/images/set{set}/{remainingPath}";
+                    }
+                    context.Response.Headers.Append("Cache-Control", "public,max-age=604800");
+                }
+                await next();
+            });
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.WebRootPath, "images")),
+                RequestPath = "/images",
+                ContentTypeProvider = new FileExtensionContentTypeProvider
+                {
+                    Mappings = { [".avif"] = "image/avif" }
+                }
+            });
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.WebRootPath, "dist")),
+                RequestPath = ""
+            });
             app.UseRouting();
             app.UseAuthentication();
-            app.UseCors();
             app.UseAuthorization();
+            app.UseCors();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToFile("dist/index.html");
             });
-            //Task.Run(async () =>
-            //{
-            //    await riotApiService.FetchChallengerMatchHistoryAsync();
-            //}).GetAwaiter().GetResult();
-
-            //Task.Run(async () =>
-            //{
-            //    await teamBuilderService.BuildTeams();
-            //}).GetAwaiter().GetResult();
         }
     }
 }

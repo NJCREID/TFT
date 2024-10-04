@@ -4,8 +4,7 @@ namespace TFT_API.Interfaces
 {
     public interface ITraitDataAccess
     {
-        List<PersistedTrait> GetTraits();
-        PersistedTrait? GetTraitByKey(string key);
-        PersistedTrait AddTrait(PersistedTrait trait);
+        Task<List<FullTraitDto>> GetTraitsAsync();
+        Task<PersistedTrait?> GetTraitByKeyAsync(string key);
     }
 }

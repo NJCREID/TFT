@@ -1,0 +1,14 @@
+.app__trait {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  background-color: transparent;
+}
+
+.app__trait img {
+  width: 20px;
+}
+.app__trait p {
+  margin: 6px;
+}

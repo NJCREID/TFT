@@ -4,11 +4,11 @@ namespace TFT_API.Interfaces
 {
     public interface IVoteDataAccess
     {
-        List<Vote> GetVotesByUserId(int userId);
-        Vote? GetVoteStatus(int userId, int postId);
-        Vote AddVote(Vote vote);
-        Vote? GetVoteById(int id);
-        Vote? UpdateVote(Vote vote);
-        void DeleteVote(int id);
+        Task<List<VoteDto>> GetVotesByUserIdAsync(int userId);
+        Task<Vote?> GetVoteStatusAsync(int userId, int postId);
+        Task<VoteDto> AddVoteAsync(Vote vote);
+        Task<VoteDto?> GetVoteByIdAsync(int id);
+        Task<VoteDto?> UpdateVoteAsync(Vote vote);
+        Task DeleteVoteAsync(int id);
     }
 }

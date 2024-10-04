@@ -1,0 +1,9 @@
+﻿namespace TFT_API.Models.Stats.CoOccurrence
+{
+    public class CoOccurrenceDto
+    {
+        public string Name { get; set; } = string.Empty;
+        public string InGameKey { get; set; } = string.Empty;
+        public StatDto Stat { get; set; } = new StatDto();
+    }
+}

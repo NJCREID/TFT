@@ -5,30 +5,36 @@ using TFT_API.Models.UserGuides;
 
 namespace TFT_API.Persistence
 {
-    public class CommentRepository: ICommentDataAccess
+    public class CommentRepository(TFTContext context) : ICommentDataAccess
     {
-        private readonly TFTContext _context;
+        private readonly TFTContext _context = context;
 
-        public CommentRepository(TFTContext context)
-        {
-            _context = context;
-        }
-
-        public Comment AddComment(Comment comment)
+        public async Task<CommentDto> AddCommentAsync(Comment comment)
         {
             _context.Comments.Add(comment);
-            return Save(comment);
+            await _context.SaveChangesAsync();
+            return MapCommentToDto(comment);
         }
 
-        public Comment? GetCommentById(int id)
+        public async Task<CommentDto?> GetCommentByIdAsync(int id)
         {
-            return _context.Comments.AsNoTracking().FirstOrDefault(c => c.Id == id);  
+            var comment = await _context.Comments
+                .Where(c => c.Id == id)
+                .FirstOrDefaultAsync();
+            if (comment == null) return null;
+            return MapCommentToDto(comment);
         }
 
-        public Comment Save(Comment comment)
+        private static CommentDto MapCommentToDto(Comment comment)
         {
-            _context.SaveChanges();
-            return comment;
+            return new CommentDto
+            {
+                Id = comment.Id,
+                UserId = comment.UserId,
+                Author = comment.Author,
+                UserGuideId = comment.UserGuideId,
+                Content = comment.Content,
+            };
         }
     }
 }

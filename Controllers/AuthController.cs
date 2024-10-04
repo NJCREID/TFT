@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using TFT_API.Filters;
 using TFT_API.Interfaces;
 using TFT_API.Models.User;
 
@@ -12,29 +13,20 @@ namespace TFT_API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class AuthController : ControllerBase
+    [ValidateRequestBody]
+    public class AuthController(IPasswordHasher passwordHasher, IConfiguration config, IUserDataAccess userRepo, IMapper mapper) : ControllerBase
     {
 
-        private readonly IPasswordHasher _passwordHasher;
-        private readonly IConfiguration _config;
-        private readonly IUserDataAccess _userRepo;
-        private readonly IMapper _mapper;
-
-
-        public AuthController(IPasswordHasher passwordHasher, IConfiguration config, IUserDataAccess userRepo, IMapper mapper)
-        {
-            _passwordHasher = passwordHasher;
-            _config = config;
-            _mapper = mapper;
-            _userRepo = userRepo;
-        }
+        private readonly IPasswordHasher _passwordHasher = passwordHasher;
+        private readonly IConfiguration _config = config;
+        private readonly IUserDataAccess _userRepo = userRepo;
+        private readonly IMapper _mapper = mapper;
 
         [AllowAnonymous]
         [HttpPost("login")]
-        public IActionResult Login(UserLoginRequest request)
+        public async Task<ActionResult<UserLoginResponse>> Login([FromBody] UserLoginRequest request)
         {
-            var user = Authenticate(request);
-
+            var user = await Authenticate(request);
             if (user != null)
             {
                 var token = Generate(user);
@@ -54,19 +46,16 @@ namespace TFT_API.Controllers
 
         [AllowAnonymous]
         [HttpPost("register")]
-        public ActionResult<UserDto> Register(AddUserRequest request)
+        public async Task<ActionResult<UserDto>> Register([FromBody] AddUserRequest request)
         {
-            var currentUsers = _userRepo.GetUsers();
-            if (request == null)
-                return BadRequest();
-            if (currentUsers.Any(c => c.Email == request.Email))
-                return Conflict("A user with the same username already exists.");
-
+            var emailExist = await _userRepo.CheckIfEmailExistsAsync(request.Email);
+            if (emailExist)
+                return Conflict("A user with the same email already exists.");
             var user = _mapper.Map<PersistedUser>(request);
             user.PasswordHash = _passwordHasher.HashPassword(request.Password);
             user.CreatedDate = DateTime.Now;
             user.ModifiedDate = DateTime.Now;
-            var result = _userRepo.AddUser(user);
+            var result = _userRepo.AddUserAsync(user);
             return CreatedAtRoute("GetUser", new { id = result.Id }, result);
         }
 
@@ -96,9 +85,9 @@ namespace TFT_API.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-        private PersistedUser? Authenticate(UserLoginRequest userLogin)
+        private async Task<PersistedUser?> Authenticate(UserLoginRequest userLogin)
         {
-            var currentUser = _userRepo.GetUserByEmail(userLogin.Email);
+            var currentUser = await  _userRepo.GetUserByEmailAsync(userLogin.Email);
             if (currentUser == null) return null;
             var passwordVerificationResult = _passwordHasher.VerifyPassword(userLogin.Password, currentUser.PasswordHash);
             if (passwordVerificationResult) return currentUser;

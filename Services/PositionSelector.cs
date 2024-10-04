@@ -1,12 +1,10 @@
-﻿using TFT_API.Models.FetchResponse;
-using TFT_API.Models.Unit;
-using TFT_API.Models.UserGuides;
+﻿using TFT_API.Models.UserGuides;
 
 namespace TFT_API.Services
 {
     public class PositionSelector
     {
-        Dictionary<string, string> Champions = new Dictionary<string, string>
+        private readonly Dictionary<string, string> Champions = new()
         {
             {"TFT11_Aatrox", "front_tank_ap"},
             {"TFT11_Ahri", "back_damage_ap"},
@@ -74,12 +72,11 @@ namespace TFT_API.Services
 
         public List<Hex> CalculateUnitPositions(List<Hex> hexes)
         {
-            Dictionary<int, string> occupiedHexes = new Dictionary<int, string>();
-            hexes = hexes.OrderBy(h => OrderUnits(h))
+            Dictionary<int, string> occupiedHexes = [];
+            hexes = [.. hexes.OrderBy(h => OrderUnits(h))
                 .ThenByDescending(hex => hex.CurrentItems.Count)
                 .ThenByDescending(hex => hex.Unit.Tier)
-                .ThenByDescending(hex => hex.Unit.Health.ToList()[2])
-                .ToList();
+                .ThenByDescending(hex => hex.Unit.Health.ToList()[2])];
 
             int frontCount = hexes.Count(hex => Champions[hex.Unit.InGameKey].Contains("front"));
             foreach (var hex in hexes)
@@ -93,24 +90,24 @@ namespace TFT_API.Services
                     case "front_tank_ad":
                     case "front_damage_ad":
                     case "front_damage_ap":
-                        hex.Coordinates = FindAvailableFrontPosition(occupiedHexes, hex, frontCount);
+                        hex.Coordinates = FindAvailableFrontPosition(occupiedHexes, frontCount);
                         break;
                     case "back_damage_ap":
                     case "back_damage_ad":
-                        hex.Coordinates = FindAvailableBackPosition(occupiedHexes, hex);
+                        hex.Coordinates = FindAvailableBackPosition(occupiedHexes);
                         break;
                     case "second_lr_damage_ad":
-                        hex.Coordinates = FindAvailableSecondLRDamagePosition(occupiedHexes, hex);
+                        hex.Coordinates = FindAvailableSecondLRDamagePosition(occupiedHexes);
                         break;
                     case "second_damage_ap":
                     case "second_damage_ad":
-                        hex.Coordinates = FindAvailableSecondDamagePosition(occupiedHexes, hex);
+                        hex.Coordinates = FindAvailableSecondDamagePosition(occupiedHexes);
                         break;
                     case "front_link_ad":
-                        hex.Coordinates = FindAvailableFrontLinkPosition(occupiedHexes, hex);
+                        hex.Coordinates = FindAvailableFrontLinkPosition(occupiedHexes);
                         break;
                     case "back_link_ap":
-                        hex.Coordinates = FindAvailableBackLinkPosition(occupiedHexes, hex);
+                        hex.Coordinates = FindAvailableBackLinkPosition(occupiedHexes);
                         break;
                 }
 
@@ -139,19 +136,19 @@ namespace TFT_API.Services
                 return int.MaxValue;
         }
 
-        private int FindAvailableFrontPosition(Dictionary<int, string> occupiedHexes, Hex hex, int frontCount)
+        private static int FindAvailableFrontPosition(Dictionary<int, string> occupiedHexes, int frontCount)
         {
             if(frontCount == 2)
             {
                 if (!occupiedHexes.ContainsKey(1)) return 1;
                 if (!occupiedHexes.ContainsKey(5)) return 5;
             }
-            if (occupiedHexes.ContainsKey(2) && occupiedHexes[2].Contains("front_link"))
+            if (occupiedHexes.TryGetValue(2, out string? hex2) && hex2.Contains("front_link"))
             {
                 if (!occupiedHexes.ContainsKey(1)) return 1;
                 if (!occupiedHexes.ContainsKey(3)) return 3;
             }
-            if (occupiedHexes.ContainsKey(4) && occupiedHexes[4].Contains("front_link"))
+            if (occupiedHexes.TryGetValue(4, out string? hex4) && hex4.Contains("front_link"))
             {
                 if (!occupiedHexes.ContainsKey(5)) return 5;
                 if (!occupiedHexes.ContainsKey(3)) return 3;
@@ -160,7 +157,7 @@ namespace TFT_API.Services
             {
                 if (!occupiedHexes.ContainsKey(i) && !occupiedHexes.ContainsKey(i - 1)) return i;
             }
-            if (!occupiedHexes.ContainsKey(2)) return 1;
+            if (!occupiedHexes.ContainsKey(2)) return 2;
             if (!occupiedHexes.ContainsKey(4)) return 4;
             if ((!occupiedHexes.ContainsKey(0)) && !occupiedHexes.ContainsKey(7)) return 0;
             if ((!occupiedHexes.ContainsKey(6)) && !occupiedHexes.ContainsKey(13)) return 6;
@@ -172,14 +169,14 @@ namespace TFT_API.Services
             return -1;
         }
 
-        private int FindAvailableBackPosition(Dictionary<int, string> occupiedHexes, Hex hex)
+        private static int FindAvailableBackPosition(Dictionary<int, string> occupiedHexes)
         {
-            if (occupiedHexes.ContainsKey(26) && occupiedHexes[26].Contains("back_link"))
+            if (occupiedHexes.TryGetValue(26, out string? hex26) && hex26.Contains("back_link"))
             {
                 if (!occupiedHexes.ContainsKey(27)) return 27;
                 if (!occupiedHexes.ContainsKey(25)) return 25;
             }
-            if (occupiedHexes.ContainsKey(22) && occupiedHexes[22].Contains("back_link"))
+            if (occupiedHexes.TryGetValue(22, out string? hex22) && hex22.Contains("back_link"))
             {
                 if (!occupiedHexes.ContainsKey(21)) return 21;
                 if (!occupiedHexes.ContainsKey(23)) return 23;
@@ -196,7 +193,7 @@ namespace TFT_API.Services
             return -1; 
         }
 
-        private int FindAvailableSecondLRDamagePosition(Dictionary<int, string> occupiedHexes, Hex hex)
+        private static int FindAvailableSecondLRDamagePosition(Dictionary<int, string> occupiedHexes)
         {
 
             if (!occupiedHexes.ContainsKey(7))
@@ -210,7 +207,7 @@ namespace TFT_API.Services
             return -1;
         }
 
-        private int FindAvailableSecondDamagePosition(Dictionary<int, string> occupiedHexes, Hex hex)
+        private static int FindAvailableSecondDamagePosition(Dictionary<int, string> occupiedHexes)
         {
             for(int i = 8; i <= 12; i++)
             {
@@ -220,7 +217,7 @@ namespace TFT_API.Services
             return -1; 
         }
 
-        private int FindAvailableFrontLinkPosition(Dictionary<int, string> occupiedHexes, Hex hex)
+        private static int FindAvailableFrontLinkPosition(Dictionary<int, string> occupiedHexes)
         {
             if (!occupiedHexes.ContainsKey(2))
                 return 2;
@@ -229,7 +226,7 @@ namespace TFT_API.Services
             return -1;
         }
 
-        private int FindAvailableBackLinkPosition(Dictionary<int, string> occupiedHexes, Hex hex)
+        private static int FindAvailableBackLinkPosition(Dictionary<int, string> occupiedHexes)
         {
             if(!occupiedHexes.ContainsKey(22))
                 return 22;

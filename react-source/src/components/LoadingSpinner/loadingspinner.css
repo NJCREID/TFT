@@ -1,0 +1,23 @@
+.app__loadingspinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex: 1;
+}
+
+.app__loadingspinner svg {
+  animation: spin 1s linear infinite;
+  color: var(--color-lightred);
+  width: 60px;
+  height: 60px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

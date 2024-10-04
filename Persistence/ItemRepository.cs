@@ -1,49 +1,68 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using TFT_API.Data;
 using TFT_API.Interfaces;
 using TFT_API.Models.Item;
 
 namespace TFT_API.Persistence
 {
-    public class ItemRepository: IItemDataAccess
+    public class ItemRepository(TFTContext context) : IItemDataAccess
     {
-        private readonly TFTContext _context;
+        private readonly TFTContext _context = context;
 
-        public ItemRepository(TFTContext context)
+        public async Task<ItemDto?> GetItemByKeyAsync(string key)
         {
-            _context = context;
-        }
-        public PersistedItem AddItem(PersistedItem item)
-        {
-            _context.Items.Add(item);
-            return Save(item);
+            return await ProjectToItemDto(_context.Items
+                .Where(t => t.InGameKey == key))
+                .FirstOrDefaultAsync();
         }
 
-        public PersistedItem? GetItemByKey(string key)
+        public async Task<List<ItemDto>> GetFullItemsAsync()
         {
-            return _context.Items.AsNoTracking().FirstOrDefault(t => t.Key == key);
+            return await ProjectToItemDto(_context.Items
+                .Where(a => a.IsHidden != true))
+                .ToListAsync();
         }
 
-        public List<PersistedItem> GetItems()
+        public async Task<List<PartialItemDto>> GetPartialItemsAsync()
         {
-            var items = _context.Items.AsNoTracking().ToList();
-            return items;
+            return await _context.Items
+                .Where(i => i.IsHidden != true)
+                .Select(i => new PartialItemDto
+                {
+                    InGameKey = i.InGameKey,
+                    Name = i.Name,
+                    Tags = i.Tags,
+                    Recipe = i.Recipe,
+                    Desc = i.Desc,  
+                    ShortDesc = i.ShortDesc,
+                    IsComponent = i.IsComponent,
+                })
+                .ToListAsync();
         }
 
-        public List<PersistedItem> GetComponents()
+        public async Task<List<ItemDto>> GetComponentsAsync()
         {
-            var components = _context.Items
-                .AsNoTracking()
-                .Where(item => item.IsComponent == true)
-                .ToList();
-
-            return components;
+            return await ProjectToItemDto(_context.Items
+                .Where(item => item.IsComponent == true && item.IsHidden != true))
+                .ToListAsync();
         }
-        public PersistedItem Save(PersistedItem item)
+
+        private static IQueryable<ItemDto> ProjectToItemDto(IQueryable<PersistedItem> query)
         {
-            _context.SaveChanges();
-            return item;
+            return query.Select(i => new ItemDto
+            {
+                InGameKey = i.InGameKey,
+                Name = i.Name,
+                Tags = i.Tags,
+                Recipe = i.Recipe,
+                Desc = i.Desc,
+                ShortDesc = i.ShortDesc,
+                FromDesc = i.FromDesc,
+                IsComponent = i.IsComponent,
+                AffectedTraitKey = i.AffectedTraitKey,
+                UnitCompatabilityKey = i.UnitCompatabilityKey,
+                TraitCompatabilityKey = i.TraitCompatabilityKey
+            });
         }
     }
 }

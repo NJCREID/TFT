@@ -3,6 +3,7 @@
     public class AugmentStatDto
     {
         public string Name { get; set; } = string.Empty;
+        public string InGameKey { get; set; } = string.Empty;
         public List<StatDto> Stats { get; set; } = [];
     }
 }

@@ -1,55 +1,45 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using TFT_API.Data;
 using TFT_API.Interfaces;
 using TFT_API.Models.Augments;
-using TFT_API.Models.Item;
 
 namespace TFT_API.Persistence
 {
-    public class AugmentRepository : IAugmentDataAccess
+    public class AugmentRepository(TFTContext context) : IAugmentDataAccess
     {
-        private readonly TFTContext _context;
+        private readonly TFTContext _context = context;
 
-        public AugmentRepository(TFTContext context)
+        public async Task<AugmentDto?> GetAugmentByKeyAsync(string key)
         {
-            _context = context;
-        }
-        public PersistedAugment AddAugment(PersistedAugment augment)
-        {
-            _context.Augments.Add(augment);
-            return Save(augment);
+            return await ProjectToAugmentDto(_context.Augments
+                .Where(a => a.Key == key))
+                .FirstOrDefaultAsync();
         }
 
-        public PersistedAugment? GetAugmentByKey(string key)
+        public async Task<List<AugmentDto>> GetAugmentsAsync()
         {
-            return _context.Augments.AsNoTracking().FirstOrDefault(a => a.Key == key);
-        }
-
-        public List<PersistedAugment> GetAugments()
-        {
-            var augments = _context.Augments
-                .AsNoTracking()
+            return await ProjectToAugmentDto(_context.Augments
                 .Where(a => a.IsHidden != true)
-                .OrderBy(a => a.Tier)
-                .ToList();
-            return augments;
+                .OrderBy(a => a.Tier))
+                .ToListAsync();
         }
 
-        public List<PersistedAugment> GetAugmentsByTier(int tier)
+        public async Task<List<AugmentDto>> GetAugmentsByTierAsync(int tier)
         {
-            var components = _context.Augments
-                .AsNoTracking()
-                .Where(a => a.IsHidden != true)
-                .Where(item => item.Tier == tier)
-                .ToList();
-
-            return components;
+            return await ProjectToAugmentDto(_context.Augments
+                .Where(a => a.IsHidden != true && a.Tier == tier))
+                .ToListAsync();
         }
-        public PersistedAugment Save(PersistedAugment item)
+
+        public static IQueryable<AugmentDto> ProjectToAugmentDto(IQueryable<PersistedAugment> query)
         {
-            _context.SaveChanges();
-            return item;
+            return query.Select(a => new AugmentDto
+            {
+                InGameKey = a.InGameKey,
+                Name = a.Name,
+                Desc = a.Desc,
+                Tier = a.Tier
+            });
         }
     }
 }

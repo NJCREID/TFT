@@ -1,0 +1,45 @@
+.app__filterselector {
+  flex: 0 0;
+  display: flex;
+  border-radius: 5px;
+  user-select: none;
+}
+
+.app__filterselector-container:first-child {
+  border-radius: 5px 0px 0px 5px;
+}
+
+.app__filterselector-container:last-child {
+  border-radius: 0px 5px 5px 0px;
+}
+
+.app__filterselector-container:only-child {
+  border-radius: 5px;
+}
+
+.app__filterselector-container {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-lightred);
+  cursor: pointer;
+}
+
+.app__filterselector-container:hover,
+.app__filterselector-container.active {
+  border: 1px solid var(--color-gold);
+}
+
+.app__filterselector-container img {
+  width: 20px;
+  height: 20px;
+}
+
+@media screen and (max-width: 425px) {
+  .app__filterselector {
+    justify-content: center;
+  }
+}

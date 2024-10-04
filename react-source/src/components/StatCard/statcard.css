@@ -1,0 +1,9 @@
+.app__statcard {
+  margin-bottom: 8px;
+}
+
+.app__statcard-stat {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}

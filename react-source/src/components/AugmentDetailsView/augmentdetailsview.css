@@ -1,0 +1,43 @@
+.app__augmentdetailsview {
+  display: grid;
+  grid-template-rows: 145px 1fr;
+  width: 100%;
+}
+
+.app__augmentdetailsview-header {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.app__augmentdetailsview-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 0.5rem;
+}
+
+.app__augmentdetailsview-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.app__augmentdetailsview-img {
+  width: 120px;
+  height: 120px;
+  border: 3px solid;
+}
+
+.app__augmentdetailsview-img.tier1 {
+  border-color: var(--color-augment-tier1);
+}
+
+.app__augmentdetailsview-img.tier2 {
+  border-color: var(--color-augment-tier2);
+}
+
+.app__augmentdetailsview-img.tier3 {
+  border-image: var(--color-augment-tier3);
+}

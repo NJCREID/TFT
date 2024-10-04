@@ -7,5 +7,6 @@ namespace TFT_API.Models.UserGuides
         public int Id { get; set; }
         public PersistedItem Item { get; set; } = new PersistedItem();
         public int HexId { get; set; }
+        public Hex Hex { get; set; } = new Hex();
     }
 }

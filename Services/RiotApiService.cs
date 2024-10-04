@@ -2,24 +2,18 @@
 using TFT_API.Data;
 using TFT_API.Models.Match;
 using TFT_API.Models.FetchResponse;
+using static TFT_API.Services.RiotApiService;
+using System.Threading.RateLimiting;
 
 namespace TFT_API.Services
 {
-    public class RiotApiService
+    public class RiotApiService(HttpClient httpClient, IConfiguration configuration, TFTContext context)
     {
-        private readonly HttpClient _httpClient;
-        private readonly IConfiguration _configuration;
-        private readonly TFTContext _context;
-        private readonly Dictionary<string, RequestCounter> _requestAmounts;
-        private const int TwoMinutes = 1000 * 60 * 2;
-
-        public RiotApiService(HttpClient httpClient, IConfiguration configuration, TFTContext context)
-        {
-            _httpClient = httpClient;
-            _configuration = configuration;
-            _context = context;
-            _requestAmounts = new Dictionary<string, RequestCounter>();
-        }
+        private readonly HttpClient _httpClient = httpClient;
+        private readonly IConfiguration _configuration = configuration;
+        private readonly TFTContext _context = context;
+        private readonly RateLimiter _rateLimiter = new(perSecondLimit: 20, per2MinLimit: 100);
+        private readonly HashSet<string> _processedMatchIds = [];
 
         public async Task FetchChallengerMatchHistoryAsync()
         {
@@ -27,102 +21,113 @@ namespace TFT_API.Services
             var leagues = _configuration.GetSection("Leagues").Get<Dictionary<string, string>>();
             if (regionServerInfo == null || leagues == null) return;
 
-            foreach (var leagueKey in leagues.Keys)
+            var summonerEndpoint = _configuration["Endpoints:GetSummonerBySummonerId"];
+            var matchIdsEndpoint = _configuration["Endpoints:GetMatchIdsByPuuid"];
+            var matchEndpoint = _configuration["Endpoints:GetMatchByMatchId"];
+
+            if(summonerEndpoint == null || matchIdsEndpoint == null || matchEndpoint == null) return;
+
+            foreach (var league in leagues)
             {
-                var leagueName = leagueKey.Replace("Get", "").Replace("League", "");
-                var leagueEndpoint = leagues[leagueKey];
-                if (leagueEndpoint == null) continue;
+                var leagueName = league.Key.Replace("Get", "").Replace("League", "");
+                await ProccessLeagueAsync(league.Value, leagueName, regionServerInfo, summonerEndpoint, matchIdsEndpoint, matchEndpoint);
+            }
+        }
 
-                foreach (var region in regionServerInfo.Keys)
+        private async Task ProccessLeagueAsync(string leagueEndpoint, string leagueName, Dictionary<string, RegionServerInfo> regionServerInfo, string summonerEndpoint, string matchIdsEndpoint, string matchEndpoint)
+        {
+            if (leagueEndpoint == null) return;
+            foreach(var region in regionServerInfo)
+            {
+                var fetchedLeague = await FetchRequestAsync<FetchedLeague>(leagueEndpoint, region.Value.ServerCode);
+                if (fetchedLeague == null) continue;
+
+                foreach(var entry in fetchedLeague.Entries)
                 {
-                    var fetchedLeague = await FetchRequestAsync<FetchedLeague>(leagueEndpoint, regionServerInfo[region].ServerCode);
-                    if (fetchedLeague == null) continue;
-
-                    foreach (var entry in fetchedLeague.entries)
-                    {
-                        var summonerEndpoint = _configuration["Endpoints:GetSummonerBySummonerId"];
-                        if (summonerEndpoint == null) continue;
-                        var summonerUrl = summonerEndpoint.Replace("{encryptedSummonerId}", entry.summonerId);
-                        var fetchedSummoner = await FetchRequestAsync<FetchedSummoner>(summonerUrl, regionServerInfo[region].ServerCode);
-                        if (fetchedSummoner == null) continue;
-
-                        var matchIdsEndpoint = _configuration["Endpoints:GetMatchIdsByPuuid"];
-                        if (matchIdsEndpoint == null) continue;
-                        var matchIdsUrl = matchIdsEndpoint.Replace("{puuid}", fetchedSummoner.puuid);
-                        var fetchedMatchIds = await FetchRequestAsync<List<string>>(matchIdsUrl, regionServerInfo[region].ServerLocation);
-                        if (fetchedMatchIds == null) continue;
-
-                        foreach (var matchId in fetchedMatchIds)
-                        {
-                            var matchEndpoint = _configuration["Endpoints:GetMatchByMatchId"];
-                            if (matchEndpoint == null) continue;
-                            var matchUrl = matchEndpoint.Replace("{matchId}", matchId);
-                            var match = await FetchRequestAsync<FetchedMatch>(matchUrl, regionServerInfo[region].ServerLocation);
-                            if (match == null) continue;
-
-                            var targetParticipant = match.info.participants.Find(p => p.puuid == fetchedSummoner.puuid);
-                            if (targetParticipant == null) continue;
-                            var Match = new Match
-                            {
-                                Puuid = fetchedSummoner.puuid,
-                                Placement = targetParticipant.placement,
-                                Units = targetParticipant.units.Select(u => new MatchUnit
-                                {
-                                    CharacterId = u.character_id,
-                                    ItemNames = u.itemNames,
-                                    Name = u.name,
-                                    Rarity = u.rarity,
-                                    Tier = u.tier,
-                                }).ToList(),
-                                Traits = targetParticipant.traits.Select(t => new MatchTrait
-                                {
-                                    Name = t.name,
-                                    NumUnits = t.num_units,
-                                    Style = t.style,
-                                    TierCurrent = t.tier_current,
-                                    TierTotal = t.tier_total,
-                                }).ToList(),
-                                Augments = targetParticipant.augments.ToList(),
-                                League = leagueName 
-                            };
-                            _context.Matches.Add(Match);
-                            await _context.SaveChangesAsync();
-                        }
-                    }
+                    await ProcessSummonerAsync(entry.SummonerId, region.Value, leagueName, summonerEndpoint, matchIdsEndpoint, matchEndpoint);
                 }
             }
         }
 
-        private async Task<T?> FetchRequestAsync<T>(string endpoint, string type)
+
+        private async Task ProcessSummonerAsync(string summonerId, RegionServerInfo regionInfo, string leagueName, string summonerEndpoint, string matchIdsEndpoint,string matchEndpoint)
         {
-            if (_requestAmounts.TryGetValue(type, out var counter) && counter.Count == 100)
+            var summonerUrl = summonerEndpoint.Replace("{encryptedSummonerId}", summonerId);
+            var fetchedSummoner = await FetchRequestAsync<FetchedSummoner>(summonerUrl, regionInfo.ServerCode);
+            if (fetchedSummoner == null) return;
+
+
+            var matchIdsUrl = matchIdsEndpoint.Replace("{puuid}", fetchedSummoner.Puuid);
+            var fetchedMatchIds = await FetchRequestAsync<List<string>>(matchIdsUrl, regionInfo.ServerLocation);
+            if (fetchedMatchIds == null) return;
+
+            foreach(var matchId in fetchedMatchIds)
             {
-                var now = DateTime.Now;
-                var timeDif = now - counter.FirstTime;
-                if (timeDif.TotalMilliseconds < TwoMinutes)
+                if (_processedMatchIds.Contains(matchId)) continue;
+                await ProcessMatchAsync(matchId, fetchedSummoner.Puuid, regionInfo.ServerLocation, leagueName, matchEndpoint);
+                _processedMatchIds.Add(matchId);
+            }
+        }
+
+        private async Task ProcessMatchAsync(string matchId, string puuid, string serverLocation, string leagueName, string matchEndpoint)
+        {
+            var matchUrl = matchEndpoint.Replace("{matchId}", matchId);
+            var match = await FetchRequestAsync<FetchedMatch>(matchUrl, serverLocation);
+            if (match == null || match.Info.TftGameType != "standard" ||
+                !long.TryParse(_configuration["TFT:Patch"], out var patchNumber) ||
+                match.Info.TftSetNumber != patchNumber)
+            {
+                return;
+            }
+
+            var targetParticipant = match.Info.Participants.Find(p => p.Puuid == puuid);
+            if (targetParticipant is null) return;
+
+            var matchEntity = new Match
+            {
+                Puuid = puuid,
+                Placement = targetParticipant.Placement,
+                Units = targetParticipant.Units.Select(u => new MatchUnit
                 {
-                    await Task.Delay(TwoMinutes - (int)timeDif.TotalMilliseconds + 10000);
-                }
-                _requestAmounts[type] = new RequestCounter { Count = 0, FirstTime = DateTime.Now };
-            }
+                    CharacterId = u.CharacterId,
+                    ItemNames = u.ItemNames,
+                    Name = u.Name,
+                    Rarity = u.Rarity,
+                    Tier = u.Tier,
+                }).ToList(),
+                Traits = targetParticipant.Traits.Select(t => new MatchTrait
+                {
+                    Name = t.Name,
+                    NumUnits = t.NumUnits,
+                    Style = t.Style,
+                    TierCurrent = t.TierCurrent,
+                    TierTotal = t.TierTotal,
+                }).ToList(),
+                Augments = [.. targetParticipant.Augments],
+                League = leagueName
+            };
 
-            if (!_requestAmounts.ContainsKey(type))
-            {
-                _requestAmounts[type] = new RequestCounter { Count = 1, FirstTime = DateTime.Now };
-            }
-            else
-            {
-                _requestAmounts[type].Count++;
-            }
+            _context.Matches.Add(matchEntity);
+            await _context.SaveChangesAsync();
+        }
 
-            var url = new UriBuilder($"https://{type}.{_configuration["RiotApi:BaseApi"]}{endpoint}");
-            url.Query = $"api_key={_configuration["RiotApi:ApiKey"]}";
+        private async Task<T?> FetchRequestAsync<T>(string endpoint, string serverCode)
+        {
+            var url = new UriBuilder($"https://{serverCode}.{_configuration["RiotApi:BaseApi"]}{endpoint}")
+            {
+                Query = $"api_key={_configuration["RiotApi:ApiKey"]}"
+            };
 
             try
             {
+                await _rateLimiter.CanMakeCallAsync(serverCode);
+
                 var response = await _httpClient.GetAsync(url.ToString());
                 response.EnsureSuccessStatusCode();
                 var responseBody = await response.Content.ReadAsStringAsync();
+
+                _rateLimiter.RecordCall(serverCode);
+
                 return JsonSerializer.Deserialize<T>(responseBody);
             }
             catch (HttpRequestException e)
@@ -140,12 +145,6 @@ namespace TFT_API.Services
                 Console.Error.WriteLine($"Unexpected error: {e.Message}");
                 return default;
             }
-        }
-
-        public class RequestCounter
-        {
-            public int Count { get; set; }
-            public DateTime FirstTime { get; set; }
         }
 
         public class RegionServerInfo

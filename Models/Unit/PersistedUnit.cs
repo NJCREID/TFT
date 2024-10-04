@@ -6,9 +6,6 @@
         public string Key { get; set; } = string.Empty;
         public string InGameKey { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
-        public string ImageUrl { get; set; } = string.Empty;
-        public string SplashImageUrl { get; set; } = string.Empty;
-        public string CenteredImageUrl { get; set; } = string.Empty;
         public int Tier { get; set; }
         public List<int> Cost { get; set; } = [];
         public List<string> RecommendedItems { get; set; } = [];
@@ -22,5 +19,9 @@
         public Skill Skill { get; set; } = new Skill();
         public List<UnitTrait> Traits { get; set; } = [];
         public bool? IsHidden { get; set; }
+        public string? UniqueItemKey { get; set; }
+        public bool? IsItemIncompatible { get; set; }
+        public string? CompatabilityType { get; set; }
+        public bool? IsTriggerUnit { get; set; }
     }
 }

@@ -1,0 +1,50 @@
+.app__unitdetailsview {
+  display: grid;
+  grid-template-rows: 145px 1fr auto;
+  width: 100%;
+}
+
+.app__unitdetailsview-header {
+  display: flex;
+  height: 145px;
+  width: 100%;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.app__unitdetailsview-body {
+  display: grid;
+  grid-template-columns: 205px auto;
+  gap: 16px;
+}
+
+.app__unitdetailsview-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.app__unitdetailsview-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.app__unitdetailsview-unit img {
+  border: 1px solid var(--color-lightred);
+  width: 120px;
+  height: 120px;
+}
+
+.app__unitdetailsview-content-container img {
+  border: 1px solid var(--color-gold);
+  width: 35px;
+  height: 35px;
+}
+
+.app__unitdetailsview-content-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}

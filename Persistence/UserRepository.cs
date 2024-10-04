@@ -1,65 +1,91 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using TFT_API.Data;
 using TFT_API.Interfaces;
+using TFT_API.Migrations;
 using TFT_API.Models.User;
 
 namespace TFT_API.Persistence
 {
-    public class UserRepository : IUserDataAccess
+    public class UserRepository(TFTContext context) : IUserDataAccess
     {
-        private readonly TFTContext _context;
-        public UserRepository(TFTContext context)
-        {
-            _context = context;
-        }
-        public PersistedUser AddUser(PersistedUser user)
+        private readonly TFTContext _context = context;
+
+        public async Task<UserDto> AddUserAsync(PersistedUser user)
         {
             _context.Users.Add(user);
-            return Save(user);
+            await _context.SaveChangesAsync();
+
+            return MapUserToDto(user);
         }
 
-        public void DeleteUser(int id)
+        public async Task DeleteUserAsync(int id)
         {
-            var user = _context.Users.Find(id);
-            if(user != null)
+            var user = await _context.Users.FindAsync(id);
+            if (user != null)
             {
                 _context.Users.Remove(user);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
         }
 
-        public PersistedUser? GetUserById(int id)
+        public async Task<PersistedUser?> GetUserByIdAsync(int id)
         {
-            return _context.Users.Find(id);
+            return await _context.Users
+                .Where(u => u.Id == id)
+                .FirstOrDefaultAsync();
         }
 
-        public PersistedUser? GetUserByEmail(string email)
+        public async Task<PersistedUser?> GetUserByEmailAsync(string email)
         {
-            return _context.Users.AsNoTracking().FirstOrDefault(u => u.Email == email);
+            return await _context.Users
+                .Where(u => u.Email == email)
+                .FirstOrDefaultAsync();
+        }
+        
+        public async Task<List<UserDto>> GetUsersAsync()
+        {
+            return await _context.Users
+                .Select(u => MapUserToDto(u))
+                .ToListAsync();
         }
 
-        public List<PersistedUser> GetUsers()
+        public async Task<UserDto?> UpdateUserAsync(PersistedUser updatedUser)
         {
-            var users = _context.Users.AsNoTracking().ToList();
-            return users;
-        }
-
-        public PersistedUser? UpdateUser(PersistedUser updatedUser)
-        {
-            var currentUser = GetUserById(updatedUser.Id);
-            if(currentUser != null)
+            var currentUser = await _context.Users
+                .FirstOrDefaultAsync(u => u.Id == updatedUser.Id);
+            if (currentUser != null)
             {
                 _context.Entry(currentUser).CurrentValues.SetValues(updatedUser);
-                return Save(updatedUser);
+                await _context.SaveChangesAsync();
+                return MapUserToDto(currentUser);
             }
-            return null;     
+            return null;
         }
 
-        public PersistedUser Save(PersistedUser user)
+        public async Task<Boolean> CheckIfEmailExistsAsync(string email)
         {
-            _context.SaveChanges();
-            return user;
+            return await _context.Users.AnyAsync(u => u.Email == email);
+        }
+        
+        public async Task<Boolean> CheckIfUsernameExistsAsync(string username)
+        {
+            return await _context.Users.AnyAsync(u => u.Username == username);
+        }
+
+        private static UserDto MapUserToDto(PersistedUser user)
+        {
+            return new UserDto
+            {
+                Id = user.Id,
+                Username = user.Username,
+                Name = user.Name,
+                Email = user.Email,
+                ProfileImageUrl = user.ProfileImageUrl,
+                GuidesCount = user.GuidesCount,
+                CommentsCount = user.CommentsCount,
+                UpVotesCount = user.UpVotesCount,
+                DownVotesCount = user.DownVotesCount
+            };
         }
     }
 }

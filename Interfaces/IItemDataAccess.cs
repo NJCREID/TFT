@@ -4,9 +4,9 @@ namespace TFT_API.Interfaces
 {
     public interface IItemDataAccess
     {
-        List<PersistedItem> GetItems();
-        PersistedItem? GetItemByKey(string key);
-        PersistedItem AddItem(PersistedItem item);
-        List<PersistedItem> GetComponents();
+        Task<List<ItemDto>> GetFullItemsAsync();
+        Task<List<PartialItemDto>> GetPartialItemsAsync();
+        Task<ItemDto?> GetItemByKeyAsync(string key);
+        Task<List<ItemDto>> GetComponentsAsync();
     }
 }

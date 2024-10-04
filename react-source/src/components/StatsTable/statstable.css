@@ -1,0 +1,14 @@
+.app__statstable {
+  width: 100%;
+  max-width: 1100px;
+  background-color: #270608;
+  border-radius: 5px;
+  height: fit-content;
+}
+
+.app__statstable-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  gap: 2rem;
+}

@@ -5,30 +5,41 @@ using TFT_API.Models.Trait;
 
 namespace TFT_API.Persistence
 {
-    public class TraitRepository: ITraitDataAccess
+    public class TraitRepository(TFTContext context) : ITraitDataAccess
     {
-        private readonly TFTContext _context;
+        private readonly TFTContext _context = context;
 
-        public TraitRepository(TFTContext context)
+        public async Task<List<FullTraitDto>> GetTraitsAsync()
         {
-            _context = context;
-        }
-
-        public PersistedTrait AddTrait(PersistedTrait trait)
-        {
-            _context.Traits.Add(trait);
-            _context.SaveChanges();
-            return trait;
+            return await ProjectToTraitDto(_context.Traits
+                .Where(a => a.IsHidden != true))
+                .ToListAsync();
         }
 
-        public List<PersistedTrait> GetTraits()
+        public async Task<PersistedTrait?> GetTraitByKeyAsync(string key)
         {
-            var traits = _context.Traits.AsNoTracking().Include(t => t.Tiers).ToList();
-            return traits;
+            return await _context.Traits
+                .Where(t => t.Key == key)
+                .FirstOrDefaultAsync();
         }
-        public PersistedTrait? GetTraitByKey(string key)
+
+        private static IQueryable<FullTraitDto> ProjectToTraitDto(IQueryable<PersistedTrait> query)
         {
-            return _context.Traits.FirstOrDefault(t => t.Key == key);
+            return query.Select(t => new FullTraitDto
+            {
+                Name = t.Name,
+                InGameKey = t.InGameKey,
+                TierString = t.TierString,
+                Desc = t.Desc,
+                Stats = t.Stats,
+                Tiers = t.Tiers.Select(tt => new TraitTierDto
+                {
+                    Level = tt.Level,
+                    Rarity = tt.Rarity,
+                    Desc = tt.Desc,
+                }).ToList()
+            });
         }
+
     }
 }

@@ -6,5 +6,6 @@ namespace TFT_API.Models.Stats.CompStats
         public int Id { get; set; }
         public int Games { get; set; }
         public List<CompStat> CompStats { get; set; } = [];
+        public string League { get; set; } = string.Empty;
     }
 }

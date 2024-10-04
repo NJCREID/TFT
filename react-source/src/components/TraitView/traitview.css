@@ -1,0 +1,6 @@
+.app__traitview {
+  display: flex;
+  border: 3px solid white;
+  aspect-ratio: 1/1;
+  user-select: none;
+}

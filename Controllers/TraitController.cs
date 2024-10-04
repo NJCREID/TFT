@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
+using System.ComponentModel.DataAnnotations;
 using TFT_API.Interfaces;
 using TFT_API.Models.Trait;
 
@@ -7,44 +10,42 @@ namespace TFT_API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class TraitController : Controller
+    public class TraitController(ITraitDataAccess traitRepo, IMapper mapper, IMemoryCache memoryCache) : ControllerBase
     {
- 
-            private readonly ITraitDataAccess _traitRepo;
-            private readonly IMapper _mapper;
+        private readonly ITraitDataAccess _traitRepo = traitRepo;
+        private readonly IMemoryCache _memoryCache = memoryCache;
+        private readonly IMapper _mapper = mapper;
 
-            public TraitController(ITraitDataAccess traitRepo, IMapper mapper)
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<ActionResult<List<FullTraitDto>>> GetTraits()
+        {
+            var cacheKey = "traits";
+            if(!_memoryCache.TryGetValue(cacheKey, out List<FullTraitDto>? cachedTraits))
             {
-                _traitRepo = traitRepo;
-                _mapper = mapper;
+                cachedTraits = await _traitRepo.GetTraitsAsync();
+                var cacheEntryOptions = new MemoryCacheEntryOptions
+                {
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(30)
+                };
+                _memoryCache.Set(cacheKey, cachedTraits, cacheEntryOptions);  
             }
-
-            [HttpGet]
-            public ActionResult<List<TraitDto>> GetTraits()
+            if (cachedTraits == null || cachedTraits.Count == 0)
             {
-                var traits = _traitRepo.GetTraits();
-                return Ok(_mapper.Map<List<TraitDto>>(traits));
+                return NotFound("No traits found.");
             }
-
-            [HttpGet("{key}", Name = "GetTrait")]
-            public ActionResult<TraitDto> GetUnitByKey(string key)
-            {
-                var trait = _traitRepo.GetTraitByKey(key);
-                if (trait == null) return NotFound();
-                return Ok(_mapper.Map<TraitDto>(trait));
-            }
-
-            [HttpPost]
-            public ActionResult<PersistedTrait> AddTrait(PersistedTrait request)
-            {
-                var currentTraits = _traitRepo.GetTraits();
-                if (request == null) return BadRequest();
-                if (currentTraits.Any(c => c.Key == request.Key))
-                    return Conflict("A trait with that key already exists.");
-                var result = _traitRepo.AddTrait(request);
-                return CreatedAtRoute("GetTrait", new { key = result.Key }, result);
-            }
-
+            return Ok(cachedTraits);
         }
-    
+
+        [AllowAnonymous]
+        [HttpGet("{key}", Name = "GetTrait")]
+        public async Task<ActionResult<TraitDto>> GetTraitByKey(
+            [FromRoute, Required, MinLength(1, ErrorMessage = "Key cannot be empty")] string key)
+        {
+            var trait = await _traitRepo.GetTraitByKeyAsync(key);
+            if (trait == null) return NotFound($"Trait with key '{key}' not found.");
+            var traitDto = _mapper.Map<TraitDto>(trait);
+            return Ok(traitDto);
+        }
+    }
 }

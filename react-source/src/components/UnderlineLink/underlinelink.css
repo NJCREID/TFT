@@ -1,0 +1,11 @@
+.app__underlinelink {
+  width: 100%;
+  border-bottom: 1px solid var(--color-primary);
+  cursor: pointer;
+}
+
+.app__underlinelink-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}

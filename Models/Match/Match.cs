@@ -31,9 +31,25 @@
         public int TierTotal { get; set; }
         public int Tier { get; set; }
     }
+
+    public class MatchDto
+    {
+        public string? League { get; set; }
+        public int Placement { get; set; }
+        public List<string> Augments { get; set; } = [];
+        public List<MatchUnitDto> Units { get; set; } = [];
+        public List<MatchTraitDto> Traits { get; set; } = [];
+    }
     public class MatchTraitDto
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         public int NumUnits { get; set; }
+    }
+
+    public class MatchUnitDto
+    {
+        public string CharacterId { get; set; } = string.Empty;
+        public List<string> ItemNames { get; set; } = [];
+        public int Tier { get; set; }
     }
 }

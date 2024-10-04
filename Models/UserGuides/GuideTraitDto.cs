@@ -6,6 +6,8 @@ namespace TFT_API.Models.UserGuides
     {
         public int Value { get; set; }
         public int Tier { get; set; }
-        public PartialTraitDto Trait { get; set; } = new PartialTraitDto();
+        public string Name { get; set; } = string.Empty;
+        public string InGameKey { get; set; } = string.Empty;
+        public List<TraitTierDto> Tiers { get; set; } = [];
     }
 }
