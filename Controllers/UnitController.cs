@@ -14,6 +14,18 @@ namespace TFT_API.Controllers
         private readonly IUnitDataAccess _unitRepo = unitRepo;
         private readonly IMemoryCache _memoryCache = memoryCache;
 
+        /// <summary>
+        /// Retrieves a list of all units with full details.
+        /// </summary>
+        /// <returns>A list of unit DTOs.</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// GET /api/unit/full
+        ///
+        /// </remarks>
+        /// <response code="200">Returns a list of all units</response>
+        /// <response code="404">If no units are found</response>
         [AllowAnonymous]
         [HttpGet("full")]
         public async Task<ActionResult<List<UnitDto>>> GetUnits()
@@ -35,6 +47,18 @@ namespace TFT_API.Controllers
             return Ok(cachedUnits);
         }
 
+        /// <summary>
+        /// Retrieves a list of all units with partial details.
+        /// </summary>
+        /// <returns>A list of partial unit DTOs.</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// GET /api/unit/partial
+        ///
+        /// </remarks>
+        /// <response code="200">Returns a list of all units</response>
+        /// <response code="404">If no units are found</response>
         [AllowAnonymous]
         [HttpGet("partial")]
         public async Task<ActionResult<List<PartialUnitDto>>> GetPartialUnits()
@@ -57,6 +81,19 @@ namespace TFT_API.Controllers
 
         }
 
+        /// <summary>
+        /// Retrieves a unit by its key.
+        /// </summary>
+        /// <param name="key">The key of the unit to retrieve.</param>
+        /// <returns>The unit DTO for the specified key.</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// GET /api/unit/unitKey
+        ///
+        /// </remarks>
+        /// <response code="200">Returns the unit with the specified key</response>
+        /// <response code="404">If the specified unit key is not found</response>
         [AllowAnonymous]
         [HttpGet("{key}", Name = "GetUnit")]
         public async Task<ActionResult<UnitDto>> GetUnitByKey(

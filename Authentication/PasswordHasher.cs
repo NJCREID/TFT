@@ -10,6 +10,7 @@ namespace TFT_API.Authentication
         private const int HashSize = 256 / 8;
         private const char Delimiter = ';';
 
+        // Method to hash a password
         public string HashPassword(string password)
         {
             var salt = RandomNumberGenerator.GetBytes(SaltSize);
@@ -18,6 +19,7 @@ namespace TFT_API.Authentication
             return string.Join(Delimiter, Convert.ToBase64String(salt), Convert.ToBase64String(hash));
         }
 
+        // Method to verify a password against a hashed password
         public bool VerifyPassword(string password, string hashedPassword)
         {
             var elements = hashedPassword.Split(Delimiter);

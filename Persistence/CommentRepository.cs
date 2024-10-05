@@ -9,6 +9,7 @@ namespace TFT_API.Persistence
     {
         private readonly TFTContext _context = context;
 
+        // Adds a new comment to the database and returns the mapped CommentDto
         public async Task<CommentDto> AddCommentAsync(Comment comment)
         {
             _context.Comments.Add(comment);
@@ -16,6 +17,7 @@ namespace TFT_API.Persistence
             return MapCommentToDto(comment);
         }
 
+        // Gets a comment by its ID and returns it as a CommentDto
         public async Task<CommentDto?> GetCommentByIdAsync(int id)
         {
             var comment = await _context.Comments
@@ -25,6 +27,7 @@ namespace TFT_API.Persistence
             return MapCommentToDto(comment);
         }
 
+        // Maps a Comment entity to a CommentDto
         private static CommentDto MapCommentToDto(Comment comment)
         {
             return new CommentDto

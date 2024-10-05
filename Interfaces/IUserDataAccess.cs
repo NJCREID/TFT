@@ -10,7 +10,7 @@ namespace TFT_API.Interfaces
         Task<PersistedUser?> GetUserByEmailAsync(string email);
         Task<List<UserDto>> GetUsersAsync();
         Task<UserDto?> UpdateUserAsync(PersistedUser updatedUser);
-        Task<Boolean> CheckIfEmailExistsAsync(string email);
-        Task<Boolean> CheckIfUsernameExistsAsync(string username);
+        Task<bool> CheckIfEmailExistsAsync(string email);
+        Task<bool> CheckIfUsernameExistsAsync(string username);
     }
 }

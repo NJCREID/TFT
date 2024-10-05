@@ -9,6 +9,7 @@ namespace TFT_API.Persistence
     {
         private readonly TFTContext _context = context;
 
+        // Gets a list of traits that are not hidden, returning a list of FullTraitDto
         public async Task<List<FullTraitDto>> GetTraitsAsync()
         {
             return await ProjectToTraitDto(_context.Traits
@@ -16,6 +17,7 @@ namespace TFT_API.Persistence
                 .ToListAsync();
         }
 
+        // Gets a specific trait by its key, returning a PersistedTrait or null
         public async Task<PersistedTrait?> GetTraitByKeyAsync(string key)
         {
             return await _context.Traits
@@ -23,6 +25,7 @@ namespace TFT_API.Persistence
                 .FirstOrDefaultAsync();
         }
 
+        // Projects a query of PersistedTrait into a FullTraitDto
         private static IQueryable<FullTraitDto> ProjectToTraitDto(IQueryable<PersistedTrait> query)
         {
             return query.Select(t => new FullTraitDto

@@ -18,6 +18,19 @@ namespace TFT_API.Controllers
         private readonly IMapper _mapper = mapper;
         private readonly IGuideDataAccess _guideRepo = guideRepo;
 
+        /// <summary>
+        /// Retrieves a comment by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the comment</param>
+        /// <returns>The comment with the specified ID</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// GET /api/comments/1
+        ///
+        /// </remarks>
+        /// <response code="200">Returns the comment with the specified ID</response>
+        /// <response code="404">If the specified comment ID is not found</response>
         [Authorize]
         [HttpGet("{id}", Name = "GetComment")]
         public async Task<ActionResult<CommentDto>> GetCommentByIdAsync([FromRoute] int id)
@@ -27,6 +40,23 @@ namespace TFT_API.Controllers
             return Ok(_mapper.Map<CommentDto>(comment));
         }
 
+        /// <summary>
+        /// Adds a new comment to a user guide.
+        /// </summary>
+        /// <param name="request">The request containing the comment details</param>
+        /// <returns>The created comment</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// POST /api/comments
+        /// {
+        ///     "userId": 1,
+        ///     "userGuideId": 2,
+        ///     "content": "This is a comment."
+        /// }
+        /// </remarks>
+        /// <response code="201">Returns the created comment</response>
+        /// <response code="404">If the specified user or guide is not found</response>
         [Authorize]
         [HttpPost]
         public async Task<ActionResult<CommentDto>> AddCommentAsync([FromBody] CommentRequest request)

@@ -15,6 +15,7 @@ namespace TFT_API.Persistence
     {
         private readonly TFTContext _context = context;
 
+        // Gets unit stats for a specific league, returning the projected BaseUnitStatDto
         public async Task<BaseUnitStatDto?> GetUnitStatsAsync(string league)
         {
             return await _context.BaseUnitStat
@@ -53,6 +54,7 @@ namespace TFT_API.Persistence
                 .SingleOrDefaultAsync();
         }
 
+        // Gets trait stats for a specific league, returning the projected BaseTraitStatDto
         public async Task<BaseTraitStatDto?> GetTraitStatsAsync(string league)
         {
             return await _context.BaseTraitStat
@@ -79,6 +81,7 @@ namespace TFT_API.Persistence
                 .SingleOrDefaultAsync();
         }
 
+        // Gets augment stats for a specific league, returning the projected BaseAugmentStatDto
         public async Task<BaseAugmentStatDto?> GetAugmentStatsAsync(string league)
         {
             return await _context.BaseAugmentStat
@@ -104,6 +107,7 @@ namespace TFT_API.Persistence
                 .SingleOrDefaultAsync();
         }
 
+        // Gets item stats for a specific league, returning the projected BaseItemStatDto
         public async Task<BaseItemStatDto?> GetItemStatsAsync(string league)
         {
             return await _context.BaseItemStat
@@ -129,6 +133,7 @@ namespace TFT_API.Persistence
                 .SingleOrDefaultAsync();
         }
 
+        // Gets composition stats for a specific league, returning the projected BaseCompStatDto
         public async Task<BaseCompStatDto?> GetCompStatsAsync(string league)
         {
             return await _context.BaseCompStat
@@ -160,6 +165,7 @@ namespace TFT_API.Persistence
                 .SingleOrDefaultAsync();
         }
 
+        // Gets co-occurrence stats based on type and key, returning the projected BaseCoOccurrenceDto
         public async Task<BaseCoOccurrenceDto?> GetCoOccurrenceStatsAsync(string type, string key)
         {
             var reversedType = string.Join(":", type.Split(':').Reverse());

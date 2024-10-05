@@ -9,6 +9,7 @@ namespace TFT_API.Persistence
     {
         private readonly TFTContext _context = context;
 
+        // Gets an item by its in-game key, returning an ItemDto
         public async Task<ItemDto?> GetItemByKeyAsync(string key)
         {
             return await ProjectToItemDto(_context.Items
@@ -16,6 +17,7 @@ namespace TFT_API.Persistence
                 .FirstOrDefaultAsync();
         }
 
+        // Gets all non-hidden items, returning a list of ItemDto
         public async Task<List<ItemDto>> GetFullItemsAsync()
         {
             return await ProjectToItemDto(_context.Items
@@ -23,6 +25,7 @@ namespace TFT_API.Persistence
                 .ToListAsync();
         }
 
+        // Gets a partial representation of all non-hidden items
         public async Task<List<PartialItemDto>> GetPartialItemsAsync()
         {
             return await _context.Items
@@ -40,6 +43,7 @@ namespace TFT_API.Persistence
                 .ToListAsync();
         }
 
+        // Gets all components that are not hidden, returning a list of ItemDto
         public async Task<List<ItemDto>> GetComponentsAsync()
         {
             return await ProjectToItemDto(_context.Items
@@ -47,6 +51,7 @@ namespace TFT_API.Persistence
                 .ToListAsync();
         }
 
+        // Projects a query of PersistedItem entities to ItemDto objects
         private static IQueryable<ItemDto> ProjectToItemDto(IQueryable<PersistedItem> query)
         {
             return query.Select(i => new ItemDto

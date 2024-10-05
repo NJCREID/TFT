@@ -10,6 +10,7 @@ namespace TFT_API.Persistence
     {
         private readonly TFTContext _context = context;
 
+        // Gets a unit by its key, returning a UnitDto or null
         public async Task<UnitDto?> GetUnitByKeyAsync(string key)
         {
             return await ProjectToUnitDto(_context.Units
@@ -18,6 +19,7 @@ namespace TFT_API.Persistence
                 .FirstOrDefaultAsync();
         }
 
+        // Gets a list of all units that are not hidden, returning a list of UnitDto
         public async Task<List<UnitDto>> GetFullUnitsAsync()
         {
             return await ProjectToUnitDto(_context.Units
@@ -26,6 +28,7 @@ namespace TFT_API.Persistence
                 .ToListAsync();
         }
 
+        // Gets a list of partial unit details, excluding hidden units
         public async Task<List<PartialUnitDto>> GetPartialUnitsAsync()
         {
             return await _context.Units
@@ -57,8 +60,9 @@ namespace TFT_API.Persistence
                     UniqueItemKey = u.UniqueItemKey
                 })
                 .ToListAsync();
-    }
+        }
 
+        // Projects a query of PersistedUnit into a UnitDto
         private static IQueryable<UnitDto> ProjectToUnitDto(IQueryable<PersistedUnit> query)
         {
             return query.Select(u => new UnitDto

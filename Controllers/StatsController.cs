@@ -22,6 +22,20 @@ namespace TFT_API.Controllers
         private static readonly HashSet<string> ValidLeagues = ["", "Challenger", "Master", "GrandMaster"];
         private static bool IsValidLeague(string league) => ValidLeagues.Contains(league);
 
+        /// <summary>
+        /// Retrieves unit stats for a specified league.
+        /// </summary>
+        /// <param name="league">The league to filter unit stats by (optional).</param>
+        /// <returns>The base unit stats DTO for the specified league.</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// GET /api/stats/unit/Challenger
+        ///
+        /// </remarks>
+        /// <response code="200">Returns the unit stats for the specified league</response>
+        /// <response code="400">If the league value is invalid</response>
+        /// <response code="404">If no unit stats are found for the specified league</response>
         [AllowAnonymous]
         [HttpGet("unit/{league?}")]
         public async Task<ActionResult<BaseUnitStatDto>> GetUnitStats([FromRoute] string league = "")
@@ -47,6 +61,20 @@ namespace TFT_API.Controllers
             return Ok(cachedUnitStats);
         }
 
+        /// <summary>
+        /// Retrieves item stats for a specified league.
+        /// </summary>
+        /// <param name="league">The league to filter item stats by (optional).</param>
+        /// <returns>The base item stats DTO for the specified league.</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// GET /api/stats/item/Challenger
+        ///
+        /// </remarks>
+        /// <response code="200">Returns the item stats for the specified league</response>
+        /// <response code="400">If the league value is invalid</response>
+        /// <response code="404">If no item stats are found for the specified league</response>
         [AllowAnonymous]
         [HttpGet("item/{league?}")]
         public async Task<ActionResult<BaseItemStatDto>> GetItemStats([FromRoute] string league = "")
@@ -72,6 +100,20 @@ namespace TFT_API.Controllers
             return Ok(cachedItemStats);
         }
 
+        /// <summary>
+        /// Retrieves trait stats for a specified league.
+        /// </summary>
+        /// <param name="league">The league to filter trait stats by (optional).</param>
+        /// <returns>The base trait stats DTO for the specified league.</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// GET /api/stats/trait/Challenger
+        ///
+        /// </remarks>
+        /// <response code="200">Returns the trait stats for the specified league</response>
+        /// <response code="400">If the league value is invalid</response>
+        /// <response code="404">If no trait stats are found for the specified league</response>
         [AllowAnonymous]
         [HttpGet("trait/{league?}")]
         public async Task<ActionResult<BaseTraitStatDto>> GetTraitStats([FromRoute] string league = "")
@@ -97,6 +139,20 @@ namespace TFT_API.Controllers
             return Ok(cachedTraitStats);
         }
 
+        /// <summary>
+        /// Retrieves augment stats for a specified league.
+        /// </summary>
+        /// <param name="league">The league to filter augment stats by (optional).</param>
+        /// <returns>The base augment stats DTO for the specified league.</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// GET /api/stats/augment/Challenger
+        ///
+        /// </remarks>
+        /// <response code="200">Returns the augment stats for the specified league</response>
+        /// <response code="400">If the league value is invalid</response>
+        /// <response code="404">If no augment stats are found for the specified league</response>
         [AllowAnonymous]
         [HttpGet("augment/{league?}")]
         public async Task<ActionResult<BaseAugmentStatDto>> GetAugmentStats([FromRoute] string league = "")
@@ -122,6 +178,20 @@ namespace TFT_API.Controllers
             return Ok(cachedAugmentStats);
         }
 
+        /// <summary>
+        /// Retrieves composition stats for a specified league.
+        /// </summary>
+        /// <param name="league">The league to filter composition stats by (optional).</param>
+        /// <returns>The base composition stats DTO for the specified league.</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// GET /api/stats/comp/Challenger
+        ///
+        /// </remarks>
+        /// <response code="200">Returns the composition stats for the specified league</response>
+        /// <response code="400">If the league value is invalid</response>
+        /// <response code="404">If no composition stats are found for the specified league</response>
         [AllowAnonymous]
         [HttpGet("comp/{league?}")]
         public async Task<ActionResult<BaseCompStatDto>> GetCompStats([FromRoute] string league = "")
@@ -147,6 +217,21 @@ namespace TFT_API.Controllers
             return Ok(cachedCompStats);
         }
 
+        /// <summary>
+        /// Retrieves co-occurrence stats based on specified type and key.
+        /// </summary>
+        /// <param name="type">The type for the co-occurrence stats.</param>
+        /// <param name="key">The key for the co-occurrence stats.</param>
+        /// <returns>The base co-occurrence DTO for the specified type and key.</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// GET /api/stats/cooccurrence?type=example&type=exampleKey
+        ///
+        /// </remarks>
+        /// <response code="200">Returns the co-occurrence stats for the specified type and key</response>
+        /// <response code="400">If type or key parameters are missing</response>
+        /// <response code="404">If no co-occurrences are found for the specified combination</response>
         [AllowAnonymous]
         [HttpGet("cooccurrence")]
         public async Task<ActionResult<BaseCoOccurrenceDto>> GetCoOccurrenceStats([FromQuery][Required] string type, [FromQuery][Required] string key)

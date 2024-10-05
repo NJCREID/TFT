@@ -5,13 +5,27 @@ using System.Threading.RateLimiting;
 using TFT_API.Interfaces;
 namespace TFT_API.Services
 {
+    /// <summary>
+    /// A service to fetch data and images for TFT (Teamfight Tactics).
+    /// Implements ITFTDataService.
+    /// </summary>
     public partial class TFTDataFetchService(HttpClient httpClient) : ITFTDataService
     {
         private readonly HttpClient _httpClient = httpClient;
 
+        /// <summary>
+        /// A compiled regular expression to match the 'fill' attribute in SVG files.
+        /// </summary>
         [GeneratedRegex(@"fill=""[^""]*""", RegexOptions.IgnoreCase, "en-AU")]
         private static partial Regex MyRegex();
 
+        /// <summary>
+        /// Fetches data from the specified URL, deserializes it into a list of the specified type, and returns it.
+        /// </summary>
+        /// <typeparam name="T">The type of data to fetch.</typeparam>
+        /// <param name="url">The URL to fetch the data from.</param>
+        /// <param name="type">The type of property to extract from the JSON response.</param>
+        /// <returns>A list of deserialized objects of type <typeparamref name="T"/>.</returns>
         public async Task<List<T>> FetchDataAsync<T>(string url, string type)
         {
             try
@@ -45,6 +59,15 @@ namespace TFT_API.Services
             return [];
         }
 
+        /// <summary>
+        /// Saves images from the given list of items using the provided functions to get the image URL and file name.
+        /// Supports both SVG and other image formats.
+        /// </summary>
+        /// <typeparam name="T">The type of items to save images for.</typeparam>
+        /// <param name="items">The list of items containing image data.</param>
+        /// <param name="getImageUrl">A function to get the image URL from an item.</param>
+        /// <param name="getFileName">A function to get the file name from an item.</param>
+        /// <param name="directory">The directory to save images in.</param>
         public async Task SaveImagesAsync<T>(List<T> items, Func<T, string> getImageUrl, Func<T, string> getFileName, string directory)
         {
             Directory.CreateDirectory(directory);
@@ -89,6 +112,10 @@ namespace TFT_API.Services
             }
         }
 
+        /// <summary>
+        /// Updates the fill colors of SVG images to white.
+        /// </summary>
+        /// <param name="filePath">The path to the SVG file to update.</param>
         private static void UpdateSvgFillColors(string filePath)
         {
             var svgContent = File.ReadAllText(filePath);
@@ -96,6 +123,11 @@ namespace TFT_API.Services
             File.WriteAllText(filePath, updatedSvgContent);
         }
 
+        /// <summary>
+        /// Converts an input stream to an AVIF image and saves it to the specified output path.
+        /// </summary>
+        /// <param name="inputStream">The input stream containing image data.</param>
+        /// <param name="outputPath">The path to save the AVIF image to.</param>
         private static void ConvertAndSaveAvif(Stream inputStream, string outputPath)
         {
             using var image = new MagickImage(inputStream);

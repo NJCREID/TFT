@@ -2,11 +2,12 @@
 using TFT_API.Data;
 using TFT_API.Models.Match;
 using TFT_API.Models.FetchResponse;
-using static TFT_API.Services.RiotApiService;
-using System.Threading.RateLimiting;
 
 namespace TFT_API.Services
 {
+    /// <summary>
+    /// Service for interacting with the Riot API to fetch match history data.
+    /// </summary>
     public class RiotApiService(HttpClient httpClient, IConfiguration configuration, TFTContext context)
     {
         private readonly HttpClient _httpClient = httpClient;
@@ -15,7 +16,10 @@ namespace TFT_API.Services
         private readonly RateLimiter _rateLimiter = new(perSecondLimit: 20, per2MinLimit: 100);
         private readonly HashSet<string> _processedMatchIds = [];
 
-        public async Task FetchChallengerMatchHistoryAsync()
+        /// <summary>
+        /// Fetches the match history for challenger, grand master, and master players.
+        /// </summary>
+        public async Task FetchMatchHistoryAsync()
         {
             var regionServerInfo = _configuration.GetSection("RegionServerInfo").Get<Dictionary<string, RegionServerInfo>>();
             var leagues = _configuration.GetSection("Leagues").Get<Dictionary<string, string>>();
@@ -27,6 +31,7 @@ namespace TFT_API.Services
 
             if(summonerEndpoint == null || matchIdsEndpoint == null || matchEndpoint == null) return;
 
+            // Process each league to fetch the match history.
             foreach (var league in leagues)
             {
                 var leagueName = league.Key.Replace("Get", "").Replace("League", "");
@@ -34,22 +39,29 @@ namespace TFT_API.Services
             }
         }
 
+        /// <summary>
+        /// Processes the league by fetching summoner information and match IDs.
+        /// </summary>
         private async Task ProccessLeagueAsync(string leagueEndpoint, string leagueName, Dictionary<string, RegionServerInfo> regionServerInfo, string summonerEndpoint, string matchIdsEndpoint, string matchEndpoint)
         {
             if (leagueEndpoint == null) return;
-            foreach(var region in regionServerInfo)
+            // Iterate through each region to fetch league data.
+            foreach (var region in regionServerInfo)
             {
                 var fetchedLeague = await FetchRequestAsync<FetchedLeague>(leagueEndpoint, region.Value.ServerCode);
                 if (fetchedLeague == null) continue;
 
-                foreach(var entry in fetchedLeague.Entries)
+                // Process each summoner (player) in the league.
+                foreach (var entry in fetchedLeague.Entries)
                 {
                     await ProcessSummonerAsync(entry.SummonerId, region.Value, leagueName, summonerEndpoint, matchIdsEndpoint, matchEndpoint);
                 }
             }
         }
 
-
+        /// <summary>
+        /// Processes individual summoner by fetching their match IDs and match data.
+        /// </summary>
         private async Task ProcessSummonerAsync(string summonerId, RegionServerInfo regionInfo, string leagueName, string summonerEndpoint, string matchIdsEndpoint,string matchEndpoint)
         {
             var summonerUrl = summonerEndpoint.Replace("{encryptedSummonerId}", summonerId);
@@ -61,7 +73,8 @@ namespace TFT_API.Services
             var fetchedMatchIds = await FetchRequestAsync<List<string>>(matchIdsUrl, regionInfo.ServerLocation);
             if (fetchedMatchIds == null) return;
 
-            foreach(var matchId in fetchedMatchIds)
+            // Process each match ID for the summoner.
+            foreach (var matchId in fetchedMatchIds)
             {
                 if (_processedMatchIds.Contains(matchId)) continue;
                 await ProcessMatchAsync(matchId, fetchedSummoner.Puuid, regionInfo.ServerLocation, leagueName, matchEndpoint);
@@ -69,6 +82,9 @@ namespace TFT_API.Services
             }
         }
 
+        /// <summary>
+        /// Processes match data by fetching details and saving to the database.
+        /// </summary>
         private async Task ProcessMatchAsync(string matchId, string puuid, string serverLocation, string leagueName, string matchEndpoint)
         {
             var matchUrl = matchEndpoint.Replace("{matchId}", matchId);
@@ -111,6 +127,13 @@ namespace TFT_API.Services
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Fetches data from the specified API endpoint.
+        /// </summary>
+        /// <typeparam name="T">The type of the expected response.</typeparam>
+        /// <param name="endpoint">The API endpoint to fetch data from.</param>
+        /// <param name="serverCode">The server code to use for the request.</param>
+        /// <returns>The deserialized response or default value on failure.</returns>
         private async Task<T?> FetchRequestAsync<T>(string endpoint, string serverCode)
         {
             var url = new UriBuilder($"https://{serverCode}.{_configuration["RiotApi:BaseApi"]}{endpoint}")
@@ -147,6 +170,9 @@ namespace TFT_API.Services
             }
         }
 
+        /// <summary>
+        /// Class to represent region server information.
+        /// </summary>
         public class RegionServerInfo
         {
             public string ServerCode { get; set; } = string.Empty;

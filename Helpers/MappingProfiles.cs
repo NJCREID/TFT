@@ -15,6 +15,7 @@ namespace TFT_API.Helper
     {
         public MappingProfiles()
         {
+            // Requests for adding
             CreateMap<UserLoginRequest, PersistedUser>();
             CreateMap<AddUserRequest, PersistedUser>();
             CreateMap<PersistedUser, UserDto>();
@@ -24,6 +25,8 @@ namespace TFT_API.Helper
                 .ForMember(dest => dest.Augments, opt => opt.MapFrom<AugmentResolver>());
             CreateMap<VoteRequest, Vote>();
             CreateMap<CommentRequest, Comment>();
+
+            // Mapping updated object data to existing objects.
             CreateMap<PersistedItem, PersistedItem>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
             CreateMap<PersistedUnit, PersistedUnit>()
@@ -39,7 +42,8 @@ namespace TFT_API.Helper
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
             CreateMap<TraitTier, TraitTier>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
-                
+
+            // Mapping fetched objects to persisted objects
             CreateMap<Champion, PersistedUnit>()
                 .ForMember(dest => dest.InGameKey, opt => opt.MapFrom(src => src.IngameKey))
                 .ForMember(dest => dest.Health, opt => opt.MapFrom(src => src.Health.Select(h => (int)Math.Round((double)h)).ToList()))

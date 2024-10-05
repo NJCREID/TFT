@@ -9,6 +9,7 @@ namespace TFT_API.Persistence
     {
         private readonly TFTContext _context = context;
 
+        // Gets a specific augment by its key
         public async Task<AugmentDto?> GetAugmentByKeyAsync(string key)
         {
             return await ProjectToAugmentDto(_context.Augments
@@ -16,6 +17,7 @@ namespace TFT_API.Persistence
                 .FirstOrDefaultAsync();
         }
 
+        // Gets a list of all augments that are not hidden, ordered by tier
         public async Task<List<AugmentDto>> GetAugmentsAsync()
         {
             return await ProjectToAugmentDto(_context.Augments
@@ -24,6 +26,7 @@ namespace TFT_API.Persistence
                 .ToListAsync();
         }
 
+        // Gets a list of augments filtered by a specific tier that are not hidden
         public async Task<List<AugmentDto>> GetAugmentsByTierAsync(int tier)
         {
             return await ProjectToAugmentDto(_context.Augments
@@ -31,6 +34,7 @@ namespace TFT_API.Persistence
                 .ToListAsync();
         }
 
+        // Projects a query of PersistedAugment entities to AugmentDto objects
         public static IQueryable<AugmentDto> ProjectToAugmentDto(IQueryable<PersistedAugment> query)
         {
             return query.Select(a => new AugmentDto

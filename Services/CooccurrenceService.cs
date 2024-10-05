@@ -7,6 +7,9 @@ using Match = TFT_API.Models.Match.Match;
 
 namespace TFT_API.Services
 {
+    /// <summary>
+    /// Service for processing and managing co-occurrences of units, items, traits, and augments in TFT matches.
+    /// </summary>
     public class CooccurrenceService(TFTContext context)
     {
         private readonly TFTContext _context = context;
@@ -14,13 +17,19 @@ namespace TFT_API.Services
         private Dictionary<string, int[]> _tiersData = [];
         private Dictionary<string, string> _nameLookup = [];
 
+
+        /// <summary>
+        /// Processes matches to calculate and update co-occurrence statistics.
+        /// </summary>
+        /// <returns>A task representing the asynchronous operation.</returns>
         public async Task ProcessMatches()
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
-                await _context.Database.ExecuteSqlRawAsync("DELETE FROM Stats WHERE Id IN (SELECT StatId FROM CoOccurrences)");
-                await _context.Database.ExecuteSqlRawAsync("DELETE FROM BaseCoOccurrences");
+                var statsToRemove = _context.BaseCoOccurrences.SelectMany(bc => bc.CoOccurrences.Select(c => c.Stat));
+                _context.Stats.RemoveRange(statsToRemove);
+                _context.BaseCoOccurrences.RemoveRange(_context.BaseCoOccurrences);
 
                 var matches = await _context.Matches
                     .AsSplitQuery()
@@ -34,6 +43,7 @@ namespace TFT_API.Services
                 await BuildNameLookupAsync();
                 await BuildTierDataAsync();
 
+                // Update co-occurrence statistics for each match.
                 foreach (var match in matches)
                 {
                     UpdateAllCoOccurrences(match);
@@ -53,6 +63,10 @@ namespace TFT_API.Services
             }
         }
 
+        /// <summary>
+        /// Builds a lookup table for unit, item, augment, and trait names.
+        /// </summary>
+        /// <returns>A task representing the asynchronous operation.</returns>
         private async Task BuildNameLookupAsync()
         {
             var unitNames = await _context.Units.AsNoTracking().ToDictionaryAsync(u => u.InGameKey, u => u.Name);
@@ -66,7 +80,11 @@ namespace TFT_API.Services
                 .Concat(traitNames)
                 .ToDictionary(x => x.Key, x => x.Value);
         }
-        
+
+        /// <summary>
+        /// Builds a lookup table for trait tiers data.
+        /// </summary>
+        /// <returns>A task representing the asynchronous operation.</returns>
         private async Task BuildTierDataAsync()
         {
             _tiersData = await _context.Traits
@@ -80,6 +98,12 @@ namespace TFT_API.Services
                             t => t.Levels
                         );
         }
+
+        /// <summary>
+        /// Saves the calculated base co-occurrence statistics to the database.
+        /// </summary>
+        /// <param name="totalMatches">Total number of matches processed.</param>
+        /// <returns>A task representing the asynchronous operation.</returns>
         private async Task SaveBaseCoOccurrenceAsync(int totalMatches)
         {
             var baseCoOccurrence = new BaseCoOccurrence
@@ -92,6 +116,11 @@ namespace TFT_API.Services
             await _context.SaveChangesAsync();
         }
 
+
+        /// <summary>
+        /// Updates co-occurrence statistics with a given match.
+        /// </summary>
+        /// <param name="match">The match to process.</param>
         private void UpdateAllCoOccurrences(Match match)
         {
             
@@ -183,6 +212,11 @@ namespace TFT_API.Services
             }
         }
 
+        /// <summary>
+        /// Sets the delta value for each co-occurrence statistic based on average placement.
+        /// </summary>
+        /// <param name="totalMatches">Total number of matches processed.</param>
+        /// <param name="totalPlacement">Total placement points across all matches.</param>
         private void SetDelta(int totalMatches, int totalPlacement)
         {
             double averagePlace = totalMatches != 0
@@ -196,6 +230,11 @@ namespace TFT_API.Services
             }
         }
 
+        /// <summary>
+        /// Updates the number of units for a given trait based on its floored tier.
+        /// </summary>
+        /// <param name="trait">The trait for which to update the number of units.</param>
+        /// <param name="updatedNumUnits">The updated number of units for the trait based on the closest tier level.</param>
         private void UpdateTrait(MatchTrait trait, out int updatedNumUnits)
         {
             if (_tiersData != null && _tiersData.TryGetValue(trait.Name, out var tiers))
@@ -209,6 +248,15 @@ namespace TFT_API.Services
             }
         }
 
+        /// <summary>
+        /// Updates co-occurrence statistics for a pair of items, traits, units, or augments.
+        /// </summary>
+        /// <param name="type">The type of co-occurrence (e.g., unit:trait, item:item).</param>
+        /// <param name="key1">The first key in the co-occurrence pair.</param>
+        /// <param name="key2">The second key in the co-occurrence pair.</param>
+        /// <param name="placement">The placement of the match.</param>
+        /// <param name="isTop4">Indicates whether the match placement was in the top 4.</param>
+        /// <param name="isWin">Indicates whether the match placement was a win.</param>
         private void UpdateCoOccurrenceStats(string type, string key1, string key2, int placement, bool isTop4, bool isWin)
         {
             var pair = string.Compare(key1, key2) > 0 ? (key2, key1) : (key1, key2);
@@ -238,6 +286,10 @@ namespace TFT_API.Services
             stat.Win += isWin ? 1 : 0;
         }
 
+        /// <summary>
+        /// Checks the visibility of units, items, traits, and augments, and filters out hidden co-occurrences.
+        /// </summary>
+        /// <returns>A task representing the asynchronous operation of checking and filtering visibility.</returns>
         private async Task CheckVisibilityAsync()
         {
             var units = await _context.Units.AsNoTracking().ToListAsync();

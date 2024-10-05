@@ -22,6 +22,23 @@ namespace TFT_API.Controllers
         private readonly IUserDataAccess _userRepo = userRepo;
         private readonly IMapper _mapper = mapper;
 
+        /// <summary>
+        /// Authenticates a user and returns a JWT token upon successful login.
+        /// </summary>
+        /// <param name="request">The login request containing user credentials</param>
+        /// <returns>A response containing user details and a JWT token</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// POST /api/auth/login
+        /// {
+        ///     "email": "user@example.com",
+        ///     "password": "password123"
+        /// }
+        /// </remarks>
+        /// <response code="200">Returns user details and a JWT token</response>
+        /// <response code="404">If the user is not found</response>
+        /// <response code="400">If there is an error creating the token or the request is invalid</response>
         [AllowAnonymous]
         [HttpPost("login")]
         public async Task<ActionResult<UserLoginResponse>> Login([FromBody] UserLoginRequest request)
@@ -44,6 +61,24 @@ namespace TFT_API.Controllers
             return NotFound("User not found");
         }
 
+        /// <summary>
+        /// Registers a new user and creates their account.
+        /// </summary>
+        /// <param name="request">The registration request containing user details</param>
+        /// <returns>A response containing the created user details</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// POST /api/auth/register
+        /// {
+        ///     "email": "user@example.com",
+        ///     "password": "password123",
+        ///     "name": "John Doe"
+        /// }
+        /// </remarks>
+        /// <response code="201">Returns the created user details</response>
+        /// <response code="409">If a user with the same email already exists</response>
+        /// <response code="400">If the request is invalid</response>
         [AllowAnonymous]
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register([FromBody] AddUserRequest request)
@@ -59,6 +94,7 @@ namespace TFT_API.Controllers
             return CreatedAtRoute("GetUser", new { id = result.Id }, result);
         }
 
+        // Generates a JWT token when logging in that lasts 7 days.
         private string? Generate(PersistedUser user)
         {
             var jwtkey = _config["Jwt:Key"];
@@ -85,6 +121,8 @@ namespace TFT_API.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        // Retrieve the user by email and verifies their password
         private async Task<PersistedUser?> Authenticate(UserLoginRequest userLogin)
         {
             var currentUser = await  _userRepo.GetUserByEmailAsync(userLogin.Email);

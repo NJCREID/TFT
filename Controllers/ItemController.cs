@@ -15,6 +15,18 @@ namespace TFT_API.Controllers
         private readonly IItemDataAccess _itemRepo = itemRepo;
         private readonly IMemoryCache _memoryCache = memoryCache;
 
+        /// <summary>
+        /// Retrieves a complete list of items.
+        /// </summary>
+        /// <returns>A list of complete item DTOs.</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// GET /api/items/full
+        ///
+        /// </remarks>
+        /// <response code="200">Returns a list of complete items</response>
+        /// <response code="404">If no items are found</response>
         [AllowAnonymous]
         [HttpGet("full")]
         public async Task<ActionResult<List<ItemDto>>> GetFullItems()
@@ -36,6 +48,18 @@ namespace TFT_API.Controllers
             return Ok(cachedItems);
         }
 
+        /// <summary>
+        /// Retrieves a partial list of items.
+        /// </summary>
+        /// <returns>A list of partial item DTOs.</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// GET /api/items/partial
+        ///
+        /// </remarks>
+        /// <response code="200">Returns a list of partial items</response>
+        /// <response code="404">If no items are found</response>
         [AllowAnonymous]
         [HttpGet("partial")]
         public async Task<ActionResult<List<PartialItemDto>>> GetPartialItems()
@@ -57,6 +81,18 @@ namespace TFT_API.Controllers
             return Ok(cachedItems);
         }
 
+        /// <summary>
+        /// Retrieves a list of item components.
+        /// </summary>
+        /// <returns>A list of item DTOs representing components.</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// GET /api/items/components
+        ///
+        /// </remarks>
+        /// <response code="200">Returns a list of components</response>
+        /// <response code="404">If no components are found</response>
         [AllowAnonymous]
         [HttpGet("components")]
         public async Task<ActionResult<List<ItemDto>>>  GetComponents()
@@ -66,6 +102,19 @@ namespace TFT_API.Controllers
             return Ok(items);
         }
 
+        /// <summary>
+        /// Retrieves an item by its unique key.
+        /// </summary>
+        /// <param name="key">The unique key of the item.</param>
+        /// <returns>The item DTO associated with the specified key.</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// GET /api/items/{key}
+        ///
+        /// </remarks>
+        /// <response code="200">Returns the item with the specified key</response>
+        /// <response code="404">If the item with the specified key is not found</response>
         [AllowAnonymous]
         [HttpGet("{key}", Name = "GetItem")]
         public async Task<ActionResult<ItemDto>> GetItemByKey(

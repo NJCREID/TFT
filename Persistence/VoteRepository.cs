@@ -9,6 +9,7 @@ namespace TFT_API.Persistence
     {
         private readonly TFTContext _context = context;
 
+        // Adds a new vote to the database and returns the mapped VoteDto
         public async Task<VoteDto> AddVoteAsync(Vote vote)
         {
             _context.Votes.Add(vote);
@@ -17,6 +18,7 @@ namespace TFT_API.Persistence
             return MapVoteToDto(vote);
         }
 
+        // Deletes a vote by its ID
         public async Task DeleteVoteAsync(int id)
         {
             var vote = await _context.Votes.FindAsync(id);
@@ -27,6 +29,7 @@ namespace TFT_API.Persistence
             }
         }
 
+        // Gets a vote by its ID and maps it to VoteDto
         public async Task<VoteDto?> GetVoteByIdAsync(int id)
         {
             return await _context.Votes
@@ -35,6 +38,7 @@ namespace TFT_API.Persistence
                 .FirstOrDefaultAsync();
         }
 
+        // Gets a list of votes by user ID and maps them to VoteDto
         public async Task<List<VoteDto>> GetVotesByUserIdAsync(int userId)
         {
             return await _context.Votes
@@ -43,6 +47,7 @@ namespace TFT_API.Persistence
                 .ToListAsync();
         }
 
+        // Gets the vote status for a specific user and guide
         public async Task<Vote?> GetVoteStatusAsync(int userId, int userGuideId)
         {
             return await _context.Votes
@@ -50,6 +55,7 @@ namespace TFT_API.Persistence
                 .FirstOrDefaultAsync();
         }
 
+        // Updates an existing vote and returns the updated VoteDto
         public async Task<VoteDto?> UpdateVoteAsync(Vote vote)
         {
             var currentVote = await _context.Votes.FindAsync(vote.Id);
@@ -62,6 +68,7 @@ namespace TFT_API.Persistence
             return null;
         }
 
+        // Maps a Vote to a VoteDto
         private static VoteDto MapVoteToDto(Vote vote)
         {
             return new VoteDto

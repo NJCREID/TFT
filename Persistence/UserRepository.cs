@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TFT_API.Data;
 using TFT_API.Interfaces;
-using TFT_API.Migrations;
 using TFT_API.Models.User;
 
 namespace TFT_API.Persistence
@@ -10,6 +9,7 @@ namespace TFT_API.Persistence
     {
         private readonly TFTContext _context = context;
 
+        // Adds a new user to the database and returns the mapped UserDto
         public async Task<UserDto> AddUserAsync(PersistedUser user)
         {
             _context.Users.Add(user);
@@ -18,6 +18,7 @@ namespace TFT_API.Persistence
             return MapUserToDto(user);
         }
 
+        // Deletes a user by their ID
         public async Task DeleteUserAsync(int id)
         {
             var user = await _context.Users.FindAsync(id);
@@ -28,6 +29,7 @@ namespace TFT_API.Persistence
             }
         }
 
+        // Gets a user by their ID
         public async Task<PersistedUser?> GetUserByIdAsync(int id)
         {
             return await _context.Users
@@ -35,13 +37,15 @@ namespace TFT_API.Persistence
                 .FirstOrDefaultAsync();
         }
 
+        // Gets a user by their email address
         public async Task<PersistedUser?> GetUserByEmailAsync(string email)
         {
             return await _context.Users
                 .Where(u => u.Email == email)
                 .FirstOrDefaultAsync();
         }
-        
+
+        // Gets a list of all users as UserDto
         public async Task<List<UserDto>> GetUsersAsync()
         {
             return await _context.Users
@@ -49,6 +53,7 @@ namespace TFT_API.Persistence
                 .ToListAsync();
         }
 
+        // Updates an existing user and returns the updated UserDto
         public async Task<UserDto?> UpdateUserAsync(PersistedUser updatedUser)
         {
             var currentUser = await _context.Users
@@ -62,16 +67,19 @@ namespace TFT_API.Persistence
             return null;
         }
 
-        public async Task<Boolean> CheckIfEmailExistsAsync(string email)
+        // Checks if an email already exists in the database
+        public async Task<bool> CheckIfEmailExistsAsync(string email)
         {
             return await _context.Users.AnyAsync(u => u.Email == email);
         }
-        
-        public async Task<Boolean> CheckIfUsernameExistsAsync(string username)
+
+        // Checks if a username already exists in the database
+        public async Task<bool> CheckIfUsernameExistsAsync(string username)
         {
             return await _context.Users.AnyAsync(u => u.Username == username);
         }
 
+        // Maps a PersistedUser to a UserDto
         private static UserDto MapUserToDto(PersistedUser user)
         {
             return new UserDto

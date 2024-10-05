@@ -2,8 +2,12 @@
 
 namespace TFT_API.Services
 {
+    /// <summary>
+    /// Class responsible for determining the optimal positions on the board for units based on their types.
+    /// </summary>
     public class PositionSelector
     {
+        // A dictionary mapping champion keys to their respective position types.
         private readonly Dictionary<string, string> Champions = new()
         {
             {"TFT11_Aatrox", "front_tank_ap"},
@@ -70,9 +74,16 @@ namespace TFT_API.Services
         };
 
 
+        /// <summary>
+        /// Calculates and assigns optimal positions for a list of hexes based on the champions' roles.
+        /// </summary>
+        /// <param name="hexes">The list of hexes to position the units in.</param>
+        /// <returns>The list of hexes with updated positions.</returns>
         public List<Hex> CalculateUnitPositions(List<Hex> hexes)
         {
             Dictionary<int, string> occupiedHexes = [];
+
+            // Sort hexes based on unit priority (order and item count) for optimal placement
             hexes = [.. hexes.OrderBy(h => OrderUnits(h))
                 .ThenByDescending(hex => hex.CurrentItems.Count)
                 .ThenByDescending(hex => hex.Unit.Tier)
@@ -117,6 +128,11 @@ namespace TFT_API.Services
             return hexes;
         }
 
+        /// <summary>
+        /// Determines the order of units based on their types to prioritise positioning.
+        /// </summary>
+        /// <param name="hex">The hex containing the unit to order.</param>
+        /// <returns>An integer representing the priority order.</returns>
         public int OrderUnits(Hex hex)
         {
             string positionType = Champions[hex.Unit.InGameKey];
@@ -136,6 +152,12 @@ namespace TFT_API.Services
                 return int.MaxValue;
         }
 
+        /// <summary>
+        /// Finds an available front position for a unit based on currently occupied hexes.
+        /// </summary>
+        /// <param name="occupiedHexes">A dictionary of occupied hex positions.</param>
+        /// <param name="frontCount">The count of units positioned in the front.</param>
+        /// <returns>The coordinate of an available front position.</returns>
         private static int FindAvailableFrontPosition(Dictionary<int, string> occupiedHexes, int frontCount)
         {
             if(frontCount == 1)
@@ -175,6 +197,11 @@ namespace TFT_API.Services
             return -1;
         }
 
+        /// <summary>
+        /// Finds an available back position for a unit based on currently occupied hexes.
+        /// </summary>
+        /// <param name="occupiedHexes">A dictionary of occupied hex positions.</param>
+        /// <returns>The coordinate of an available back position.</returns>
         private static int FindAvailableBackPosition(Dictionary<int, string> occupiedHexes)
         {
             if (occupiedHexes.TryGetValue(26, out string? hex26) && hex26.Contains("back_link"))
@@ -199,6 +226,11 @@ namespace TFT_API.Services
             return -1; 
         }
 
+        /// <summary>
+        /// Finds an available second left/right damage position for a unit.
+        /// </summary>
+        /// <param name="occupiedHexes">A dictionary of occupied hex positions.</param>
+        /// <returns>The coordinate of an available second left/right damage position.</returns>
         private static int FindAvailableSecondLRDamagePosition(Dictionary<int, string> occupiedHexes)
         {
 
@@ -213,6 +245,11 @@ namespace TFT_API.Services
             return -1;
         }
 
+        /// <summary>
+        /// Finds an available second damage position for a unit.
+        /// </summary>
+        /// <param name="occupiedHexes">A dictionary of occupied hex positions.</param>
+        /// <returns>The coordinate of an available second damage position.</returns>
         private static int FindAvailableSecondDamagePosition(Dictionary<int, string> occupiedHexes)
         {
             for(int i = 8; i <= 12; i++)
@@ -223,6 +260,11 @@ namespace TFT_API.Services
             return -1; 
         }
 
+        /// <summary>
+        /// Finds an available front link position for a unit.
+        /// </summary>
+        /// <param name="occupiedHexes">A dictionary of occupied hex positions.</param>
+        /// <returns>The coordinate of an available front link position.</returns>
         private static int FindAvailableFrontLinkPosition(Dictionary<int, string> occupiedHexes)
         {
             if (!occupiedHexes.ContainsKey(2))
@@ -232,6 +274,11 @@ namespace TFT_API.Services
             return -1;
         }
 
+        /// <summary>
+        /// Finds an available back link position for a unit.
+        /// </summary>
+        /// <param name="occupiedHexes">A dictionary of occupied hex positions.</param>
+        /// <returns>The coordinate of an available back link position.</returns>
         private static int FindAvailableBackLinkPosition(Dictionary<int, string> occupiedHexes)
         {
             if(!occupiedHexes.ContainsKey(22))

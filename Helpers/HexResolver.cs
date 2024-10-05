@@ -8,6 +8,7 @@ namespace TFT_API.Helper
     {
         private readonly TFTContext _context = context;
 
+        // Resolves the list of Hex objects based on UserGuideRequest
         public List<Hex> Resolve(UserGuideRequest source, UserGuide destination, List<Hex> destMember, ResolutionContext context)
         {
             var hexes = new List<Hex>();
@@ -20,12 +21,14 @@ namespace TFT_API.Helper
                     IsStarred = hexRequest.IsStarred
                 };
 
+                // Find the existing unit by its in-game key
                 var existingUnit = _context.Units.FirstOrDefault(u => u.InGameKey == hexRequest.Unit.InGameKey);
                 if (existingUnit != null)
                 {
                     hex.Unit = existingUnit;
                 }
 
+                // Find the existing item by its in-game key
                 var existingItems = new List<HexItem>();
                 foreach (var itemRequest in hexRequest.CurrentItems)
                 {

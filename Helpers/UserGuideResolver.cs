@@ -8,12 +8,14 @@ namespace TFT_API.Helper
     {
         private readonly TFTContext _context = context;
 
+        // Resolves the list of GuideTrait objects based on UserGuideRequest
         public List<GuideTrait> Resolve(UserGuideRequest source, UserGuide destination, List<GuideTrait> destMember, ResolutionContext context)
         {
             var traits = new List<GuideTrait>();
 
             foreach (var traitDto in source.Traits)
             {
+                // Fetch the existing trait 
                 var existingTrait = _context.Traits.FirstOrDefault(t => t.Key == traitDto.Trait.Key);
                 if (existingTrait != null)
                 {
